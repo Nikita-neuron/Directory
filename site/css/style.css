@@ -1,0 +1,18 @@
+.OuterBorder {
+    height: 500px;
+    border: 1px solid black;
+
+    width: auto;
+}
+
+.Header {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+
+    text-align: center;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    margin: 5px;
+}
