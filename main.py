@@ -1,7 +1,12 @@
-def print_hi(name):
-    print(f'Hi, {name}')
+from flask import Flask
+
+app = Flask(__name__)
 
 
-if __name__ == '__main__':
-    print_hi('PyCharm')
-    print('Rttas')
+@app.route("/")
+def index():
+    return "Hello Andrew"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
