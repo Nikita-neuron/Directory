@@ -49,6 +49,21 @@
             <!--Левый блок списка-->
             <div class="LeftListBlock">
 
+                <!--Поиск студента-->
+                <div class="LeftListBlock_OuterElement", style="height: 30%;">
+
+                </div>
+
+                <!--Список студентов-->
+                <div class="LeftListBlock_OuterElement", style="height: 60%;">
+
+                </div>
+
+                <!--Кнопка добавить студента-->
+                <div class="LeftListBlock_OuterElement", style="height: 10%; background-color: #47BE82; display: flex; align-items: center; justify-content: center; color: #023c1f; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px;">
+                    Добавить студента
+                </div>
+
             </div>
 
             <!--Правый блок информации-->
@@ -58,23 +73,124 @@
                 <div class="RightInfoBlock_MainInfo">
 
                     <!--ФИО-->
-                    <div class="RightInfoBlock_MainInfo_Cell", style="margin-top: 4px; height: 10%;">
+                    <div class="RightInfoBlock_MainInfo_Cell", style="margin-top: 4px; 
+                                                                    height: 10%;
+                                                                    display: flex;
+                                                                    align-items: center;">
+                        
+                        <span style="color: white;
+                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                    margin-left: 4px;">ФИО:</span>
 
+                        <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">Руслан Антонович Дыров</span>
                     </div>
 
                     <!--Доп. информация-->
-                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%;">
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%;
+                                                                    display: flex;
+                                                                    flex-direction: column;
+                                                                    justify-content: space-around;">
 
+                        <!--Группа(группы)-->
+                        <div>
+                            <span style="color: white;
+                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                    margin-left: 4px;">Группа(группы):</span>
+
+                            <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">ИКБО-20-14</span>
+                        </div>
+
+                        <!--Пол-->
+                        <div>
+                            <span style="color: white;
+                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                    margin-left: 4px;">Пол:</span>
+
+                            <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">Мужской</span>
+                        </div>
+
+                        <!--Дата рождения-->
+                        <div>
+                            <span style="color: white;
+                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                    margin-left: 4px;">Дата рождения:</span>
+
+                            <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">06.03.1922 (100 лет)</span>
+                        </div>
+
+                        <!--Телефон и инфо о старостве-->
+                        <div style="display: flex; flex-direction: row;">
+                            <div>
+                                <span style="color: white;
+                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                    margin-left: 4px;">Телефон:</span>
+
+                                <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">+7-777-777-77-77</span>
+                            </div>
+
+                            <div>
+                                <span style="color: white;
+                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                    margin-left: 4px;">Староста/Помощник:</span>
+
+                                <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">нет</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!--Характеристика-->
-                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 60%;">
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 60%; display: flex; flex-direction: column; justify-content: space-around;">
+
+                        <!--Адрес-->
+                        <div>
+                            <span style="color: white;
+                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                    margin-left: 4px;">Адрес:</span>
+
+                            <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">Ул.Пушкина, дом. Колотушкина</span>
+                        </div>
+
+                        <!--Сама характеристика-->
+                        <span style="color: white;
+                                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                                margin-left: 4px;">Характеристика:</span>
+
+                        <textarea style="background-color: #353d39; resize: none; border: none; color: white; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 16px; margin-left: 4px;", rows="20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt.</textarea>
 
                     </div>
 
                     <!--Функции-->
-                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%; margin-bottom: 4px;">
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%; margin-bottom: 4px; display: flex; flex-direction: column;">
 
+                        <!--Верхний ряд кнопок-->
+                        <div style="display: flex; flex-direction: row; justify-content: space-around; height: 50%;">
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 30%;">
+                                Расписание
+                            </div>
+
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 30%;">
+                                Посещаемость
+                            </div>
+
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 30%;">
+                                Успеваемость
+                            </div>
+
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 10%; background-color: #ff3333;">
+                                <img src="sysImgs\delete.png", style="width: 40px; height: 40px;">
+                            </div>
+                        </div>
+
+                        <!--Нижний ряд кнопок-->
+                        <div style="display: flex; flex-direction: row; justify-content: space-around; height: 50%;">
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 50%;">
+                                Дополнительные данные
+                            </div>
+
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 50%; background-color: #ffa500;">
+                                Редактировать информацию
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -90,6 +206,21 @@
                     <!--Фото-->
                     <div class="RightInfoBlock_Photo_Photo">
                         <img src="sysImgs\user.png", style="width: 100px; height: 100px;">
+                    </div>
+
+                    <!--Просмотр фото-->
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #47BE82;">
+                        Просмотр фото
+                    </div>
+
+                    <!--Загрузить новое фото-->
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #ffa500;">
+                        Загрузить новое фото
+                    </div>
+
+                    <!--Удалить фото-->
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #ffa500;">
+                        Удалить фотографию
                     </div>
 
                 </div>
