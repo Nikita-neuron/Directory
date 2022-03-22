@@ -41,7 +41,7 @@
 }
 
 
-.MainInnerBlock {
+.StudentMainInnerBlock {
     border: 1px solid black;
     margin: 5px;
 
@@ -203,4 +203,14 @@
 
 .RightInfoBlock_Photo_Btns {
     cursor: pointer;
+}
+
+.GroupsMainInnerBlock {
+    height: 100px;
+    width: 100px;
+
+    border: 1px solid black;
+    margin: 5px;
+
+    display: none;
 }

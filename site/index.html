@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel=stylesheet href="css/style.css">
+    <script src="js/main.js"></script>
     <title>Document</title>
 </head>
 <!--Основное тело-->
@@ -15,10 +16,10 @@
 
         <!--Верхнее меню-->
         <div class="UpperMenu">
-            <div class="MenuElement", style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
+            <div class="MenuElement", style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;" id="studentBTN">
                 Студенты
             </div>
-            <div class="MenuElement">
+            <div class="MenuElement" id="groupsBTN">
                 Группы
             </div>
             <div class="MenuElement">
@@ -44,7 +45,7 @@
 
 
         <!--Основной внутренний блок-->
-        <div class="MainInnerBlock">
+        <div class="StudentMainInnerBlock" id="studentWindow">
 
             <!--Левый блок списка-->
             <div class="LeftListBlock">
@@ -226,6 +227,16 @@
                 </div>
 
             </div>
+        </div>
+
+
+
+
+
+
+
+        <div class = "GroupsMainInnerBlock" id="groupsWindow">
+            Группы
         </div>
 
 
