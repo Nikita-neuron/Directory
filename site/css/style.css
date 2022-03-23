@@ -35,6 +35,22 @@
     align-items: center;
     justify-content: center;
 }
+.MenuElement_BackGreen {
+    color: white;
+    background-color: #47BE82;
+
+    width: 140px;
+    height: 50px;
+
+    margin-left: 1px;
+    margin-right: 1px;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .MenuElement:hover {
     background-color: #47BE82;
     cursor: pointer;
@@ -206,6 +222,69 @@
 }
 
 .GroupsMainInnerBlock {
+    height: 100px;
+    width: 100px;
+
+    border: 1px solid black;
+    margin: 5px;
+
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.TeacherMainInnerBlock {
+    height: 100px;
+    width: 100px;
+
+    border: 1px solid black;
+    margin: 5px;
+
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.SubjectMainInnerBlock {
+    height: 100px;
+    width: 100px;
+
+    border: 1px solid black;
+    margin: 5px;
+
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ScheduleMainInnerBlock {
     height: 100px;
     width: 100px;
 

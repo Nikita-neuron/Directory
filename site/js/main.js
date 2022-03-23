@@ -1,36 +1,36 @@
 window.onload = function(){
-    let BTNs = [document.getElementById("studentBTN"), document.getElementById("groupsBTN")];
-    let Windows = [document.getElementById("studentWindow"), document.getElementById("groupsWindow")]
+    let BTNs = [document.getElementById("studentBTN"), document.getElementById("groupsBTN"), document.getElementById("teacherBTN"), document.getElementById("subjectBTN"), document.getElementById("scheduleBTN")];
+    let Windows = [document.getElementById("studentWindow"), document.getElementById("groupsWindow"), document.getElementById("teacherWindow"), document.getElementById("subjectWindow"), document.getElementById("scheduleWindow")]
 
-    studentBTN.style.backgroundColor = "#47BE82";
+    studentBTN.classList.replace("MenuElement", "MenuElement_BackGreen");
 
     function changeWindow(BTNnum) {
         for (let i  = 0; i < BTNs.length; i++) {
-            BTNs[i].style.backgroundColor = "rgb(34, 34, 34)";
+            BTNs[i].classList.replace("MenuElement_BackGreen", "MenuElement");
             Windows[i].style.display = "none";
         }
 
-        BTNs[BTNnum].style.backgroundColor = "#47BE82";
+        BTNs[BTNnum].classList.replace("MenuElement", "MenuElement_BackGreen");
         Windows[BTNnum].style.display = "flex";
     }
 
     BTNs[0].onclick = function() {
         changeWindow(0);
-
-        // studentWindow.style.display = "flex";
-        // groupsWindow.style.display = "none";
-
-        // studentBTN.style.backgroundColor = "#47BE82";
-        // groupsBTN.style.backgroundColor = "rgb(34, 34, 34)";
     }
 
     BTNs[1].onclick = function() {
         changeWindow(1);
+    }
 
-        // studentWindow.style.display = "none";
-        // groupsWindow.style.display = "flex";
+    BTNs[2].onclick = function() {
+        changeWindow(2);
+    }
 
-        // studentBTN.style.backgroundColor = "rgb(34, 34, 34)";
-        // groupsBTN.style.backgroundColor = "#47BE82";
+    BTNs[3].onclick = function() {
+        changeWindow(3);
+    }
+
+    BTNs[4].onclick = function() {
+        changeWindow(4);
     }
 };
