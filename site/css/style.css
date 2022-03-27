@@ -1,63 +1,96 @@
-.BodyBack {
-    background-color: #353d39;
+*{
+    box-sizing: border-box;
 }
 
+/*Класс тела со всем*/
+.BodyBack {
+    background-color: #3F4649;
+}
+
+/*Класс самого внешнего блока*/
 .MainOuterBloсk {
     border: 2px solid black;
     margin: 20px;
+
+    height: 55em;
 
     display: flex;
     flex-direction: column;
 }
 
+/*Классы верхнего меню*/
 .UpperMenu {
     border: 1px solid black;
     margin: 5px;
+
+    height: 10%;
 
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
+.LeftMenuElement {
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+}
+
+.RightMenuElement {
+    border-top-right-radius: 10px; 
+    border-bottom-right-radius: 10px;
+}
+
+.RightMenuElement:hover {
+    cursor: pointer;
+}
+
 .MenuElement {
     color: white;
-    background-color: rgb(34, 34, 34);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
 
-    width: 140px;
-    height: 50px;
+    background-color: #2D2F31;
+
+    width: 10%;
+    height: 100%;
 
     margin-left: 1px;
     margin-right: 1px;
 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
     display: flex;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
 }
+
 .MenuElement_BackGreen {
     color: white;
-    background-color: #47BE82;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
 
-    width: 140px;
-    height: 50px;
+    background-color: #23A86D;
+
+    width: 10%;
+    height: 100%;
 
     margin-left: 1px;
     margin-right: 1px;
 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
     display: flex;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
 }
 .MenuElement:hover {
-    background-color: #47BE82;
+    background-color: #23A86D;
     cursor: pointer;
 }
 
 
-.StudentMainInnerBlock {
+
+.MainMainInnerBlock {
     border: 1px solid black;
     margin: 5px;
 
@@ -67,7 +100,28 @@
     display: flex;
     flex-direction: row;
 
-    height: 50em;
+    height: 90%;
+}
+
+
+
+
+
+
+
+
+/*Классы окна студента/преподавателя*/
+.StudentMainInnerBlock {
+    border: 1px solid black;
+    margin: 5px;
+
+    min-width: 90%;
+    max-width: 100%;
+
+    display: none;
+    flex-direction: row;
+
+    height: 90%;
 }
 
 .LeftListBlock {
@@ -78,18 +132,125 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.LeftListBlock_OuterElement {
+.LeftListBlock_AddPersonBTN {
     border: 1px solid black;
-    margin: 2px;
+
+    width: 95%; 
+    height: 10%; 
+
+    background-color: #23A86D; 
+
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+
+    overflow: hidden;
+
+    color: #023C1F; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 26px;
+}
+
+.LeftListBlock_AddPersonBTN:hover {
+    cursor: pointer;
+}
+
+.LeftListBlock_PersonsList {
+    border: 1px solid black;
+
+    width: 95%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: auto;
+}
+
+.LeftListBlock_PersonsList::-webkit-scrollbar {
+    width: 20px;
+    background-color: #3F4649;
+}
+
+.LeftListBlock_PersonsList::-webkit-scrollbar-thumb {
+    background-color: #353738;
+}
+
+.LeftListBlock_PersonsList::-webkit-scrollbar-thumb:hover {
+    background-color: #2c2d2e;
+}
+
+.LeftListBlock_PersonCell {
+    border: 1px solid black;
+
+    background-color: #2D2F31;
+
+    color: #B6D149;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+
+    width: 100%;
+    height: 45px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+}
+
+.LeftListBlock_PersonCell_InfoImg {
+    width: 40px;
+    height: 40px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
+    display: none;
+}
+
+.LeftListBlock_PersonSearch {
+    border: 1px solid black;
+
+    background-color:#1A7E52;
+
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.LeftListBlock_PersonSearch_TextField {
+    width: 90%;
+    height: 60%;
+
+    border: none;
+    background-color: #A8D6BF;
+
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.LeftListBlock_PersonSearch_TextField:focus {
+    outline: none;
+}
+
+.LeftListBlock_PersonCell:hover {
+    background-color: #2B473D;
+    cursor: pointer;
 }
 
 .RightInfoBlock {
     border: 1px solid black;
     margin: 5px;
 
-    background-color: #2D5440;
+    background-color: #1A7E52;
 
     width: 80%;
 
@@ -105,6 +266,7 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -113,26 +275,52 @@
     border-radius: 10px;
 
     min-width: 95%;
-    max-width: 100%;
+    max-width: 95%;
 
-    margin-left: 4px;
-    margin-right: 4px;
-
-    margin-bottom: 2px;
-    margin-top: 2px;
-
-    background-color: #353d39;
+    background-color: #3F4649;
+    overflow: auto;
 }
 
-.RightInfoBlock_MainInfo_Input {
-    background-color: #353d39; 
-    border: none; 
+.RightInfoBlock_MainInfo_Cell::-webkit-scrollbar {
+    width: 20px;
+    background-color: #3F4649;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.RightInfoBlock_MainInfo_Cell::-webkit-scrollbar-thumb {
+    background-color: #353738;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.RightInfoBlock_MainInfo_Cell::-webkit-scrollbar-thumb:hover {
+    background-color: #2c2d2e;
+}
+
+.RightInfoBlock_MainInfo_Table {
+    border-spacing: 2px 8px;
+}
+
+.RightInfoBlock_MainInfo_TableTopic {
+    border: 1px solid black;
 
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
 
-    font-size: 16px;
-    padding: 4px;
+    display: flex;
+    flex-direction: row;
+
+    white-space: nowrap;
+}
+
+.RightInfoBlock_MainInfo_TableText {
+    border: 1px solid black;
+
+    color: #B6D149;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
 }
 
 .RightInfoBlock_MainInfo_Btns {
@@ -147,10 +335,13 @@
     min-height: 90%;
     max-height: 100%;
 
-    color: #023c1f;
+    color: #023C1F;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
 
-    background-color: #47BE82;
+    background-color: #23A86D;
+
+    overflow: hidden;
 }
 
 .RightInfoBlock_MainInfo_Btns:hover {
@@ -165,16 +356,15 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .RightInfoBlock_Photo_Text {
     border: 1px solid black;
-    margin: 4px;
 
-    min-width: 95%;
-    max-width: 100%;
-    height: 10%;
+    width: 95%;
+    height: 8%;
 
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -188,12 +378,10 @@
 .RightInfoBlock_Photo_Photo {
     border: 1px solid black;
     border-radius: 10px;
-    background-color: #353d39;
-    margin: 4px;
+    background-color: #99C26A;
 
-    min-width: 95%;
-    max-width: 100%;
-    height: 90%;
+    width: 95%;
+    height: 60%;
 
     display: flex;
     align-items: center;
@@ -205,9 +393,7 @@
     border-radius: 10px;
 
     width: 80%;
-    height: 10%;
-
-    margin: 4px;
+    height: 8%;
 
     display: flex;
     justify-content: center;
@@ -215,21 +401,341 @@
 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #023c1f;
+    font-size: 20px;
+
+    overflow: hidden;
 }
 
 .RightInfoBlock_Photo_Btns {
     cursor: pointer;
 }
 
-.GroupsMainInnerBlock {
-    height: 100px;
-    width: 100px;
 
+
+
+.PersonEditInfo_Window {
+    background-color: rgba(0, 0, 0, 0.75);
+
+    height: inherit;
+    width: calc(100% - 56px);
+    position: absolute;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.PersonEditInfo_Window_EditWindow {
+    background-color: #1A7E52;
+
+    height: 90%;
+    width: 50%;
+
+    overflow: auto;
+}
+
+.PersonEditInfo_Window_EditWindow_UpperDiv {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    padding: 5px;
+}
+
+.PersonEditInfo_Window_EditWindow_DownDiv {
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: auto;
+}
+
+.PersonEditInfo_Window_EditWindow_UpperDiv_Img {
+    width: 40px; 
+    height: 40px;
+}
+
+.PersonEditInfo_Window_EditWindow_UpperDiv_Img:hover {
+    cursor: pointer;
+}
+
+.PersonEditInfo_Window_EditWindow_Table {
+    border: 1px solid black;
+
+    width: 100%;
+    table-layout: fixed;
+
+    color: white;
+    font-size: 20px;
+}
+
+.PersonEditInfo_Window_EditWindow_SaveBTN {
+    border: 1px solid black;
+
+    background-color: #23A86D;
+
+    border-radius: 10px;
+
+    width: 300px;
+    height: 60px;
+
+    margin: 5px;
+
+    color: #023c1f;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PersonEditInfo_Window_EditWindow_SaveBTN:hover {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*Классы окна групп/предметов*/
+.GroupsMainInnerBlock {
     border: 1px solid black;
     margin: 5px;
 
+    min-width: 90%;
+    max-width: 100%;
+
     display: none;
+    flex-direction: row;
+
+    height: 90%;
 }
+
+.Groups_Left_SearchAndEdit {
+    border: 1px solid black;
+
+    margin: 5px;
+
+    width: 20%;
+    min-height: 90%;
+    max-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Groups_Left_SearchAndEdit_Btns {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: #FCB43F;
+
+    width: 80%;
+    height: 8%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #023c1f;
+    font-size: 20px;
+
+    overflow: hidden;
+}
+
+.Groups_Left_SearchAndEdit_Btns {
+    cursor: pointer;
+}
+
+
+
+
+
+
+.Groups_Middle_GroupList {
+    border: 1px solid black;
+
+    margin: 5px;
+
+    width: 20%;
+    min-height: 90%;
+    max-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Groups_Middle_GroupList_List {
+    border: 1px solid black;
+
+    width: 95%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: auto;
+}
+
+.Groups_Middle_GroupList_List::-webkit-scrollbar {
+    width: 20px;
+    background-color: #3F4649;
+}
+
+.Groups_Middle_GroupList_List::-webkit-scrollbar-thumb {
+    background-color: #353738;
+}
+
+.Groups_Middle_GroupList_List::-webkit-scrollbar-thumb:hover {
+    background-color: #2c2d2e;
+}
+
+.Groups_Middle_GroupList_Cell {
+    border: 1px solid black;
+
+    background-color: #2D2F31;
+
+    color: #B6D149;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+
+    width: 100%;
+    height: 45px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+}
+
+.Groups_Middle_GroupList_Cell:hover {
+    background-color: #2B473D;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Groups_Right_MainInfo {
+    border: 1px solid black;
+
+    background-color: #1A7E52;
+
+    margin: 5px;
+
+    width: 60%;
+    min-height: 90%;
+    max-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.Groups_Right_MainInfo_Cell {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: #3F4649;
+
+    width: 90%;
+    height: 20%;
+
+    overflow: auto;
+}
+
+.Groups_Right_MainInfo_Cell::-webkit-scrollbar {
+    width: 20px;
+    background-color: #3F4649;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.Groups_Right_MainInfo_Cell::-webkit-scrollbar-thumb {
+    background-color: #353738;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.Groups_Right_MainInfo_Cell::-webkit-scrollbar-thumb:hover {
+    background-color: #2c2d2e;
+}
+
+.Groups_Right_MainInfo_BottomCell {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: #3F4649;
+
+    width: 90%;
+    height: 20%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.Groups_Right_MainInfo_BTNs {
+    border: 1px solid black;
+
+    background-color: #22A76C;
+
+    width: 85%;
+    height: 45%;
+
+    color: #023c1f;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Groups_Right_MainInfo_BTNs:hover {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -243,13 +749,16 @@
 
 
 .TeacherMainInnerBlock {
-    height: 100px;
-    width: 100px;
-
     border: 1px solid black;
     margin: 5px;
 
+    min-width: 90%;
+    max-width: 100%;
+
     display: none;
+    flex-direction: row;
+
+    height: 90%;
 }
 
 
@@ -263,13 +772,16 @@
 
 
 .SubjectMainInnerBlock {
-    height: 100px;
-    width: 100px;
-
     border: 1px solid black;
     margin: 5px;
 
+    min-width: 90%;
+    max-width: 100%;
+
     display: none;
+    flex-direction: row;
+
+    height: 90%;
 }
 
 
@@ -283,13 +795,166 @@
 
 
 
-
+/*Классы окна расписания*/
 .ScheduleMainInnerBlock {
-    height: 100px;
-    width: 100px;
-
     border: 1px solid black;
     margin: 5px;
 
+    min-width: 90%;
+    max-width: 100%;
+
     display: none;
+    flex-direction: row;
+
+    height: 90%;
+}
+
+.Schedule_LeftMenu {
+    border: 1px solid black;
+
+    margin: 5px;
+
+    width: 20%;
+    min-height: 90%;
+    max-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Schedule_LeftMenu_Choice {
+    border: 1px solid black;
+
+    background-color: #1A7E52;
+
+    width: 95%;
+    height: 30%;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.Schedule_LeftMenu_Choice_Cell {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: #23A86D;
+
+    width: 95%;
+    height: 30%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Schedule_LeftMenu_Choice_Cell_Text {
+    color: #023C1F;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.CustomRadio {
+    background-color: #A8D6BF;
+
+    height: 30px;
+    width: 30px;
+
+    margin-left: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CustomRadio:hover {
+    cursor: pointer;
+}
+
+.CustomRadioChecked {
+    background-color: #38443e;
+
+    height: 22px;
+    width: 22px;
+
+    display: none;
+}
+
+.Schedule_RightInfo {
+    border: 1px solid black;
+
+    background-color: #22A86C;
+
+    margin: 5px;
+
+    width: 80%;
+    min-height: 90%;
+    max-height: 100%;
+
+    overflow: auto;
+}
+
+.Schedule_RightInfo::-webkit-scrollbar {
+    width: 20px;
+    background-color: #9FCAB5;
+}
+
+.Schedule_RightInfo::-webkit-scrollbar-thumb {
+    background-color: #7FA291;
+}
+
+.Schedule_RightInfo::-webkit-scrollbar-thumb:hover {
+    background-color: #627e70;
+}
+
+.Schedule_RightInfo_Table {
+    border-spacing: 0px;
+
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.Schedule_RightInfo_TableTopic {
+    background-color: #1A7E52;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.Schedule_RightInfo_TableSecondTopic {
+    background-color: #A8D6BF;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.Schedule_RightInfo_TableNeChetRow {
+    background-color: #A8D6BF;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+
+    text-align: center;
+}
+
+.Schedule_RightInfo_TableChetRow {
+    background-color: #8CB3A0;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+
+    text-align: center;
 }

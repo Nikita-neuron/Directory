@@ -16,7 +16,10 @@
 
         <!--Верхнее меню-->
         <div class="UpperMenu">
-            <div class="MenuElement", style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;" id="studentBTN">
+            <div class="MenuElement LeftMenuElement" id="mainBTN">
+                Главная
+            </div>
+            <div class="MenuElement" id="studentBTN">
                 Студенты
             </div>
             <div class="MenuElement" id="groupsBTN">
@@ -28,18 +31,23 @@
             <div class="MenuElement" id="subjectBTN">
                 Предметы
             </div>
-            <div class="MenuElement" id="scheduleBTN">
+            <div class="MenuElement RightMenuElement" id="scheduleBTN">
                 Расписание
             </div>
-
-            <!--Пункт настройки-->
-            <div class="MenuElement", style="border-top-right-radius: 10px; 
-                                            border-bottom-right-radius: 10px;
-                                            background-color: #47BE82;
-                                            width: 70px;">
-                <img src="sysImgs\gear.png", style="width: 40px; height: 40px;">
-            </div>
         </div>
+
+
+        <div class="MainMainInnerBlock" id="mainWindow">
+
+        </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -51,17 +59,118 @@
             <div class="LeftListBlock">
 
                 <!--Поиск студента-->
-                <div class="LeftListBlock_OuterElement", style="height: 30%;">
-
+                <div class="LeftListBlock_PersonSearch", style="height: 10%;">
+                    <input class="LeftListBlock_PersonSearch_TextField" id="StudentListTextField" placeholder="Поиск студента" spellcheck="false">
                 </div>
 
                 <!--Список студентов-->
-                <div class="LeftListBlock_OuterElement", style="height: 60%;">
+                <div class="LeftListBlock_PersonsList", style="height: 70%;", id="StudentList">
+
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Р.А.Дыров</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
 
                 </div>
 
                 <!--Кнопка добавить студента-->
-                <div class="LeftListBlock_OuterElement", style="height: 10%; background-color: #47BE82; display: flex; align-items: center; justify-content: center; color: #023c1f; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px;">
+                <div class="LeftListBlock_AddPersonBTN" id="StudentAddPersonBTN">
                     Добавить студента
                 </div>
 
@@ -74,94 +183,82 @@
                 <div class="RightInfoBlock_MainInfo">
 
                     <!--ФИО-->
-                    <div class="RightInfoBlock_MainInfo_Cell", style="margin-top: 4px; 
-                                                                    height: 10%;
-                                                                    display: flex;
-                                                                    align-items: center;">
-                        
-                        <span style="color: white;
-                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                                    margin-left: 4px;">ФИО:</span>
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 7%; display: flex; align-items: center;">
 
-                        <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">Руслан Антонович Дыров</span>
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                            <tr>
+                                <!--ФИО-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">ФИО:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Руслан Антонович Дыров</td>
+                            </tr>
+                        </table>
+                        
                     </div>
 
                     <!--Доп. информация-->
-                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%;
-                                                                    display: flex;
-                                                                    flex-direction: column;
-                                                                    justify-content: space-around;">
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%;">
 
-                        <!--Группа(группы)-->
-                        <div>
-                            <span style="color: white;
-                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                                    margin-left: 4px;">Группа(группы):</span>
+                        <table class="RightInfoBlock_MainInfo_Table", style="border: 1px solid black">
+                            <tr>
+                                <!--Группа-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Группа(Группы):</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">ИКБО-20-14</td>
+                            </tr>
 
-                            <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">ИКБО-20-14</span>
-                        </div>
+                            <tr>
+                                <!--Пол-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Пол:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Мужской</td>
+                            </tr>
 
-                        <!--Пол-->
-                        <div>
-                            <span style="color: white;
-                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                                    margin-left: 4px;">Пол:</span>
+                            <tr>
+                                <!--Дата рождения-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Дата рождения:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">06.03.1922 (100 лет)</td>
+                            </tr>
 
-                            <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">Мужской</span>
-                        </div>
+                            <tr>
+                                <!--Email-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">E-mail:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">rak@mirea.ru</td>
+                            </tr>
 
-                        <!--Дата рождения-->
-                        <div>
-                            <span style="color: white;
-                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                                    margin-left: 4px;">Дата рождения:</span>
-
-                            <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">06.03.1922 (100 лет)</span>
-                        </div>
-
-                        <!--Телефон и инфо о старостве-->
-                        <div style="display: flex; flex-direction: row;">
-                            <div>
-                                <span style="color: white;
-                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                                    margin-left: 4px;">Телефон:</span>
-
-                                <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">+7-777-777-77-77</span>
-                            </div>
-
-                            <div>
-                                <span style="color: white;
-                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                                    margin-left: 4px;">Староста/Помощник:</span>
-
-                                <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">нет</span>
-                            </div>
-                        </div>
+                            <tr>
+                                <!--Староста\Помощник-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Староста\Помощник:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">нет</td>
+                            </tr>
+                        </table>
+                        
                     </div>
 
                     <!--Характеристика-->
-                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 60%; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 55%">
 
-                        <!--Адрес-->
-                        <div>
-                            <span style="color: white;
-                                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                                    margin-left: 4px;">Адрес:</span>
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                            <tr>
+                                <!--Адрес-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Адрес:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Улица Пушкина, дом Колотушкина</td>
+                            </tr>
 
-                            <span contenteditable="true", class="RightInfoBlock_MainInfo_Input", spellcheck="false", style="max-width: 800px; min-width: 50px;">Ул.Пушкина, дом. Колотушкина</span>
-                        </div>
+                            <tr>
+                                <!--Сама характеристика-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Характеристика:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt.</td>
+                            </tr>
 
-                        <!--Сама характеристика-->
-                        <span style="color: white;
-                                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                                margin-left: 4px;">Характеристика:</span>
-
-                        <textarea style="background-color: #353d39; resize: none; border: none; color: white; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 16px; margin-left: 4px;", rows="20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt.</textarea>
+                            <tr>
+                                <!--Дополнительные данные-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Дополнительные данные:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt.</td>
+                            </tr>
+                        </table>
 
                     </div>
 
                     <!--Функции-->
-                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%; margin-bottom: 4px; display: flex; flex-direction: column;">
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%; display: flex; flex-direction: column;">
 
                         <!--Верхний ряд кнопок-->
                         <div style="display: flex; flex-direction: row; justify-content: space-around; height: 50%;">
@@ -177,7 +274,7 @@
                                 Успеваемость
                             </div>
 
-                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 10%; background-color: #ff3333;">
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 10%; background-color: #A54933;">
                                 <img src="sysImgs\delete.png", style="width: 40px; height: 40px;">
                             </div>
                         </div>
@@ -188,7 +285,7 @@
                                 Дополнительные данные
                             </div>
 
-                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 50%; background-color: #ffa500;">
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 50%; background-color: #FCB43F;", id="StudentEditInfoBTN">
                                 Редактировать информацию
                             </div>
                         </div>
@@ -210,22 +307,88 @@
                     </div>
 
                     <!--Просмотр фото-->
-                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #47BE82;">
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #23A86D;">
                         Просмотр фото
                     </div>
 
                     <!--Загрузить новое фото-->
-                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #ffa500;">
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #FCB43F;">
                         Загрузить новое фото
                     </div>
 
                     <!--Удалить фото-->
-                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #ffa500;">
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #FCB43F;">
                         Удалить фотографию
                     </div>
 
                 </div>
 
+            </div>
+        </div>
+
+        <div class="PersonEditInfo_Window" id="StudentEditWindow">
+            <div class="PersonEditInfo_Window_EditWindow">
+                <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
+                    <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="StudentEditWindowExitBTN">
+                </div>
+
+                <div class="PersonEditInfo_Window_EditWindow_DownDiv">
+                    <table class="PersonEditInfo_Window_EditWindow_Table" border="all">
+                        <tr>
+                            <td>ФИО:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Группа(группы):</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Пол:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Дата рождения:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Email:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Староста/помощник:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Адрес:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Характеристика:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Доп.информация:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Фотография:</td>
+                            <td><input type="file"></td>
+                        </tr>
+                    </table>
+
+                    <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                        Сохранить
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -235,8 +398,283 @@
 
 
 
+
+
+
+
+
+
+
         <div class = "GroupsMainInnerBlock" id="groupsWindow">
-            Группы
+            <div class="Groups_Left_SearchAndEdit">
+
+                <div class="LeftListBlock_PersonSearch", style="height: 10%;">
+                    <input class="LeftListBlock_PersonSearch_TextField" id="GroupListTextField" placeholder="Поиск группы" spellcheck="false">
+                </div>
+
+                <div class="Groups_Left_SearchAndEdit_Btns" id="EditGroupBTN">
+                    Редактировать группу
+                </div>
+
+                <div class="Groups_Left_SearchAndEdit_Btns" id="AddGroupBTN">
+                    Добавить новую группу
+                </div>
+
+                <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;">
+                    <img src="sysImgs\delete.png", style="width: 40px; height: 40px;">
+                </div>
+
+            </div>
+
+            <div class="Groups_Middle_GroupList">
+                
+                <div class="Groups_Middle_GroupList_List" id="GroupList">
+
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. ИКБО-02-22</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. ИКБО-01-21</span>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+            <div class="Groups_Right_MainInfo">
+                <div class="Groups_Right_MainInfo_Cell" style="height: 7%; display: flex; align-items: center">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                        <!--Заголовок в виде названия группы-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Группа:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">ИКБО-01-21</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="Groups_Right_MainInfo_Cell">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                        <!--Уровень образования-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Уровень образования:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Бакалавриат (курс 1, семестр 1)</td>
+                        </tr>
+
+                        <!--Направление-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Направление (шифр):</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">09.03.04</td>
+                        </tr>
+
+                        <!--Элитная группа-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">"Элитная группа":</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Да</td>
+                        </tr>
+
+                        <!--Подразделение-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Подразделение:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Институт технологий</td>
+                        </tr>
+
+                        <!--Кафедра-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Базовая кафедра:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Кафедра технологий</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="Groups_Right_MainInfo_Cell">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Староста группы:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">И.И.Иванова</td>
+                        </tr>
+
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Помощник/заместитель старосты:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">И.И.Иванов</td>
+                        </tr>
+
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Куратор:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">И.И.Сидоров</td>
+                        </tr>
+
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Куратор-преподаватель:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">И.И.Сидорова</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="Groups_Right_MainInfo_Cell">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                        <!--Дополнительные сведения о группе-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Дополнительные сведения о группе:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Отсутствуют</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="Groups_Right_MainInfo_BottomCell">
+                    <div class="Groups_Right_MainInfo_BTNs">
+                        Перейти к расписанию группы
+                    </div>
+                    <div class="Groups_Right_MainInfo_BTNs">
+                        Перейти к списку студентов группы
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="PersonEditInfo_Window" id="GroupEditWindow">
+            <div class="PersonEditInfo_Window_EditWindow">
+                <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
+                    <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="GroupEditWindowExitBTN">
+                </div>
+
+                <div class="PersonEditInfo_Window_EditWindow_DownDiv">
+                    <table class="PersonEditInfo_Window_EditWindow_Table" border="all">
+                        <tr>
+                            <td>Группа:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Уровень образования:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Направление (шифр):</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>"Элитная группа":</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Подразделение:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Базовая кафедра:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Староста группы:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Помощник/заместитель старосты:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Куратор:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Куратор-преподаватель:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Дополнительные сведения о группе:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+                    </table>
+
+                    <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                        Сохранить
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -246,8 +684,338 @@
 
 
 
+
+
+
+
+
+
+
         <div class = "TeacherMainInnerBlock" id="teacherWindow">
-            Учителя
+            <!--Левый блок списка-->
+            <div class="LeftListBlock">
+
+                <!--Поиск студента-->
+                <div class="LeftListBlock_PersonSearch", style="height: 10%;">
+                    <input class="LeftListBlock_PersonSearch_TextField" id="TeacherListTextField" placeholder="Поиск преподавателя" spellcheck="false">
+                </div>
+
+                <!--Список студентов-->
+                <div class="LeftListBlock_PersonsList", style="height: 70%;", id="TeacherList">
+
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. С.Ф.Собакин</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+                    <div class="LeftListBlock_PersonCell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. И.И.Иванов</span>
+                    </div>
+
+                </div>
+
+                <!--Кнопка добавить студента-->
+                <div class="LeftListBlock_AddPersonBTN" id="TeacherAddPersonBTN">
+                    Добавить сотрудника
+                </div>
+
+            </div>
+
+            <!--Правый блок информации-->
+            <div class="RightInfoBlock">
+
+                <!--Левая часть с основной информацией-->
+                <div class="RightInfoBlock_MainInfo">
+
+                    <!--ФИО-->
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 7%; display: flex; align-items: center;">
+
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                            <tr>
+                                <!--ФИО-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">ФИО:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Сергей Федорович Собакин</td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+
+                    <!--Доп. информация-->
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%;">
+
+                        <table class="RightInfoBlock_MainInfo_Table", style="border: 1px solid black">
+                            <tr>
+                                <!--Группа-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Должность:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Заведующий(ая) кафедрой</td>
+                            </tr>
+
+                            <tr>
+                                <!--Пол-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Пол:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Мужской</td>
+                            </tr>
+
+                            <tr>
+                                <!--Дата рождения-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Дата рождения:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">06.03.1922 (100 лет)</td>
+                            </tr>
+
+                            <tr>
+                                <!--Email-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">E-mail:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">rak@mirea.ru</td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+
+                    <!--Характеристика-->
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 55%">
+
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                            <tr>
+                                <!--Адрес-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Адрес:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Улица Пушкина, дом Колотушкина</td>
+                            </tr>
+
+                            <tr>
+                                <!--Сама характеристика-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Характеристика:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt.</td>
+                            </tr>
+
+                            <tr>
+                                <!--Дополнительные данные-->
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Дополнительные данные:</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim nisl, fermentum nec bibendum vitae, tempor et lorem. Sed quis rhoncus eros, ac convallis odio. Etiam tempus nisi non aliquet pellentesque. Vestibulum ornare sollicitudin est, sed ultrices odio ullamcorper blandit. Nunc maximus felis id blandit tempus. Nullam nec viverra tellus. Maecenas aliquam tristique arcu at consequat. Proin feugiat quam turpis, luctus maximus ligula porttitor sit amet. Morbi pulvinar nibh ut dui fermentum faucibus. In mattis euismod nibh in tincidunt.</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <!--Функции-->
+                    <div class="RightInfoBlock_MainInfo_Cell", style="height: 15%; display: flex; flex-direction: column;">
+
+                        <!--Верхний ряд кнопок-->
+                        <div style="display: flex; flex-direction: row; justify-content: space-around; height: 50%;">
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 30%;">
+                                Расписание
+                            </div>
+
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 30%;">
+                                Группы
+                            </div>
+
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 30%;">
+                                Студенты
+                            </div>
+
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 10%; background-color: #A54933;">
+                                <img src="sysImgs\delete.png", style="width: 40px; height: 40px;">
+                            </div>
+                        </div>
+
+                        <!--Нижний ряд кнопок-->
+                        <div style="display: flex; flex-direction: row; justify-content: space-around; height: 50%;">
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 50%;">
+                                Дополнительные данные
+                            </div>
+
+                            <div class="RightInfoBlock_MainInfo_Btns", style="width: 50%; background-color: #FCB43F;" id="TeacherEditInfoBTN">
+                                Редактировать информацию
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Правая часть с фото-->
+                <div class="RightInfoBlock_Photo">
+
+                    <!--Информация-->
+                    <div class="RightInfoBlock_Photo_Text">
+                        Страница преподавателя
+                    </div>
+
+                    <!--Фото-->
+                    <div class="RightInfoBlock_Photo_Photo">
+                        <img src="sysImgs\user.png", style="width: 100px; height: 100px;">
+                    </div>
+
+                    <!--Просмотр фото-->
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #23A86D;">
+                        Просмотр фото
+                    </div>
+
+                    <!--Загрузить новое фото-->
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #FCB43F;">
+                        Загрузить новое фото
+                    </div>
+
+                    <!--Удалить фото-->
+                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #FCB43F;">
+                        Удалить фотографию
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="PersonEditInfo_Window" id="TeacherEditWindow">
+            <div class="PersonEditInfo_Window_EditWindow">
+                <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
+                    <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="TeacherEditWindowExitBTN">
+                </div>
+
+                <div class="PersonEditInfo_Window_EditWindow_DownDiv">
+                    <table class="PersonEditInfo_Window_EditWindow_Table" border="all">
+                        <tr>
+                            <td>ФИО:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Должность:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Пол:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Дата рождения:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Email:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Адрес:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Характеристика:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Доп.информация:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Фотография:</td>
+                            <td><input type="file"></td>
+                        </tr>
+                    </table>
+
+                    <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                        Сохранить
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -259,7 +1027,281 @@
 
 
         <div class = "SubjectMainInnerBlock" id="subjectWindow">
-            Предметы
+            <div class="Groups_Left_SearchAndEdit">
+
+                <div class="LeftListBlock_PersonSearch", style="height: 10%;">
+                    <input class="LeftListBlock_PersonSearch_TextField" id="SubjectListTextField" placeholder="Поиск предмета" spellcheck="false">
+                </div>
+
+                <div class="Groups_Left_SearchAndEdit_Btns" id="EditSubjectBTN">
+                    Редактировать предмет
+                </div>
+
+                <div class="Groups_Left_SearchAndEdit_Btns" id="AddSubjectBTN">
+                    Добавить новый предмет
+                </div>
+
+                <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;">
+                    <img src="sysImgs\delete.png", style="width: 40px; height: 40px;">
+                </div>
+
+            </div>
+
+            <div class="Groups_Middle_GroupList">
+                
+                <div class="Groups_Middle_GroupList_List" id="SubjectList">
+
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Физика</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>2. Химия</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    <div class="Groups_Middle_GroupList_Cell">
+                        <img src="sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
+                        <span>1. Предмет</span>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+            <div class="Groups_Right_MainInfo">
+                <div class="Groups_Right_MainInfo_Cell" style="height: 7%; display: flex; align-items: center">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                        <!--Предмет-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Предмет:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Физика</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="Groups_Right_MainInfo_Cell">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                        <!--Учебные часы-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Учебные часы:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">10000 часов</td>
+                        </tr>
+
+                        <!--Зачётные единицы/практики-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Зачётные единицы/практики:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">экзамен (1 ед.), зачёт (1 ед.)</td>
+                        </tr>
+
+                        <!--Подразделение(я)-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Подразделение(я):</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Институт X, кафедра Y</td>
+                        </tr>
+
+                        <!--Компетенции-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Компетенции:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">ОПК-2, ОПК-2, ОПК-3</td>
+                        </tr>
+
+                        <!--Уровень образования-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Уровень образования:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Бакалавриат (семестр 1, курс 1)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="Groups_Right_MainInfo_Cell">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Практические занятия:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">И.И. Иванов, И. И. Иванова</td>
+                        </tr>
+
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Лекции:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">И.И. Иванов, И. И. Иванова</td>
+                        </tr>
+
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Авторы учебных материалов:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">И.И. Иванов, И. И. Иванова</td>
+                        </tr>
+
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Иные сотрудники:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">И.И. Иванов, И. И. Иванова</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="Groups_Right_MainInfo_Cell">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                        <!--Учебные группы-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">Учебные группы:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">ИИОО-01-01, ИИОО-01-02, ИИОО-01-03, ИИОО-01-04, ИИОО-01-05, ИИОО-01-06, ИИОО-01-07, ИИОО-01-08, ИИОО-01-09, ИИОО-01-10, ИИОО-01-11, ИИОО-01-12, ИИОО-01-13, ИИОО-01-14, ИИОО-01-15, ИИОО-01-16, ИИОО-01-17, ИИОО-01-18, ИИОО-01-19, ИИОО-01-20, ИИОО-01-21, ИИОО-01-22</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="Groups_Right_MainInfo_Cell">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                        <!--О предмете-->
+                        <tr>
+                            <td class="RightInfoBlock_MainInfo_TableTopic">О предмете:</td>
+                            <td class="RightInfoBlock_MainInfo_TableText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores sunt iusto harum architecto quis dolore corporis? Ut molestiae amet ad at nam necessitatibus, minima nostrum voluptas accusamus. Quaerat, labore quos.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="PersonEditInfo_Window" id="SubjectEditWindow">
+            <div class="PersonEditInfo_Window_EditWindow">
+                <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
+                    <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="SubjectEditWindowExitBTN">
+                </div>
+
+                <div class="PersonEditInfo_Window_EditWindow_DownDiv">
+                    <table class="PersonEditInfo_Window_EditWindow_Table" border="all">
+                        <tr>
+                            <td>Предмет:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Учебные часы:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Зачётные единицы/практики:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Подразделение(я):</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Компетенции:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Уровень образования:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Практические занятия:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Лекции:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Авторы учебных материалов:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Иные сотрудники:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Учебные группы:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+
+                        <tr>
+                            <td>О предмете:</td>
+                            <td contenteditable="true" style="width: 80%;"></td>
+                        </tr>
+                    </table>
+
+                    <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                        Сохранить
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -270,7 +1312,1229 @@
 
 
         <div class = "ScheduleMainInnerBlock" id="scheduleWindow">
-            Расписание
+            <div class="Schedule_LeftMenu">
+                <!--Выбор программы обучения-->
+                <div class="Schedule_LeftMenu_Choice">
+                    <!--Бакалавриат-->
+                    <div class="Schedule_LeftMenu_Choice_Cell">
+                        <div class="Schedule_LeftMenu_Choice_Cell_Text">
+                            Бакалавриат
+                        </div>
+                        <div class="CustomRadio">
+                            <div class="CustomRadioChecked"></div>
+                        </div>
+                    </div>
+
+                    <!--Магистратура-->
+                    <div class="Schedule_LeftMenu_Choice_Cell">
+                        <div class="Schedule_LeftMenu_Choice_Cell_Text">
+                            Магистратура
+                        </div>
+                        <div class="CustomRadio">
+                            <div class="CustomRadioChecked"></div>
+                        </div>
+                    </div>
+
+                    <!--Аспирантура-->
+                    <div class="Schedule_LeftMenu_Choice_Cell">
+                        <div class="Schedule_LeftMenu_Choice_Cell_Text">
+                            Аспирантура
+                        </div>
+                        <div class="CustomRadio">
+                            <div class="CustomRadioChecked"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Поиск нужной группы-->
+                <div class="LeftListBlock_PersonSearch", style="height: 10%;">
+                    <input class="LeftListBlock_PersonSearch_TextField" id="" placeholder="Поиск расписания группы" spellcheck="false">
+                </div>
+            </div>
+
+            <div class="Schedule_RightInfo">
+
+                <table class="Schedule_RightInfo_Table" border="all">
+                    <tr class="Schedule_RightInfo_TableTopic">
+                        <td>
+                            День недели
+                        </td>
+
+                        <td colspan="3">
+                            Группа 1
+                        </td>
+
+                        <td colspan="3">
+                            Группа 2
+                        </td>
+                    </tr>
+
+                    <tr class="Schedule_RightInfo_TableSecondTopic">
+                        <td>
+                            
+                        </td>
+
+                        <td>
+                            Дисциплина
+                        </td>
+
+                        <td>
+                            № Каб.
+                        </td>
+
+                        <td>
+                            Преподаватель
+                        </td>
+
+                        <td>
+                            Дисциплина
+                        </td>
+
+                        <td>
+                            № Каб.
+                        </td>
+
+                        <td>
+                            Преподаватель
+                        </td>
+                    </tr>
+
+                    <!--Понедельник-->
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td rowspan="8">
+                            Понедельник
+                        </td>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+                    </tr>
+
+                    <!--Вторник-->
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="8">
+                            Вторник
+                        </td>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+                    </tr>
+
+                    <!--Среда-->
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td rowspan="8">
+                            Среда
+                        </td>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+                    </tr>
+
+                    <!--Четверг-->
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="8">
+                            Четверг
+                        </td>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+                    </tr>
+
+                    <!--Пятница-->
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td rowspan="8">
+                            Пятница
+                        </td>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+                    </tr>
+
+                    <!--Суббота-->
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="8">
+                            Суббота
+                        </td>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+
+                        <tr class="Schedule_RightInfo_TableNeChetRow">
+                            <td>
+                                Информатика
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+
+                            <td>
+                                ОБЖ
+                            </td>
+    
+                            <td>
+                                44
+                            </td>
+    
+                            <td>
+                                Иванов
+                            </td>
+                        </tr>
+                    </tr>
+                </table>
+
+            </div>
         </div>
 
 
