@@ -74,15 +74,18 @@ class DataBase(metaclass=Singleton):
                     "gender": student[4],
                     "email": student[5],
                     "id_group": student[6],
-                    "photo_src": student[7]
+                    "image": student[7],
+                    "date_of_birth": student[8],
+                    "characteristic": student[9]
                 })
         return students_arr
 
     def get_student_by_id(self, student_id):
         student = None
         query = "SELECT * FROM students WHERE id = (%s)"
-        data = self.get_query(query, data=str(student_id))[0]
-        if data is not None:
+        data = self.get_query(query, data=str(student_id))
+        if data:
+            data = data[0]
             student = {
                 "id": data[0],
                 "surname": data[1],
@@ -91,20 +94,40 @@ class DataBase(metaclass=Singleton):
                 "gender": data[4],
                 "email": data[5],
                 "id_group": data[6],
-                "photo_src": data[7]
+                "image": data[7],
+                "date_of_birth": data[8],
+                "characteristic": data[9]
             }
         return student
 
     def get_student_attendance_by_id(self, student_id):
-        pass
+        attendance = []
+        query = "SELECT * FROM attendance WHERE id = (%s)"
+        data = self.get_query(query, student_id)
+        if data:
+            for elem in data:
+                attendance.append({
+                    "id_subject": elem[0],
+                    "id_student": elem[1],
+                    "id_day": elem[2],
+                    "was_not_was": elem[3]
+                })
+        return attendance
 
-    def add_student(self, surname, name, patronymic, gender, email, id_group, photo_src):
-        insert_query = """INSERT INTO students (surname, name, patronymic, gender, email, id_group, photo_src) 
-                                          VALUES (%s, %s, %s, %s, %s, %s, %s)"""
-        student_tuple = (surname, name, patronymic, gender, email, id_group, photo_src)
+    def add_student(self, surname, name, patronymic, gender, email, id_group, image, date_of_birth, characteristic):
+        insert_query = """INSERT INTO students (surname, name, patronymic, gender, email, id_group, image, 
+                            date_of_birth, characteristic) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+        student_tuple = (surname, name, patronymic, gender, email, id_group, image, date_of_birth, characteristic)
         self.insert_query(insert_query, student_tuple)
 
-    def update_student(self, student_id, surname, name, patronymic, gender, email, id_group, photo_src):
+    def add_student_attendance(self, student_id, id_subject, id_day, was_not_was):
+        insert_query = """INSERT INTO attendance (id_subject, id_student, id_day, was_not_was) 
+                                                  VALUES (%s, %s, %s, %s)"""
+        student_tuple = (id_subject, student_id, id_day, was_not_was)
+        self.insert_query(insert_query, student_tuple)
+
+    def update_student(self, student_id, surname, name, patronymic, gender, email,
+                       id_group, image, date_of_birth, characteristic):
         insert_query = """UPDATE students 
                             SET surname = %s, 
                             SET name = %s, 
@@ -112,106 +135,366 @@ class DataBase(metaclass=Singleton):
                             SET gender = %s, 
                             SET email = %s, 
                             SET id_group = %s, 
-                            SET photo_src = %s
+                            SET image = %s,
+                            SET date_of_birth = %s,
+                            SET characteristic = %s
                             WHERE id = %s"""
-        student_tuple = (surname, name, patronymic, gender, email, id_group, photo_src, student_id)
+        student_tuple = (surname, name, patronymic, gender, email, id_group, image, date_of_birth,
+                         characteristic, student_id)
+        self.insert_query(insert_query, student_tuple)
+
+    def update_student_attendance_by_id(self, student_id, id_subject, id_day, was_not_was):
+        insert_query = """UPDATE attendance 
+                            SET id_subject = %s, 
+                            SET id_day = %s, 
+                            SET was_not_was = %s, 
+                            WHERE id_student = %s"""
+        student_tuple = (id_subject, id_day, was_not_was, student_id)
         self.insert_query(insert_query, student_tuple)
 
     def delete_student(self, student_id):
-        pass
+        tables = ["attendance"]
+        for table in tables:
+            insert_query = """DELETE FROM """ + table + """ WHERE id_student = %s"""
+            student_tuple = student_id
+            self.insert_query(insert_query, student_tuple)
+
+        insert_query = """DELETE FROM students WHERE id = %s"""
+        student_tuple = student_id
+        self.insert_query(insert_query, student_tuple)
+
+        insert_query = """DELETE FROM groups WHERE id_headman = %s"""
+        student_tuple = student_id
+        self.insert_query(insert_query, student_tuple)
 
     # ======= TEACHERS ======
 
     def get_all_teachers(self):
-        pass
+        teachers_arr = []
+        query = "SELECT * FROM teachers"
+        data = self.get_query(query)
+        if data:
+            for teacher in data:
+                teachers_arr.append({
+                    "id": teacher[0],
+                    "surname": teacher[1],
+                    "name": teacher[2],
+                    "patronymic": teacher[3],
+                    "email": teacher[4],
+                    "gender": teacher[5]
+                })
+        return teachers_arr
 
     def get_teacher_by_id(self, teacher_id):
-        pass
+        teacher = None
+        query = "SELECT * FROM teachers WHERE id = (%s)"
+        data = self.get_query(query, data=str(teacher_id))
+        if data:
+            data = data[0]
+            teacher = {
+                "id": data[0],
+                "surname": data[1],
+                "name": data[2],
+                "patronymic": data[3],
+                "email": data[4],
+                "gender": data[5]
+            }
+        return teacher
 
     def get_teacher_subjects(self, teacher_id):
-        pass
+        subjects_id = []
+        query = "SELECT * FROM subjects_teachers WHERE id_teacher = (%s)"
+        data = self.get_query(query, data=teacher_id)
+        if data:
+            for subject in data:
+                subjects_id.append(subject[1])
+        return subjects_id
 
-    def add_teacher(self, surname, name, patronymic, email):
-        pass
+    def add_teacher(self, surname, name, patronymic, email, gender):
+        insert_query = """INSERT INTO teachers (surname, name, patronymic, email, gender) 
+                                                  VALUES (%s, %s, %s, %s, %s)"""
+        student_tuple = (surname, name, patronymic, email, gender)
+        self.insert_query(insert_query, student_tuple)
 
-    def update_teacher(self, teacher_id, surname, name, patronymic, email):
-        pass
+    def update_teacher(self, teacher_id, surname, name, patronymic, email, gender):
+        insert_query = """UPDATE teachers 
+                            SET surname = %s, 
+                            SET name = %s, 
+                            SET patronymic = %s, 
+                            SET email = %s,
+                            SET gender = %s,
+                            WHERE id = %s"""
+        student_tuple = (surname, name, patronymic, email, gender, teacher_id)
+        self.insert_query(insert_query, student_tuple)
 
     def delete_teacher(self, teacher_id):
-        pass
+        tables = ["subjects_groups", "subjects_groups"]
+        for table in tables:
+            insert_query = """DELETE FROM """ + table + """ WHERE id_teacher = %s"""
+            student_tuple = teacher_id
+            self.insert_query(insert_query, student_tuple)
+
+        insert_query = """DELETE FROM teachers WHERE id = %s"""
+        student_tuple = teacher_id
+        self.insert_query(insert_query, student_tuple)
 
     # ====== SUBJECTS ======
 
     def get_all_subjects(self):
-        pass
+        subjects_arr = []
+        query = "SELECT * FROM subjects"
+        data = self.get_query(query)
+        if data:
+            for subject in data:
+                subjects_arr.append({
+                    "id": subject[0],
+                    "name": subject[1]
+                })
+        return subjects_arr
 
-    def get_subject_by_id(self, id_subject):
-        pass
+    def get_subject_by_id(self, subject_id):
+        subject = None
+        query = "SELECT * FROM subjects WHERE id = (%s)"
+        data = self.get_query(query, data=str(subject_id))
+        if data:
+            data = data[0]
+            subject = {
+                "id": data[0],
+                "name": data[1]
+            }
+        return subject
 
-    def get_subject_attendance_by_id(self, subject_id):
-        pass
+    def get_subject_timetable_by_id(self, subject_id):
+        attendance_arr = []
+        query = "SELECT * FROM subjects_groups WHERE id_subject = (%s)"
+        data = self.get_query(query, subject_id)
+        if data:
+            for attendance in data:
+                attendance_arr.append({
+                    "id_subject": attendance[0],
+                    "id_group": attendance[1],
+                    "day_of_week_number": attendance[2],
+                    "pair_number": attendance[3],
+                    "even_odd": attendance[4],
+                    "id_teacher": attendance[5]
+                })
+        return attendance_arr
 
     def get_subjects_by_group(self, group_id):
-        pass
+        subjects_arr = []
+        query = "SELECT * FROM subjects_groups WHERE id_group = (%s)"
+        data = self.get_query(query, group_id)
+        if data:
+            for subject in data:
+                subjects_arr.append({
+                    "id_subject": subject[0],
+                    "id_group": subject[1],
+                    "day_of_week_number": subject[2],
+                    "pair_number": subject[3],
+                    "even_odd": subject[4],
+                    "id_teacher": subject[5]
+                })
+        return subjects_arr
 
     def add_subject(self, name):
-        pass
+        insert_query = """INSERT INTO subjects (name) VALUES (%s)"""
+        subject_tuple = name
+        self.insert_query(insert_query, subject_tuple)
 
     def update_subject(self, id_subject, name):
-        pass
+        insert_query = """UPDATE subjects  
+                            SET name = %s
+                            WHERE id = %s"""
+        subject_tuple = (name, id_subject)
+        self.insert_query(insert_query, subject_tuple)
 
     def delete_subject(self, id_subject):
-        pass
+        tables = ["subjects_groups", "subjects_groups", "attendance"]
+        for table in tables:
+            insert_query = """DELETE FROM """ + table + """ WHERE id_subject = %s"""
+            student_tuple = id_subject
+            self.insert_query(insert_query, student_tuple)
+
+        insert_query = """DELETE FROM subjects WHERE id = %s"""
+        student_tuple = id_subject
+        self.insert_query(insert_query, student_tuple)
 
     # ===== DAYS ====
 
     def get_all_days(self):
-        pass
+        subjects_arr = []
+        query = "SELECT * FROM subjects"
+        data = self.get_query(query)
+        if data:
+            for subject in data:
+                subjects_arr.append({
+                    "id": subject[0],
+                    "name": subject[1]
+                })
+        return subjects_arr
 
     def get_day_by_id(self, day_id):
-        pass
+        day = None
+        query = "SELECT * FROM days WHERE id = (%s)"
+        data = self.get_query(query, data=str(day_id))
+        if data:
+            data = data[0]
+            day = {
+                "id": data[0],
+                "day": data[1],
+                "month": data[2],
+                "year": data[3]
+            }
+        return day
 
     def add_day(self, day, month, year):
-        pass
+        insert_query = """INSERT INTO days (day, month, year) VALUES (%s, %s, %s)"""
+        subject_tuple = (day, month, year)
+        self.insert_query(insert_query, subject_tuple)
 
     def update_day(self, day_id, day, month, year):
-        pass
+        insert_query = """UPDATE days  
+                            SET day = %s,
+                            SET month = %s,
+                            SET year = %s
+                            WHERE id = %s"""
+        day_tuple = (day, month, year, day_id)
+        self.insert_query(insert_query, day_tuple)
 
-    def delete_day(self, dey_id):
-        pass
+    def delete_day(self, day_id):
+        tables = ["attendance"]
+        for table in tables:
+            insert_query = """DELETE FROM """ + table + """ WHERE id_day = %s"""
+            student_tuple = day_id
+            self.insert_query(insert_query, student_tuple)
+
+        insert_query = """DELETE FROM days WHERE id = %s"""
+        student_tuple = day_id
+        self.insert_query(insert_query, student_tuple)
 
     # ====== GROUPS =====
 
     def get_all_groups(self):
-        pass
+        groups_arr = []
+        query = "SELECT * FROM groups"
+        data = self.get_query(query)
+        if data:
+            for group in data:
+                groups_arr.append({
+                    "id": group[0],
+                    "name": group[1],
+                    "id_headman": group[2]
+                })
+        return groups_arr
 
     def get_group_by_id(self, group_id):
-        pass
+        group = None
+        query = "SELECT * FROM groups WHERE id = (%s)"
+        data = self.get_query(query, data=str(group_id))
+        if data:
+            data = data[0]
+            group = {
+                "id": data[0],
+                "name": data[1],
+                "id_headman": data[2]
+            }
+        return group
+
+    def get_group_by_name(self, name):
+        group = None
+        query = "SELECT * FROM groups WHERE name = (%s)"
+        data = self.get_query(query, data=str(name))
+        if data:
+            data = data[0]
+            group = {
+                "id": data[0],
+                "name": data[1],
+                "id_headman": data[2]
+            }
+        return group
 
     def get_group_timetable_by_id(self, group_id):
-        pass
+        timetable_arr = []
+        query = "SELECT * FROM subjects_groups WHERE id_group = (%s)"
+        data = self.get_query(query, data=str(group_id))
+        if data:
+            for timetable in data:
+                timetable_arr.append({
+                    "id_subject": timetable[0],
+                    "id_group": timetable[1],
+                    "day_of_week_number": timetable[2],
+                    "pair_number": timetable[3],
+                    "even_odd": timetable[4],
+                    "id_teacher": timetable[5]
+                })
+        return timetable_arr
 
     def add_group(self, name, id_headman):
-        pass
+        insert_query = """INSERT INTO groups (name, id_headman) VALUES (%s, %s)"""
+        group_tuple = (name, id_headman)
+        self.insert_query(insert_query, group_tuple)
+
+    def add_group_timetable(self, id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher):
+        insert_query = """INSERT INTO subjects_groups (id_subject, id_group, day_of_week_number, pair_number, 
+                            even_odd, id_teacher) VALUES (%s, %s, %s, %s, %s, %s) """
+        group_tuple = (id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher)
+        self.insert_query(insert_query, group_tuple)
 
     def update_group(self, group_id, name, id_headman):
-        pass
+        insert_query = """UPDATE groups  
+                            SET name = %s,
+                            SET id_headman = %s
+                            WHERE id = %s"""
+        group_tuple = (name, id_headman, group_id)
+        self.insert_query(insert_query, group_tuple)
+
+    def update_timetable_by_group_id(self, id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher):
+        insert_query = """UPDATE subjects_groups  
+                            SET id_subject = %s,
+                            SET day_of_week_number = %s
+                            SET pair_number = %s
+                            SET even_odd = %s
+                            SET id_teacher = %s
+                            WHERE id_group = %s"""
+        group_tuple = (id_subject, day_of_week_number, pair_number, even_odd, id_teacher, id_group)
+        self.insert_query(insert_query, group_tuple)
 
     def delete_group(self, group_id):
-        pass
+        tables = ["students", "subjects_groups"]
+        for table in tables:
+            insert_query = """DELETE FROM """ + table + """ WHERE id_group = %s"""
+            student_tuple = group_id
+            self.insert_query(insert_query, student_tuple)
+
+        insert_query = """DELETE FROM groups WHERE id = %s"""
+        student_tuple = group_id
+        self.insert_query(insert_query, student_tuple)
 
     # ===== TIMETABLE ======
 
     def get_all_timetable(self):
-        pass
+        timetable_arr = []
+        query = "SELECT * FROM subjects_groups"
+        data = self.get_query(query)
+        if data:
+            for timetable in data:
+                timetable_arr.append({
+                    "id_subject": timetable[0],
+                    "id_group": timetable[1],
+                    "day_of_week_number": timetable[2],
+                    "pair_number": timetable[3],
+                    "even_odd": timetable[4],
+                    "id_teacher": timetable[5]
+                })
+        return timetable_arr
 
 
 if __name__ == "__main__":
     db = DataBase()
     # db.add_student("testSurname2", "testName2", "testPatronymic2", "man", "test2@test.com", 0, "C:\photo_src")
     students = db.get_all_students()
-    print("Students", students)
+    print("Students: ", students)
 
-    student_data = db.get_student_by_id(1)
+    student_data = db.get_student_by_id(3)
     print("Student:", student_data)
     db.close()
