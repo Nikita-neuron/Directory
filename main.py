@@ -25,7 +25,7 @@ def getStud():
 @app.route("/deleteStudent", methods=["GET"])
 def deleteStud():
     data = request.args
-    return bd.delete_student(int(data["id"]))
+    bd.delete_student(int(data["id"]))
 
 
 @app.route("/getTeacher", methods=["GET"])
@@ -37,7 +37,7 @@ def getTeach():
 @app.route("/deleteTeacher", methods=["GET"])
 def deleteTeach():
     data = request.args
-    return bd.delete_teacher(int(data["id"]))
+    bd.delete_teacher(int(data["id"]))
 
 
 @app.route("/getGroup", methods=["GET"])
@@ -49,11 +49,11 @@ def getGroup():
 @app.route("/deleteGroup", methods=["GET"])
 def deleteGroup():
     data = request.args
-    return bd.delete_group(int(data["id"]))
+    bd.delete_group(int(data["id"]))
 
 
 @app.get("/getSubject", methods=["GET"])
-def getSubj():
+def getSub():
     data = request.args
     return bd.get_subject_by_id(int(data["id"]))
 
@@ -61,19 +61,29 @@ def getSubj():
 @app.route("/deleteSubject", methods=["GET"])
 def deleteSub():
     data = request.args
-    return bd.delete_subject(int(data["id"]))
+    bd.delete_subject(int(data["id"]))
 
 
 @app.route("/addTeacher", methods=["POST"])
 def addTeach():
     data = request.form
-    bd.add_teacher(data["surname"], data["name"], data["patronymic"], data["email"], data["gender"])
+    if request.files:
+        fileimage = request.files["image"]
+        img = fileimage.read()
+        bd.add_teacher(data["surname"], data["name"], data["patronymic"], data["email"], data["gender"],
+                       data["position"],
+                       data["date_of_birth"], data["info"], img)
 
 
 @app.route("/updateTeacher", methods=["POST"])
 def updateTeach():
     data = request.form
-    bd.update_teacher(int(data["id"]), data["surname"], data["name"], data["patronymic"])
+    if request.files:
+        fileimage = request.files["image"]
+        img = fileimage.read()
+        bd.update_teacher(int(data["teacher_id"]), data["surname"], data["name"], data["patronymic"], data["email"],
+                          data["gender"], data["position"],
+                          data["date_of_birth"], data["info"], img)
 
 
 @app.route("/getAllTeachers")
@@ -82,18 +92,20 @@ def allTeach():
 
 
 @app.route("/updateStud", methods=["POST"])
-def updtateStud():
+def updateStud():
     data = request.form
     group = data["name_group"]
+    id = bd.get_group_by_name(group)
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.update_student(int(data["id"]), data["surname"], data["name"], data["patronymic"], data["gender"], data["email"],
-                          bd.get_group_by_name(group), img)
+        bd.update_student(int(data["student_id"]), data["surname"], data["name"], data["patronymic"], data["gender"],
+                          data["email"],
+                          id["id"], img, data["date_of_birth"], data["info"])
 
 
 @app.route("/addStudent", methods=["POST"])
-def add():
+def addStud():
     data = request.form
     group = data["name_group"]
     if request.files:
@@ -111,13 +123,14 @@ def allStud():
 @app.route("/updateGroup", methods=["POST"])
 def updateGroup():
     data = request.form
-    bd.update_group(int(data["id"]), data["name"], data["id_headman"])
+    bd.update_group(int(data["id"]), data["name"], data["id_headman"], data["level_education"],
+                    data["cipher"], data["subdivision"])
 
 
 @app.route("/addGroup", methods=["POST"])
 def addGroup():
     data = request.form
-    bd.add_group(data["name"], int(data["id_headman"]))
+    bd.add_group(data["name"], int(data["id_headman"]), data["level_education"], data["cipher"], data["subdivision"])
 
 
 @app.route("/getAllGroups")
@@ -128,13 +141,13 @@ def allGroups():
 @app.route("/updateSubject", methods=["POST"])
 def updateSub():
     data = request.form
-    bd.update_subject(int(data["id"]), data["name"])
+    bd.update_subject(int(data["id"]), data["name"], data["study_hours"], data["level_education"], data["info"])
 
 
 @app.route("/addSubject", methods=["POST"])
 def addSub():
     data = request.form
-    bd.add_subject(data["name"])
+    bd.add_subject(data["name"], data["study_hours"], data["level_education"], data["info"])
 
 
 @app.route("/getAllSubjects")
