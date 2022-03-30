@@ -1,3 +1,266 @@
+* {
+    box-sizing: border-box;
+}   
+
+.BodyBack {
+    background-color: #353d39;
+}
+
+.MainOuterBloсk {
+    border: 2px solid black;
+    margin: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.UpperMenu {
+    border: 1px solid black;
+    margin: 5px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.MenuElement {
+    color: white;
+    background-color: rgb(34, 34, 34);
+
+    width: 140px;
+    height: 50px;
+
+    margin-left: 1px;
+    margin-right: 1px;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.MenuElement:hover {
+    background-color: #47BE82;
+    cursor: pointer;
+}
+
+
+.MainInnerBlock {
+    border: 1px solid black;
+    margin: 5px;
+
+    min-width: 90%;
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    height: 50em;
+}
+
+.LeftListBlock {
+    border: 1px solid black;
+    margin: 5px;
+
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.LeftListBlock_OuterElement {
+    border: 1px solid black;
+    margin: 2px;
+}
+
+.RightInfoBlock {
+    border: 1px solid black;
+    margin: 5px;
+
+    background-color: #2D5440;
+
+    width: 80%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.RightInfoBlock_MainInfo {
+    border: 1px solid black;
+    margin-right: 2px;
+
+    width: 65%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RightInfoBlock_MainInfo_Cell {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    min-width: 95%;
+    max-width: 100%;
+
+    margin-left: 4px;
+    margin-right: 4px;
+
+    margin-bottom: 2px;
+    margin-top: 2px;
+
+    background-color: #353d39;
+}
+
+.RightInfoBlock_MainInfo_Input {
+    background-color: #353d39; 
+    border: none; 
+
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    font-size: 16px;
+    padding: 4px;
+}
+
+.RightInfoBlock_MainInfo_Btns {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 2px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 90%;
+    max-height: 100%;
+
+    color: #023c1f;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    background-color: #47BE82;
+}
+
+.RightInfoBlock_MainInfo_Btns:hover {
+    cursor: pointer;
+}
+
+.RightInfoBlock_Photo {
+    border: 1px solid black;
+    margin-left: 2px;
+
+    width: 35%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RightInfoBlock_Photo_Text {
+    border: 1px solid black;
+    margin: 4px;
+
+    min-width: 95%;
+    max-width: 100%;
+    height: 10%;
+
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RightInfoBlock_Photo_Photo {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #353d39;
+    margin: 4px;
+
+    min-width: 95%;
+    max-width: 100%;
+    height: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RightInfoBlock_Photo_Btns {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    width: 80%;
+    height: 10%;
+
+    margin: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #023c1f;
+}
+
+.RightInfoBlock_Photo_Btns {
+    cursor: pointer;
+}
+
+.alertWindows {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100px + 50em);
+    background-color: rgba(0, 0, 0, 0.459);
+
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+    padding: 10px;
+    background-color:rgb(27, 133, 30);
+
+    border: solid 2px;
+    border-radius: 10px;
+}
+
+.form h2 {
+    color: rgb(9, 34, 14);
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 20pt;
+}
+
+.form input {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14pt;
+    border-radius: 10px;
+    padding: 10px;
+
+    border: solid 3px;
+}
+
+.add {
+    font-size: 14pt;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(38, 197, 43);
+    border: none;
+}
+.add:hover {
+    cursor: pointer;
+}
 *{
     box-sizing: border-box;
 }
