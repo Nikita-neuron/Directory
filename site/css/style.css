@@ -12,7 +12,7 @@
     border: 2px solid black;
     margin: 20px;
 
-    height: 55em;
+    height: 50vw;
 
     display: flex;
     flex-direction: column;
@@ -355,12 +355,15 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 
 .RightInfoBlock_Photo_Text {
     border: 1px solid black;
+
+    margin-top: 8px;
+    margin-bottom: 8px;
 
     width: 95%;
     height: 8%;
@@ -368,6 +371,7 @@
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.8vw;
+    text-align: center;
 
     display: flex;
     align-items: center;
@@ -379,17 +383,38 @@
     border-radius: 10px;
     background-color: #99C26A;
 
-    width: 95%;
-    height: 60%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.RightInfoBlock_Photo_Photo_Icon {
+    width: 5vw;
+    height: 5vw;
+
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.RightInfoBlock_Photo_PhotoWrapper {
+    width: 95%;
+}
+
 .RightInfoBlock_Photo_Btns {
     border: 1px solid black;
     border-radius: 10px;
+
+    margin-top: 8px;
+    margin-bottom: 8px;
 
     width: 80%;
     height: 8%;
@@ -553,7 +578,8 @@
 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #023c1f;
-    font-size: 20px;
+    font-size: 1.1vw;
+    text-align: center;
 
     overflow: hidden;
 }
@@ -660,16 +686,117 @@
     justify-content: space-evenly;
 }
 
-.Groups_Right_MainInfo_Cell {
+.Groups_Right_MainInfo_UpperBlock {
     border: 1px solid black;
     border-radius: 10px;
 
     background-color: #3F4649;
 
     width: 90%;
-    height: 20%;
+    height: 7%; 
+    display: flex; 
+    align-items: center;
 
     overflow: auto;
+}
+
+.Groups_Right_MainInfo_DownBlock {
+    border: 1px solid black;
+    width: 90%;
+    height: 88%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Groups_Right_MainInfo_DownBlock_RightCell {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: #3F4649;
+
+    width: 49%;
+    height: 100%;
+
+    overflow: auto;
+}
+
+.Groups_Right_MainInfo_DownBlock_LeftCell {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: #3F4649;
+
+    width: 49%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    overflow: auto;
+}
+
+.Groups_Right_MainInfo_DownBlock_LeftCell_Topic {
+    border: 1px solid black;
+
+    height: 8%;
+    width: 95%;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.Groups_Right_MainInfo_DownBlock_LeftCell_List {
+    border: 1px solid black;
+
+    height: 88%;
+    width: 95%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: auto;
+}
+
+.Groups_Right_MainInfo_DownBlock_LeftCell_List::-webkit-scrollbar {
+    width: 20px;
+    background-color: #3F4649;
+}
+
+.Groups_Right_MainInfo_DownBlock_LeftCell_List::-webkit-scrollbar-thumb {
+    background-color: #353738;
+}
+
+.Groups_Right_MainInfo_DownBlock_LeftCell_List::-webkit-scrollbar-thumb:hover {
+    background-color: #2c2d2e;
+}
+
+.Groups_Right_MainInfo_DownBlock_LeftCell_ListCell {
+    border: 1px solid black;
+
+    padding: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+    background-color: #2D2F31;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1vw;
+    color: #B6D149;
+
+    display: flex;
+    align-items: center;
 }
 
 .Groups_Right_MainInfo_Cell::-webkit-scrollbar {
@@ -863,8 +990,9 @@
 .CustomRadio {
     background-color: #A8D6BF;
 
-    height: 30px;
-    width: 30px;
+    position: relative;
+    height: 1.6vw;
+    width: 1.6vw;
 
     margin-left: 10px;
 
@@ -880,8 +1008,8 @@
 .CustomRadioChecked {
     background-color: #38443e;
 
-    height: 22px;
-    width: 22px;
+    height: 100%;
+    width: 100%;
 
     display: none;
 }
@@ -924,7 +1052,7 @@
     background-color: #1A7E52;
 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 24px;
+    font-size: 1.3vw;
     font-weight: bold;
 
     text-align: center;
