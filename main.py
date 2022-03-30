@@ -22,10 +22,22 @@ def getStud():
     return bd.get_student_by_id(int(data["id"]))
 
 
+@app.route("/deleteStudent", methods=["GET"])
+def deleteStud():
+    data = request.args
+    return bd.delete_student(int(data["id"]))
+
+
 @app.route("/getTeacher", methods=["GET"])
 def getTeach():
     data = request.args
     return bd.get_teacher_by_id(int(data["id"]))
+
+
+@app.route("/deleteTeacher", methods=["GET"])
+def deleteTeach():
+    data = request.args
+    return bd.delete_teacher(int(data["id"]))
 
 
 @app.route("/getGroup", methods=["GET"])
@@ -34,10 +46,22 @@ def getGroup():
     return bd.get_group_by_id(int(data["id"]))
 
 
+@app.route("/deleteGroup", methods=["GET"])
+def deleteGroup():
+    data = request.args
+    return bd.delete_group(int(data["id"]))
+
+
 @app.get("/getSubject", methods=["GET"])
 def getSubj():
     data = request.args
     return bd.get_subject_by_id(int(data["id"]))
+
+
+@app.route("/deleteSubject", methods=["GET"])
+def deleteSub():
+    data = request.args
+    return bd.delete_subject(int(data["id"]))
 
 
 @app.route("/addTeacher", methods=["POST"])
