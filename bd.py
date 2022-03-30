@@ -1,6 +1,6 @@
 import psycopg2
 
-# from config import HOST, USER, PASSWORD, DB_NAME
+from config import HOST, USER, PASSWORD, DB_NAME
 
 
 class Singleton(type):
@@ -76,7 +76,7 @@ class DataBase(metaclass=Singleton):
                     "id_group": student[6],
                     "image": student[7],
                     "date_of_birth": student[8],
-                    "characteristic": student[9]
+                    "info": student[9]
                 })
         return students_arr
 
@@ -96,7 +96,7 @@ class DataBase(metaclass=Singleton):
                 "id_group": data[6],
                 "image": data[7],
                 "date_of_birth": data[8],
-                "characteristic": data[9]
+                "info": data[9]
             }
         return student
 
@@ -114,10 +114,10 @@ class DataBase(metaclass=Singleton):
                 })
         return attendance
 
-    def add_student(self, surname, name, patronymic, gender, email, id_group, image, date_of_birth, characteristic):
+    def add_student(self, surname, name, patronymic, gender, email, id_group, image, date_of_birth, info):
         insert_query = """INSERT INTO students (surname, name, patronymic, gender, email, id_group, image, 
-                            date_of_birth, characteristic) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
-        student_tuple = (surname, name, patronymic, gender, email, id_group, image, date_of_birth, characteristic)
+                            date_of_birth, info) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+        student_tuple = (surname, name, patronymic, gender, email, id_group, image, date_of_birth, info)
         self.insert_query(insert_query, student_tuple)
 
     def add_student_attendance(self, student_id, id_subject, id_day, was_not_was):
@@ -127,7 +127,7 @@ class DataBase(metaclass=Singleton):
         self.insert_query(insert_query, student_tuple)
 
     def update_student(self, student_id, surname, name, patronymic, gender, email,
-                       id_group, image, date_of_birth, characteristic):
+                       id_group, image, date_of_birth, info):
         insert_query = """UPDATE students 
                             SET surname = %s, 
                             SET name = %s, 
@@ -137,10 +137,10 @@ class DataBase(metaclass=Singleton):
                             SET id_group = %s, 
                             SET image = %s,
                             SET date_of_birth = %s,
-                            SET characteristic = %s
+                            SET info = %s,
                             WHERE id = %s"""
         student_tuple = (surname, name, patronymic, gender, email, id_group, image, date_of_birth,
-                         characteristic, student_id)
+                         info, student_id)
         self.insert_query(insert_query, student_tuple)
 
     def update_student_attendance_by_id(self, student_id, id_subject, id_day, was_not_was):
@@ -181,7 +181,11 @@ class DataBase(metaclass=Singleton):
                     "name": teacher[2],
                     "patronymic": teacher[3],
                     "email": teacher[4],
-                    "gender": teacher[5]
+                    "gender": teacher[5],
+                    "position": teacher[6],
+                    "date_of_birth": teacher[7],
+                    "info": teacher[8],
+                    "image": teacher[9]
                 })
         return teachers_arr
 
@@ -197,7 +201,11 @@ class DataBase(metaclass=Singleton):
                 "name": data[2],
                 "patronymic": data[3],
                 "email": data[4],
-                "gender": data[5]
+                "gender": data[5],
+                "position": data[6],
+                "date_of_birth": data[7],
+                "info": data[8],
+                "image": data[9]
             }
         return teacher
 
@@ -210,21 +218,25 @@ class DataBase(metaclass=Singleton):
                 subjects_id.append(subject[1])
         return subjects_id
 
-    def add_teacher(self, surname, name, patronymic, email, gender):
-        insert_query = """INSERT INTO teachers (surname, name, patronymic, email, gender) 
-                                                  VALUES (%s, %s, %s, %s, %s)"""
-        student_tuple = (surname, name, patronymic, email, gender)
+    def add_teacher(self, surname, name, patronymic, email, gender, position, date_of_birth, info, image):
+        insert_query = """INSERT INTO teachers (surname, name, patronymic, email, gender, position, date_of_birth, info,
+                          image) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        student_tuple = (surname, name, patronymic, email, gender, position, date_of_birth, info, image)
         self.insert_query(insert_query, student_tuple)
 
-    def update_teacher(self, teacher_id, surname, name, patronymic, email, gender):
+    def update_teacher(self, teacher_id, surname, name, patronymic, email, gender, position, date_of_birth, info, image):
         insert_query = """UPDATE teachers 
                             SET surname = %s, 
                             SET name = %s, 
                             SET patronymic = %s, 
                             SET email = %s,
                             SET gender = %s,
+                            SET position = %s,
+                            SET date_of_birth = %s,
+                            SET info = %s,
+                            SET image = %s,
                             WHERE id = %s"""
-        student_tuple = (surname, name, patronymic, email, gender, teacher_id)
+        student_tuple = (surname, name, patronymic, email, gender, position, date_of_birth, info, image, teacher_id)
         self.insert_query(insert_query, student_tuple)
 
     def delete_teacher(self, teacher_id):
@@ -248,7 +260,10 @@ class DataBase(metaclass=Singleton):
             for subject in data:
                 subjects_arr.append({
                     "id": subject[0],
-                    "name": subject[1]
+                    "name": subject[1],
+                    "study_hours": subject[2],
+                    "level_education": subject[3],
+                    "info": subject[4]
                 })
         return subjects_arr
 
@@ -260,7 +275,10 @@ class DataBase(metaclass=Singleton):
             data = data[0]
             subject = {
                 "id": data[0],
-                "name": data[1]
+                "name": data[1],
+                "study_hours": data[2],
+                "level_education": data[3],
+                "info": data[4]
             }
         return subject
 
@@ -296,16 +314,20 @@ class DataBase(metaclass=Singleton):
                 })
         return subjects_arr
 
-    def add_subject(self, name):
-        insert_query = """INSERT INTO subjects (name) VALUES (%s)"""
-        subject_tuple = name
+    def add_subject(self, name, study_hours, level_education, info):
+        insert_query = """INSERT INTO subjects (name, study_hours, level_education, info) 
+                          VALUES (%s, %s, %s, %s)"""
+        subject_tuple = (name, study_hours, level_education, info)
         self.insert_query(insert_query, subject_tuple)
 
-    def update_subject(self, id_subject, name):
+    def update_subject(self, id_subject, name, study_hours, level_education, info):
         insert_query = """UPDATE subjects  
-                            SET name = %s
+                            SET name = %s,
+                            SET study_hours = %s,
+                            SET level_education = %s,
+                            SET info = %s,
                             WHERE id = %s"""
-        subject_tuple = (name, id_subject)
+        subject_tuple = (name, study_hours, level_education, info, id_subject)
         self.insert_query(insert_query, subject_tuple)
 
     def delete_subject(self, id_subject):
@@ -383,7 +405,10 @@ class DataBase(metaclass=Singleton):
                 groups_arr.append({
                     "id": group[0],
                     "name": group[1],
-                    "id_headman": group[2]
+                    "id_headman": group[2],
+                    "level_education": group[3],
+                    "cipher": group[4],
+                    "subdivision": group[5]
                 })
         return groups_arr
 
@@ -396,7 +421,10 @@ class DataBase(metaclass=Singleton):
             group = {
                 "id": data[0],
                 "name": data[1],
-                "id_headman": data[2]
+                "id_headman": data[2],
+                "level_education": data[3],
+                "cipher": data[4],
+                "subdivision": data[5]
             }
         return group
 
@@ -409,7 +437,10 @@ class DataBase(metaclass=Singleton):
             group = {
                 "id": data[0],
                 "name": data[1],
-                "id_headman": data[2]
+                "id_headman": data[2],
+                "level_education": data[3],
+                "cipher": data[4],
+                "subdivision": data[5]
             }
         return group
 
@@ -429,9 +460,10 @@ class DataBase(metaclass=Singleton):
                 })
         return timetable_arr
 
-    def add_group(self, name, id_headman):
-        insert_query = """INSERT INTO groups (name, id_headman) VALUES (%s, %s)"""
-        group_tuple = (name, id_headman)
+    def add_group(self, name, id_headman, level_education, cipher, subdivision):
+        insert_query = """INSERT INTO groups (name, id_headman, level_education, cipher, subdivision)
+                          VALUES (%s, %s, %s, %s, %s)"""
+        group_tuple = (name, id_headman, level_education, cipher, subdivision)
         self.insert_query(insert_query, group_tuple)
 
     def add_group_timetable(self, id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher):
@@ -440,12 +472,15 @@ class DataBase(metaclass=Singleton):
         group_tuple = (id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher)
         self.insert_query(insert_query, group_tuple)
 
-    def update_group(self, group_id, name, id_headman):
+    def update_group(self, group_id, name, id_headman, level_education, cipher, subdivision):
         insert_query = """UPDATE groups  
                             SET name = %s,
-                            SET id_headman = %s
+                            SET id_headman = %s,
+                            SET level_education = %s,
+                            SET cipher = %s,
+                            SET subdivision = %s
                             WHERE id = %s"""
-        group_tuple = (name, id_headman, group_id)
+        group_tuple = (name, id_headman, level_education, cipher, subdivision, group_id)
         self.insert_query(insert_query, group_tuple)
 
     def update_timetable_by_group_id(self, id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher):
