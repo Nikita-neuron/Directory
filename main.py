@@ -107,7 +107,7 @@ def updateStud():
 @app.route("/addStudent", methods=["POST"])
 def addStud():
     data = request.form
-    group = data["name"]
+    group = data["name_group"]
     id = bd.get_group_by_name(group)
     if request.files:
         fileimage = request.files["image"]
