@@ -1,6 +1,6 @@
 import psycopg2
 
-from config import HOST, USER, PASSWORD, DB_NAME
+#from config import HOST, USER, PASSWORD, DB_NAME
 
 
 class Singleton(type):

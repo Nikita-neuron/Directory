@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, send_file
+from flask import Flask, request, render_template, send_file
 import io
 from bd import DataBase
 
@@ -52,7 +52,7 @@ def deleteGroup():
     bd.delete_group(int(data["id"]))
 
 
-@app.get("/getSubject", methods=["GET"])
+@app.route("/getSubject", methods=["GET"])
 def getSub():
     data = request.args
     return bd.get_subject_by_id(int(data["id"]))
@@ -151,7 +151,7 @@ def addSub():
 
 
 @app.route("/getAllSubjects")
-def getSub():
+def getSubjects():
     return bd.get_all_subjects()
 
 
@@ -160,9 +160,9 @@ def schedule():
     return bd.get_all_timetable()
 
 
-@app.route('/static/userImages/<img_src>')
-def photo(img_src):
-    return send_file(io.BytesIO(img), attachment_filename='image.png', mimetype='image/png')
+# @app.route('/static/userImages/<img_src>')
+# def photo(img_src):
+#     return send_file(io.BytesIO(img), attachment_filename='image.png', mimetype='image/png')
 
 
 if __name__ == "__main__":
