@@ -70,7 +70,9 @@ def addTeach():
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.add_teacher(data["surname"], data["name"], data["patronymic"], data["email"], data["gender"],
+        fio = data["FIO"]
+        fio = fio.split()
+        bd.add_teacher(fio[0], fio[1], fio[2], data["email"], data["gender"],
                        data["position"],
                        data["date_of_birth"], data["info"], img)
 
@@ -81,7 +83,9 @@ def updateTeach():
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.update_teacher(int(data["teacher_id"]), data["surname"], data["name"], data["patronymic"], data["email"],
+        fio = data["FIO"]
+        fio = fio.split()
+        bd.update_teacher(int(data["teacher_id"]), fio[0], fio[1], fio[2], data["email"],
                           data["gender"], data["position"],
                           data["date_of_birth"], data["info"], img)
 
@@ -99,7 +103,9 @@ def updateStud():
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.update_student(int(data["student_id"]), data["surname"], data["name"], data["patronymic"], data["gender"],
+        fio = data["FIO"]
+        fio = fio.split()
+        bd.update_student(int(data["student_id"]), fio[0], fio[1], fio[2], data["gender"],
                           data["email"],
                           int(id["group_id"]), img, data["date_of_birth"], data["info"])
 
@@ -112,7 +118,9 @@ def addStud():
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.add_student(data["surname"], data["name"], data["patronymic"], data["gender"], data["email"],
+        fio = data["FIO"]
+        fio = fio.split()
+        bd.add_student(fio[0], fio[1], fio[2], data["gender"], data["email"],
                        int(id["group_id"]),
                        img, data["date_of_birth"], data["info"])
 
