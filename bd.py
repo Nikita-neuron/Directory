@@ -42,7 +42,10 @@ class DataBase(metaclass=Singleton):
     def insert_query(self, query, data):
         try:
             with self.connection.cursor() as cursor:
-                cursor.execute(query, data)
+                if data is not None:
+                    cursor.execute(query, data)
+                else:
+                    cursor.execute(query)
         except Exception as _ex:
             print("[INFO] Error with add student", _ex)
 
@@ -294,7 +297,8 @@ class DataBase(metaclass=Singleton):
                     "day_of_week_number": attendance[2],
                     "pair_number": attendance[3],
                     "even_odd": attendance[4],
-                    "id_teacher": attendance[5]
+                    "id_teacher": attendance[5],
+                    "room": attendance[6]
                 })
         return attendance_arr
 
@@ -310,7 +314,8 @@ class DataBase(metaclass=Singleton):
                     "day_of_week_number": subject[2],
                     "pair_number": subject[3],
                     "even_odd": subject[4],
-                    "id_teacher": subject[5]
+                    "id_teacher": subject[5],
+                    "room": subject[6]
                 })
         return subjects_arr
 
@@ -456,7 +461,8 @@ class DataBase(metaclass=Singleton):
                     "day_of_week_number": timetable[2],
                     "pair_number": timetable[3],
                     "even_odd": timetable[4],
-                    "id_teacher": timetable[5]
+                    "id_teacher": timetable[5],
+                    "room": timetable[6]
                 })
         return timetable_arr
 
@@ -466,10 +472,10 @@ class DataBase(metaclass=Singleton):
         group_tuple = (name, id_headman, level_education, cipher, subdivision)
         self.insert_query(insert_query, group_tuple)
 
-    def add_group_timetable(self, id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher):
+    def add_group_timetable(self, id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher, room):
         insert_query = """INSERT INTO subjects_groups (id_subject, id_group, day_of_week_number, pair_number, 
-                            even_odd, id_teacher) VALUES (%s, %s, %s, %s, %s, %s) """
-        group_tuple = (id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher)
+                            even_odd, id_teacher, room) VALUES (%s, %s, %s, %s, %s, %s, %s) """
+        group_tuple = (id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher, room)
         self.insert_query(insert_query, group_tuple)
 
     def update_group(self, group_id, name, id_headman, level_education, cipher, subdivision):
@@ -483,15 +489,17 @@ class DataBase(metaclass=Singleton):
         group_tuple = (name, id_headman, level_education, cipher, subdivision, group_id)
         self.insert_query(insert_query, group_tuple)
 
-    def update_timetable_by_group_id(self, id_subject, id_group, day_of_week_number, pair_number, even_odd, id_teacher):
+    def update_timetable_by_group_id(self, id_subject, id_group, day_of_week_number,
+                                     pair_number, even_odd, id_teacher, room):
         insert_query = """UPDATE subjects_groups  
                             SET id_subject = %s,
-                            SET day_of_week_number = %s
-                            SET pair_number = %s
-                            SET even_odd = %s
-                            SET id_teacher = %s
+                            SET day_of_week_number = %s,
+                            SET pair_number = %s,
+                            SET even_odd = %s,
+                            SET id_teacher = %s,
+                            SET room = %s
                             WHERE id_group = %s"""
-        group_tuple = (id_subject, day_of_week_number, pair_number, even_odd, id_teacher, id_group)
+        group_tuple = (id_subject, day_of_week_number, pair_number, even_odd, id_teacher, room, id_group)
         self.insert_query(insert_query, group_tuple)
 
     def delete_group(self, group_id):
@@ -519,7 +527,8 @@ class DataBase(metaclass=Singleton):
                     "day_of_week_number": timetable[2],
                     "pair_number": timetable[3],
                     "even_odd": timetable[4],
-                    "id_teacher": timetable[5]
+                    "id_teacher": timetable[5],
+                    "room": timetable[6]
                 })
         return timetable_arr
 
@@ -527,9 +536,11 @@ class DataBase(metaclass=Singleton):
 if __name__ == "__main__":
     db = DataBase()
     # db.add_student("testSurname2", "testName2", "testPatronymic2", "man", "test2@test.com", 0, "C:\photo_src")
-    students = db.get_all_students()
-    print("Students: ", students)
+    # students = db.get_all_students()
+    # print("Students: ", students)
 
-    student_data = db.get_student_by_id(3)
-    print("Student:", student_data)
+    # student_data = db.get_student_by_id(3)
+    # print("Student:", student_data)
+    # db.add_subject("testSubject", 10000, "Бакалавр", "Some info")
+    print(db.get_all_subjects())
     db.close()
