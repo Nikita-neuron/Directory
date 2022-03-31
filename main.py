@@ -19,49 +19,49 @@ img = 0
 @app.route("/getStudent", methods=["GET"])
 def getStud():
     data = request.args
-    return bd.get_student_by_id(int(data["id"]))
+    return bd.get_student_by_id(int(data["student_id"]))
 
 
 @app.route("/deleteStudent", methods=["GET"])
 def deleteStud():
     data = request.args
-    bd.delete_student(int(data["id"]))
+    bd.delete_student(int(data["student_id"]))
 
 
 @app.route("/getTeacher", methods=["GET"])
 def getTeach():
     data = request.args
-    return bd.get_teacher_by_id(int(data["id"]))
+    return bd.get_teacher_by_id(int(data["teacher_id"]))
 
 
 @app.route("/deleteTeacher", methods=["GET"])
 def deleteTeach():
     data = request.args
-    bd.delete_teacher(int(data["id"]))
+    bd.delete_teacher(int(data["teacher_id"]))
 
 
 @app.route("/getGroup", methods=["GET"])
 def getGroup():
     data = request.args
-    return bd.get_group_by_id(int(data["id"]))
+    return bd.get_group_by_id(int(data["group_id"]))
 
 
 @app.route("/deleteGroup", methods=["GET"])
 def deleteGroup():
     data = request.args
-    bd.delete_group(int(data["id"]))
+    bd.delete_group(int(data["group_id"]))
 
 
 @app.route("/getSubject", methods=["GET"])
 def getSub():
     data = request.args
-    return bd.get_subject_by_id(int(data["id"]))
+    return bd.get_subject_by_id(int(data["subject_id"]))
 
 
 @app.route("/deleteSubject", methods=["GET"])
 def deleteSub():
     data = request.args
-    bd.delete_subject(int(data["id"]))
+    bd.delete_subject(int(data["subject_id"]))
 
 
 @app.route("/addTeacher", methods=["POST"])
