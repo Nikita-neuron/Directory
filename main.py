@@ -99,11 +99,10 @@ def updateStud():
                           int(id["id_group"]), img, data["date_of_birth"], data["info"])
 
 
-@app.route("/addStudent", methods=["POST", "GET"])
+@app.route("/addStudent", methods=["POST"])
 def addStud():
     data = request.form
-    name = request.args
-    group = name["name_group"]
+    group = data["name_group"]
     id_group = bd.get_group_by_name(group)
     if request.files:
         fileimage = request.files["image"]
@@ -111,7 +110,7 @@ def addStud():
         fio = data["FIO"]
         fio = fio.split()
         bd.add_student(fio[0], fio[1], fio[2], data["gender"], data["email"],
-                       id_group["id_group"],
+                       id_group["id"],
                        img, data["date_of_birth"], data["info"])
         if data["headman"] == "Да" or data["headman"] == "ДА":
             students = bd.get_all_students()
