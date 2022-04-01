@@ -2,11 +2,9 @@ from flask import Flask, request, render_template, send_file
 import io
 from bd import DataBase
 
-# from bd import DataBase
 app = Flask(__name__)
 
 
-# data = DataBase()
 @app.route("/")
 @app.route("/main")
 def main():
@@ -38,6 +36,9 @@ def getTeach():
 def deleteTeach():
     data = request.args
     bd.delete_teacher(int(data["id_teacher"]))
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/addTeacher", methods=["POST"])
@@ -51,6 +52,9 @@ def addTeach():
         bd.add_teacher(fio[0], fio[1], fio[2], data["email"], data["gender"],
                        data["position"],
                        data["date_of_birth"], data["info"], img)
+        return {
+            "status": "OK"
+        }
 
 
 @app.route("/updateTeacher", methods=["POST"])
@@ -64,6 +68,9 @@ def updateTeach():
         bd.update_teacher(int(data["id_teacher"]), fio[0], fio[1], fio[2], data["email"],
                           data["gender"], data["position"],
                           data["date_of_birth"], data["info"], img)
+        return {
+            "status": "OK"
+        }
 
 
 @app.route("/getAllTeachers")
@@ -97,6 +104,9 @@ def updateStud():
         bd.update_student(int(data["id_student"]), fio[0], fio[1], fio[2], data["gender"],
                           data["email"],
                           int(id["id"]), img, data["date_of_birth"], data["info"])
+        return {
+            "status": "OK"
+        }
 
 
 @app.route("/addStudent", methods=["POST"])
@@ -121,6 +131,9 @@ def addStud():
                     bd.update_group(group["id"], group["name"], id_student, group["level_education"],
                                     group["cipher"], group["subdivision"])
                     break
+        return {
+            "status": "OK"
+        }
 
 
 @app.route("/getAllStudents")
@@ -173,6 +186,9 @@ def getStud():
 def deleteStud():
     data = request.args
     bd.delete_student(int(data["student_id"]))
+    return {
+        "status": "OK"
+    }
 
 
 # ========= GROUPS ==========
@@ -183,12 +199,18 @@ def updateGroup():
     data = request.json
     bd.update_group(int(data["id_group"]), data["name"], int(data["id_headman"]), data["level_education"],
                     data["cipher"], data["subdivision"])
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/addGroup", methods=["POST"])
 def addGroup():
     data = request.json
     bd.add_group(data["name"], int(data["id_headman"]), data["level_education"], data["cipher"], data["subdivision"])
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/getAllGroups")
@@ -226,6 +248,9 @@ def getGroup():
 def deleteGroup():
     data = request.args
     bd.delete_group(int(data["id_group"]))
+    return {
+        "status": "OK"
+    }
 
 
 # ======== SUBJECTS ==========
@@ -236,12 +261,18 @@ def updateSub():
     data = request.json
     bd.update_subject(int(data["id_subject"]), data["name"], int(data["study_hours"]), data["level_education"],
                       data["info"])
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/addSubject", methods=["POST"])
 def addSub():
     data = request.json
     bd.add_subject(data["name"], int(data["study_hours"]), data["level_education"], data["info"])
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/getAllSubjects")
@@ -279,6 +310,9 @@ def getSub():
 def deleteSub():
     data = request.args
     bd.delete_subject(int(data["id_subject"]))
+    return {
+        "status": "OK"
+    }
 
 
 # ========= TIMETABLE ==========
@@ -299,9 +333,9 @@ def schedules():
         }
 
 
-# @app.route('/static/userImages/<img_src>')
+# @app.route('/static/UserImg/<img>')
 # def photo(img_src):
-# return send_file(io.BytesIO(img), attachment_filename='image.png', mimetype='image/png')
+# return send_file(io.BytesIO(img), attachment_filename='user.png', mimetype='image/png')
 
 
 if __name__ == "__main__":
