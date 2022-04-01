@@ -21,7 +21,7 @@ img = 0
 @app.route("/getTeacher", methods=["GET"])
 def getTeach():
     data = request.args
-    teacher = bd.get_teacher_by_id(int(data["teacher_id"]))
+    teacher = bd.get_teacher_by_id(int(data["id_teacher"]))
     if teacher is None or len(teacher) == 0:
         return {
             "status": "None",
@@ -37,7 +37,7 @@ def getTeach():
 @app.route("/deleteTeacher", methods=["GET"])
 def deleteTeach():
     data = request.args
-    bd.delete_teacher(int(data["teacher_id"]))
+    bd.delete_teacher(int(data["id_teacher"]))
 
 
 @app.route("/addTeacher", methods=["POST"])
@@ -61,7 +61,7 @@ def updateTeach():
         img = fileimage.read()
         fio = data["FIO"]
         fio = fio.split()
-        bd.update_teacher(int(data["teacher_id"]), fio[0], fio[1], fio[2], data["email"],
+        bd.update_teacher(int(data["id_teacher"]), fio[0], fio[1], fio[2], data["email"],
                           data["gender"], data["position"],
                           data["date_of_birth"], data["info"], img)
 
@@ -96,7 +96,7 @@ def updateStud():
         fio = fio.split()
         bd.update_student(int(data["student_id"]), fio[0], fio[1], fio[2], data["gender"],
                           data["email"],
-                          int(id["group_id"]), img, data["date_of_birth"], data["info"])
+                          int(id["id_group"]), img, data["date_of_birth"], data["info"])
 
 
 @app.route("/addStudent", methods=["POST"])
@@ -110,8 +110,17 @@ def addStud():
         fio = data["FIO"]
         fio = fio.split()
         bd.add_student(fio[0], fio[1], fio[2], data["gender"], data["email"],
-                       int(id["group_id"]),
+                       int(id["id_group"]),
                        img, data["date_of_birth"], data["info"])
+        if data["headman"] == "Да" or data["headman"] == "ДА":
+            students = bd.get_all_students()
+            for student in students:
+                if student["name"] == fio[1] and student["surname"] == fio[0] and student["patronymic"] == fio[2]:
+                    id_student = student["id"]
+                    group = bd.get_group_by_id(student["id_group"])
+                    bd.update_group(group["id"], group["name"], id_student, group["level_education"],
+                                    group["cipher"], group["subdivision"])
+                    break
 
 
 @app.route("/getAllStudents")
@@ -127,7 +136,7 @@ def allStud():
             group = student["id_group"]
             group = bd.get_group_by_id(group)
             id_headman = group["id_headman"]
-            if id_headman == student["id_student"]:
+            if id_headman == student["id"]:
                 student["headman"] = "YES"
             else:
                 student["headman"] = "NO"
@@ -172,7 +181,7 @@ def deleteStud():
 @app.route("/updateGroup", methods=["POST"])
 def updateGroup():
     data = request.form
-    bd.update_group(int(data["group_id"]), data["name"], int(data["id_headman"]), data["level_education"],
+    bd.update_group(int(data["id_group"]), data["name"], int(data["id_headman"]), data["level_education"],
                     data["cipher"], data["subdivision"])
 
 
@@ -200,7 +209,7 @@ def allGroups():
 @app.route("/getGroup", methods=["GET"])
 def getGroup():
     data = request.args
-    group = bd.get_group_by_id(int(data["group_id"]))
+    group = bd.get_group_by_id(int(data["id_group"]))
     if group is None or len(group) == 0:
         return {
             "status": "None",
@@ -216,7 +225,7 @@ def getGroup():
 @app.route("/deleteGroup", methods=["GET"])
 def deleteGroup():
     data = request.args
-    bd.delete_group(int(data["group_id"]))
+    bd.delete_group(int(data["id_group"]))
 
 
 # ======== SUBJECTS ==========
@@ -253,7 +262,7 @@ def getSubjects():
 @app.route("/getSubject", methods=["GET"])
 def getSub():
     data = request.args
-    subject = bd.get_subject_by_id(int(data["subject_id"]))
+    subject = bd.get_subject_by_id(int(data["id_subject"]))
     if subject is None or len(subject) == 0:
         return {
             "status": "None",
@@ -269,7 +278,7 @@ def getSub():
 @app.route("/deleteSubject", methods=["GET"])
 def deleteSub():
     data = request.args
-    bd.delete_subject(int(data["subject_id"]))
+    bd.delete_subject(int(data["id_subject"]))
 
 
 # ========= TIMETABLE ==========
