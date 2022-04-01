@@ -42,7 +42,7 @@ def deleteTeach():
 
 @app.route("/addTeacher", methods=["POST"])
 def addTeach():
-    data = request.form
+    data = request.json
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
@@ -55,7 +55,7 @@ def addTeach():
 
 @app.route("/updateTeacher", methods=["POST"])
 def updateTeach():
-    data = request.form
+    data = request.json
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
@@ -86,7 +86,7 @@ def allTeach():
 
 @app.route("/updateStud", methods=["POST"])
 def updateStud():
-    data = request.form
+    data = request.json
     group = data["name_group"]
     id = bd.get_group_by_name(group)
     if request.files:
@@ -101,7 +101,7 @@ def updateStud():
 
 @app.route("/addStudent", methods=["POST"])
 def addStud():
-    data = request.form
+    data = request.json
     group = data["name_group"]
     id_group = bd.get_group_by_name(group)
     if request.files:
@@ -180,14 +180,14 @@ def deleteStud():
 
 @app.route("/updateGroup", methods=["POST"])
 def updateGroup():
-    data = request.form
+    data = request.json
     bd.update_group(int(data["id_group"]), data["name"], int(data["id_headman"]), data["level_education"],
                     data["cipher"], data["subdivision"])
 
 
 @app.route("/addGroup", methods=["POST"])
 def addGroup():
-    data = request.form
+    data = request.json
     bd.add_group(data["name"], int(data["id_headman"]), data["level_education"], data["cipher"], data["subdivision"])
 
 
@@ -233,14 +233,14 @@ def deleteGroup():
 
 @app.route("/updateSubject", methods=["POST"])
 def updateSub():
-    data = request.form
+    data = request.json
     bd.update_subject(int(data["id_subject"]), data["name"], int(data["study_hours"]), data["level_education"],
                       data["info"])
 
 
 @app.route("/addSubject", methods=["POST"])
 def addSub():
-    data = request.form
+    data = request.json
     bd.add_subject(data["name"], int(data["study_hours"]), data["level_education"], data["info"])
 
 
@@ -301,7 +301,7 @@ def schedules():
 
 # @app.route('/static/userImages/<img_src>')
 # def photo(img_src):
-#     return send_file(io.BytesIO(img), attachment_filename='image.png', mimetype='image/png')
+# return send_file(io.BytesIO(img), attachment_filename='image.png', mimetype='image/png')
 
 
 if __name__ == "__main__":
