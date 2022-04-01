@@ -94,7 +94,7 @@ def updateStud():
         img = fileimage.read()
         fio = data["FIO"]
         fio = fio.split()
-        bd.update_student(int(data["student_id"]), fio[0], fio[1], fio[2], data["gender"],
+        bd.update_student(int(data["id_student"]), fio[0], fio[1], fio[2], data["gender"],
                           data["email"],
                           int(id["id_group"]), img, data["date_of_birth"], data["info"])
 
@@ -110,7 +110,7 @@ def addStud():
         fio = data["FIO"]
         fio = fio.split()
         bd.add_student(fio[0], fio[1], fio[2], data["gender"], data["email"],
-                       int(id["id_group"]),
+                       id["id_group"],
                        img, data["date_of_birth"], data["info"])
         if data["headman"] == "Да" or data["headman"] == "ДА":
             students = bd.get_all_students()
