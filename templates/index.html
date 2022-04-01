@@ -38,7 +38,11 @@
 
 
         <div class="MainMainInnerBlock" id="mainWindow">
+            <div class="MainMainInnerBlock_MainDiv">
+                <div class="MainMainInnerBlock_MainDiv_Cell">
 
+                </div>
+            </div>
         </div>
 
 
@@ -185,7 +189,7 @@
                     <!--ФИО-->
                     <div class="RightInfoBlock_MainInfo_Cell", style="height: 7%; display: flex; align-items: center;">
 
-                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black" id="StudentInfoTable1">
                             <tr>
                                 <!--ФИО-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">ФИО:</td>
@@ -198,10 +202,10 @@
                     <!--Доп. информация-->
                     <div class="RightInfoBlock_MainInfo_Cell", style="height: 20%;">
 
-                        <table class="RightInfoBlock_MainInfo_Table", style="border: 1px solid black">
+                        <table class="RightInfoBlock_MainInfo_Table", style="border: 1px solid black" id="StudentInfoTable2">
                             <tr>
                                 <!--Группа-->
-                                <td class="RightInfoBlock_MainInfo_TableTopic">Группа(Группы):</td>
+                                <td class="RightInfoBlock_MainInfo_TableTopic">Группа:</td>
                                 <td class="RightInfoBlock_MainInfo_TableText">ИКБО-20-14</td>
                             </tr>
 
@@ -226,7 +230,7 @@
                             <tr>
                                 <!--Староста\Помощник-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Староста\Помощник:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">нет</td>
+                                <td class="RightInfoBlock_MainInfo_TableText">Нет</td>
                             </tr>
                         </table>
                         
@@ -235,7 +239,7 @@
                     <!--Информация-->
                     <div class="RightInfoBlock_MainInfo_Cell", style="height: 55%">
 
-                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black" id="StudentInfoTable3">
                             <tr>
                                 <!--Информация-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Информация:</td>
@@ -275,11 +279,6 @@
                         </div>
                     </div>
 
-                    <!--Просмотр фото-->
-                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #23A86D;">
-                        Просмотр фото
-                    </div>
-
                 </div>
 
             </div>
@@ -288,49 +287,60 @@
         <div class="PersonEditInfo_Window" id="StudentEditWindow">
             <div class="PersonEditInfo_Window_EditWindow">
                 <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
-                    <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="StudentEditWindowExitBTN">
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="display: flex; justify-content: end; width: auto; padding: 5px;">
+                        <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="StudentEditWindowExitBTN">
+                    </div>
                 </div>
 
                 <div class="PersonEditInfo_Window_EditWindow_DownDiv">
-                    <table class="PersonEditInfo_Window_EditWindow_Table" border="all">
-                        <tr>
-                            <td>ФИО:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 80%; padding-left: 10px; padding-right: 10px;">
+                        <table class="PersonEditInfo_Window_EditWindow_Table" id="StudentEditTable">
+                            <tr>
+                                <td>ФИО:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Группа:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Пол:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Дата рождения:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Email:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Староста/помощник:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Информация:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
 
-                        <tr>
-                            <td>Группа(группы):</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
+                            <tr>
+                                <td>Фото:</td>
+                                <td class="PersonEditInfo_Window_EditWindow_TableCell"><input type="file" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1.1vw;"></td>
+                            </tr>
+                        </table>
+                    </div>
 
-                        <tr>
-                            <td>Пол:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Дата рождения:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Email:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Староста/помощник:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Информация:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-                    </table>
-
-                    <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
-                        Сохранить
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 15%; display: flex; align-items: center; justify-content: center;">
+                        <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                            Сохранить
+                        </div>
                     </div>
                 </div>
             </div>
@@ -356,12 +366,12 @@
                     <input class="LeftListBlock_PersonSearch_TextField" id="GroupListTextField" placeholder="Поиск группы" spellcheck="false">
                 </div>
 
-                <div class="Groups_Left_SearchAndEdit_Btns" id="EditGroupBTN">
-                    Редактировать группу
+                <div class="Groups_Left_SearchAndEdit_Btns" id="AddGroupBTN" style="background-color: #23A86D;">
+                    Добавить новую группу
                 </div>
 
-                <div class="Groups_Left_SearchAndEdit_Btns" id="AddGroupBTN">
-                    Добавить новую группу
+                <div class="Groups_Left_SearchAndEdit_Btns" id="EditGroupBTN">
+                    Редактировать группу
                 </div>
 
                 <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;">
@@ -462,7 +472,7 @@
 
             <div class="Groups_Right_MainInfo">
                 <div class="Groups_Right_MainInfo_UpperBlock">
-                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;" id="GroupInfoTable1">
                         <!--Заголовок в виде названия группы-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Группа:</td>
@@ -473,7 +483,7 @@
 
                 <div class="Groups_Right_MainInfo_DownBlock">
                     <div class="Groups_Right_MainInfo_DownBlock_RightCell">
-                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black" id="GroupInfoTable2">
                             <!--Уровень образования-->
                             <tr>
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Уровень образования:</td>
@@ -565,39 +575,45 @@
         <div class="PersonEditInfo_Window" id="GroupEditWindow">
             <div class="PersonEditInfo_Window_EditWindow">
                 <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
-                    <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="GroupEditWindowExitBTN">
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="display: flex; justify-content: end; width: auto; padding: 5px;">
+                        <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="GroupEditWindowExitBTN">
+                    </div>
                 </div>
 
                 <div class="PersonEditInfo_Window_EditWindow_DownDiv">
-                    <table class="PersonEditInfo_Window_EditWindow_Table" border="all">
-                        <tr>
-                            <td>Группа:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 80%; padding-left: 10px; padding-right: 10px;">
+                        <table class="PersonEditInfo_Window_EditWindow_Table" id="GroupEditTable">
+                            <tr>
+                                <td>Группа:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Уровень образования:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Направление (шифр):</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Подразделение:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Староста группы:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+                        </table>
+                    </div>
 
-                        <tr>
-                            <td>Уровень образования:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Направление (шифр):</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Подразделение:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Староста группы:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-                    </table>
-
-                    <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
-                        Сохранить
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 15%; display: flex; align-items: center; justify-content: center;">
+                        <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                            Сохранить
+                        </div>
                     </div>
                 </div>
             </div>
@@ -748,7 +764,7 @@
                     <!--ФИО-->
                     <div class="RightInfoBlock_MainInfo_Cell", style="height: 7%; display: flex; align-items: center;">
 
-                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black" id="TeacherInfoTable1">
                             <tr>
                                 <!--ФИО-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">ФИО:</td>
@@ -761,7 +777,7 @@
                     <!--Доп. информация-->
                     <div class="RightInfoBlock_MainInfo_Cell", style="height: 20%;">
 
-                        <table class="RightInfoBlock_MainInfo_Table", style="border: 1px solid black">
+                        <table class="RightInfoBlock_MainInfo_Table", style="border: 1px solid black" id="TeacherInfoTable2">
                             <tr>
                                 <!--Группа-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Должность:</td>
@@ -792,7 +808,7 @@
                     <!--Информация-->
                     <div class="RightInfoBlock_MainInfo_Cell", style="height: 55%">
 
-                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                        <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black" id="TeacherInfoTable3">
                             <tr>
                                 <!--Информация-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Информация:</td>
@@ -833,11 +849,6 @@
                         </div>
                     </div>
 
-                    <!--Просмотр фото-->
-                    <div class="RightInfoBlock_Photo_Btns", style="background-color: #23A86D;">
-                        Просмотр фото
-                    </div>
-
                 </div>
 
             </div>
@@ -846,44 +857,55 @@
         <div class="PersonEditInfo_Window" id="TeacherEditWindow">
             <div class="PersonEditInfo_Window_EditWindow">
                 <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
-                    <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="TeacherEditWindowExitBTN">
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="display: flex; justify-content: end; width: auto; padding: 5px;">
+                        <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="TeacherEditWindowExitBTN">
+                    </div>
                 </div>
 
                 <div class="PersonEditInfo_Window_EditWindow_DownDiv">
-                    <table class="PersonEditInfo_Window_EditWindow_Table" border="all">
-                        <tr>
-                            <td>ФИО:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 80%; padding-left: 10px; padding-right: 10px;">
+                        <table class="PersonEditInfo_Window_EditWindow_Table" id="TeacherEditTable">
+                            <tr>
+                                <td>ФИО:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Должность:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Пол:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Дата рождения:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Email:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Информация:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
 
-                        <tr>
-                            <td>Должность:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
+                            <tr>
+                                <td>Фото:</td>
+                                <td class="PersonEditInfo_Window_EditWindow_TableCell"><input type="file" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1.1vw;"></td>
+                            </tr>
+                        </table>
+                    </div>
 
-                        <tr>
-                            <td>Пол:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Дата рождения:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Email:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Информация:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-                    </table>
-
-                    <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
-                        Сохранить
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 15%; display: flex; align-items: center; justify-content: center;">
+                        <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                            Сохранить
+                        </div>
                     </div>
                 </div>
             </div>
@@ -904,12 +926,12 @@
                     <input class="LeftListBlock_PersonSearch_TextField" id="SubjectListTextField" placeholder="Поиск предмета" spellcheck="false">
                 </div>
 
-                <div class="Groups_Left_SearchAndEdit_Btns" id="EditSubjectBTN">
-                    Редактировать предмет
+                <div class="Groups_Left_SearchAndEdit_Btns" id="AddSubjectBTN" style="background-color: #23A86D;">
+                    Добавить новый предмет
                 </div>
 
-                <div class="Groups_Left_SearchAndEdit_Btns" id="AddSubjectBTN">
-                    Добавить новый предмет
+                <div class="Groups_Left_SearchAndEdit_Btns" id="EditSubjectBTN">
+                    Редактировать предмет
                 </div>
 
                 <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;">
@@ -1014,7 +1036,7 @@
 
             <div class="Groups_Right_MainInfo">
                 <div class="Groups_Right_MainInfo_UpperBlock">
-                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;" id="SubjectInfoTable1">
                         <!--Предмет-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Предмет:</td>
@@ -1024,7 +1046,7 @@
                 </div>
 
                 <div class="Groups_Right_MainInfo_UpperBlock" style="height: 20%; display: block;">
-                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black" id="SubjectInfoTable2">
                         <!--Учебные часы-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Учебные часы:</td>
@@ -1040,7 +1062,7 @@
                 </div>
 
                 <div class="Groups_Right_MainInfo_UpperBlock" style="height: 20%; display: block;">
-                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;" id="SubjectInfoTable3">
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Преподаватели:</td>
                             <td class="RightInfoBlock_MainInfo_TableText">И.И. Иванов, И. И. Иванова</td>
@@ -1049,7 +1071,7 @@
                 </div>
 
                 <div class="Groups_Right_MainInfo_UpperBlock" style="height: 20%; display: block;">
-                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;" id="SubjectInfoTable4">
                         <!--Учебные группы-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Учебные группы:</td>
@@ -1059,7 +1081,7 @@
                 </div>
 
                 <div class="Groups_Right_MainInfo_UpperBlock" style="height: 20%; display: block;">
-                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;">
+                    <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;" id="SubjectInfoTable5">
                         <!--О предмете-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">О предмете:</td>
@@ -1073,44 +1095,50 @@
         <div class="PersonEditInfo_Window" id="SubjectEditWindow">
             <div class="PersonEditInfo_Window_EditWindow">
                 <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
-                    <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="SubjectEditWindowExitBTN">
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="display: flex; justify-content: end; width: auto; padding: 5px;">
+                        <img src="sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="SubjectEditWindowExitBTN">
+                    </div>
                 </div>
 
                 <div class="PersonEditInfo_Window_EditWindow_DownDiv">
-                    <table class="PersonEditInfo_Window_EditWindow_Table" border="all">
-                        <tr>
-                            <td>Предмет:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 80%; padding-left: 10px; padding-right: 10px;">
+                        <table class="PersonEditInfo_Window_EditWindow_Table" id="SubjectEditTable">
+                            <tr>
+                                <td>Предмет:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Учебные часы:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Уровень образования:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Преподаватели:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>Учебные группы:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+    
+                            <tr>
+                                <td>О предмете:</td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                            </tr>
+                        </table>
+                    </div>
 
-                        <tr>
-                            <td>Учебные часы:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Уровень образования:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Преподаватели:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Учебные группы:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>О предмете:</td>
-                            <td contenteditable="true" style="width: 80%;"></td>
-                        </tr>
-                    </table>
-
-                    <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
-                        Сохранить
+                    <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 15%; display: flex; align-items: center; justify-content: center;">
+                        <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                            Сохранить
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1167,1182 +1195,235 @@
             <div class="Schedule_RightInfo">
 
                 <table class="Schedule_RightInfo_Table" border="all">
-                    <tr class="Schedule_RightInfo_TableTopic">
-                        <td>
-                            День недели
-                        </td>
-
-                        <td colspan="3">
-                            Группа 1
-                        </td>
-
-                        <td colspan="3">
-                            Группа 2
-                        </td>
+                    <tr>
+                        <td colspan="3">ИКБО-01-21</td>
                     </tr>
-
-                    <tr class="Schedule_RightInfo_TableSecondTopic">
-                        <td>
-                            
-                        </td>
-
-                        <td>
-                            Дисциплина
-                        </td>
-
-                        <td>
-                            № Каб.
-                        </td>
-
-                        <td>
-                            Преподаватель
-                        </td>
-
-                        <td>
-                            Дисциплина
-                        </td>
-
-                        <td>
-                            № Каб.
-                        </td>
-
-                        <td>
-                            Преподаватель
-                        </td>
+                    <tr>
+                        <td>Дисциплина</td>
+                        <td>№ Каб.</td>
+                        <td>Преподаватель</td>
                     </tr>
 
                     <!--Понедельник-->
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td rowspan="8">
-                            Понедельник
-                        </td>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
                     </tr>
 
                     <!--Вторник-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td rowspan="8">
-                            Вторник
-                        </td>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
                     </tr>
 
                     <!--Среда-->
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td rowspan="8">
-                            Среда
-                        </td>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
                     </tr>
 
                     <!--Четверг-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td rowspan="8">
-                            Четверг
-                        </td>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
                     </tr>
 
                     <!--Пятница-->
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td rowspan="8">
-                            Пятница
-                        </td>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
                     </tr>
 
                     <!--Суббота-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td rowspan="8">
-                            Суббота
-                        </td>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
-
-                        <tr class="Schedule_RightInfo_TableNeChetRow">
-                            <td>
-                                Информатика
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-
-                            <td>
-                                ОБЖ
-                            </td>
-    
-                            <td>
-                                44
-                            </td>
-    
-                            <td>
-                                Иванов
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
                     </tr>
                 </table>
 
