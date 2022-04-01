@@ -19,7 +19,10 @@ img = 0
 @app.route("/getStudent", methods=["GET"])
 def getStud():
     data = request.args
-    return bd.get_student_by_id(int(data["student_id"]))
+    if bd.get_student_by_id(int(data["student_id"])) is None:
+        return {}
+    else:
+        return bd.get_student_by_id(int(data["student_id"]))
 
 
 @app.route("/deleteStudent", methods=["GET"])
@@ -31,7 +34,10 @@ def deleteStud():
 @app.route("/getTeacher", methods=["GET"])
 def getTeach():
     data = request.args
-    return bd.get_teacher_by_id(int(data["teacher_id"]))
+    if bd.get_teacher_by_id(int(data["teacher_id"])) is None:
+        return {}
+    else:
+        return bd.get_teacher_by_id(int(data["teacher_id"]))
 
 
 @app.route("/deleteTeacher", methods=["GET"])
@@ -43,7 +49,10 @@ def deleteTeach():
 @app.route("/getGroup", methods=["GET"])
 def getGroup():
     data = request.args
-    return bd.get_group_by_id(int(data["group_id"]))
+    if bd.get_group_by_id(int(data["group_id"])) is None:
+        return {}
+    else:
+        return bd.get_group_by_id(int(data["group_id"]))
 
 
 @app.route("/deleteGroup", methods=["GET"])
@@ -55,7 +64,10 @@ def deleteGroup():
 @app.route("/getSubject", methods=["GET"])
 def getSub():
     data = request.args
-    return bd.get_subject_by_id(int(data["subject_id"]))
+    if bd.get_subject_by_id(int(data["subject_id"])) is None:
+        return {}
+    else:
+        return bd.get_subject_by_id(int(data["subject_id"]))
 
 
 @app.route("/deleteSubject", methods=["GET"])
