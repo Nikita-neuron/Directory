@@ -19,7 +19,17 @@ img = 0
 @app.route("/getStudent", methods=["GET"])
 def getStud():
     data = request.args
-    return bd.get_student_by_id(int(data["student_id"]))
+    student = bd.get_student_by_id(int(data["student_id"]))
+    if student is None or len(student) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": student
+        }
 
 
 @app.route("/deleteStudent", methods=["GET"])
@@ -31,7 +41,17 @@ def deleteStud():
 @app.route("/getTeacher", methods=["GET"])
 def getTeach():
     data = request.args
-    return bd.get_teacher_by_id(int(data["teacher_id"]))
+    teacher = bd.get_teacher_by_id(int(data["teacher_id"]))
+    if teacher is None or len(teacher) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": teacher
+        }
 
 
 @app.route("/deleteTeacher", methods=["GET"])
@@ -43,7 +63,17 @@ def deleteTeach():
 @app.route("/getGroup", methods=["GET"])
 def getGroup():
     data = request.args
-    return bd.get_group_by_id(int(data["group_id"]))
+    group = bd.get_group_by_id(int(data["group_id"]))
+    if group is None or len(group) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": group
+        }
 
 
 @app.route("/deleteGroup", methods=["GET"])
@@ -55,7 +85,17 @@ def deleteGroup():
 @app.route("/getSubject", methods=["GET"])
 def getSub():
     data = request.args
-    return bd.get_subject_by_id(int(data["subject_id"]))
+    subject = bd.get_subject_by_id(int(data["subject_id"]))
+    if subject is None or len(subject) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": subject
+        }
 
 
 @app.route("/deleteSubject", methods=["GET"])
@@ -70,7 +110,9 @@ def addTeach():
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.add_teacher(data["surname"], data["name"], data["patronymic"], data["email"], data["gender"],
+        fio = data["FIO"]
+        fio = fio.split()
+        bd.add_teacher(fio[0], fio[1], fio[2], data["email"], data["gender"],
                        data["position"],
                        data["date_of_birth"], data["info"], img)
 
@@ -81,7 +123,9 @@ def updateTeach():
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.update_teacher(int(data["teacher_id"]), data["surname"], data["name"], data["patronymic"], data["email"],
+        fio = data["FIO"]
+        fio = fio.split()
+        bd.update_teacher(int(data["teacher_id"]), fio[0], fio[1], fio[2], data["email"],
                           data["gender"], data["position"],
                           data["date_of_birth"], data["info"], img)
 
@@ -99,7 +143,9 @@ def updateStud():
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.update_student(int(data["student_id"]), data["surname"], data["name"], data["patronymic"], data["gender"],
+        fio = data["FIO"]
+        fio = fio.split()
+        bd.update_student(int(data["student_id"]), fio[0], fio[1], fio[2], data["gender"],
                           data["email"],
                           int(id["group_id"]), img, data["date_of_birth"], data["info"])
 
@@ -112,7 +158,9 @@ def addStud():
     if request.files:
         fileimage = request.files["image"]
         img = fileimage.read()
-        bd.add_student(data["surname"], data["name"], data["patronymic"], data["gender"], data["email"],
+        fio = data["FIO"]
+        fio = fio.split()
+        bd.add_student(fio[0], fio[1], fio[2], data["gender"], data["email"],
                        int(id["group_id"]),
                        img, data["date_of_birth"], data["info"])
 
@@ -143,7 +191,8 @@ def allGroups():
 @app.route("/updateSubject", methods=["POST"])
 def updateSub():
     data = request.form
-    bd.update_subject(int(data["id_subject"]), data["name"], int(data["study_hours"]), data["level_education"], data["info"])
+    bd.update_subject(int(data["id_subject"]), data["name"], int(data["study_hours"]), data["level_education"],
+                      data["info"])
 
 
 @app.route("/addSubject", methods=["POST"])
