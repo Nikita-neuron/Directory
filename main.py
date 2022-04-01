@@ -96,7 +96,7 @@ def updateStud():
         fio = fio.split()
         bd.update_student(int(data["id_student"]), fio[0], fio[1], fio[2], data["gender"],
                           data["email"],
-                          int(id["id_group"]), img, data["date_of_birth"], data["info"])
+                          int(id["id"]), img, data["date_of_birth"], data["info"])
 
 
 @app.route("/addStudent", methods=["POST"])
