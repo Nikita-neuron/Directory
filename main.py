@@ -16,27 +16,7 @@ def main():
 img = 0
 
 
-@app.route("/getStudent", methods=["GET"])
-def getStud():
-    data = request.args
-    student = bd.get_student_by_id(int(data["student_id"]))
-    if student is None or len(student) == 0:
-        return {
-            "status": "None",
-            "data": {}
-        }
-    else:
-        return {
-            "status": "OK",
-            "data": student
-        }
-
-
-@app.route("/deleteStudent", methods=["GET"])
-def deleteStud():
-    data = request.args
-    bd.delete_student(int(data["student_id"]))
-
+# ========= TEACHERS =========
 
 @app.route("/getTeacher", methods=["GET"])
 def getTeach():
@@ -58,50 +38,6 @@ def getTeach():
 def deleteTeach():
     data = request.args
     bd.delete_teacher(int(data["teacher_id"]))
-
-
-@app.route("/getGroup", methods=["GET"])
-def getGroup():
-    data = request.args
-    group = bd.get_group_by_id(int(data["group_id"]))
-    if group is None or len(group) == 0:
-        return {
-            "status": "None",
-            "data": {}
-        }
-    else:
-        return {
-            "status": "OK",
-            "data": group
-        }
-
-
-@app.route("/deleteGroup", methods=["GET"])
-def deleteGroup():
-    data = request.args
-    bd.delete_group(int(data["group_id"]))
-
-
-@app.route("/getSubject", methods=["GET"])
-def getSub():
-    data = request.args
-    subject = bd.get_subject_by_id(int(data["subject_id"]))
-    if subject is None or len(subject) == 0:
-        return {
-            "status": "None",
-            "data": {}
-        }
-    else:
-        return {
-            "status": "OK",
-            "data": subject
-        }
-
-
-@app.route("/deleteSubject", methods=["GET"])
-def deleteSub():
-    data = request.args
-    bd.delete_subject(int(data["subject_id"]))
 
 
 @app.route("/addTeacher", methods=["POST"])
@@ -132,7 +68,20 @@ def updateTeach():
 
 @app.route("/getAllTeachers")
 def allTeach():
-    return bd.get_all_teachers()
+    teachers = bd.get_all_teachers()
+    if teachers is None or len(teachers) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": teachers
+        }
+
+
+# ========= STUDENTS =========
 
 
 @app.route("/updateStud", methods=["POST"])
@@ -167,7 +116,42 @@ def addStud():
 
 @app.route("/getAllStudents")
 def allStud():
-    return bd.get_all_students()
+    students = bd.get_all_students()
+    if students is None or len(students) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": students
+        }
+
+
+@app.route("/getStudent", methods=["GET"])
+def getStud():
+    data = request.args
+    student = bd.get_student_by_id(int(data["student_id"]))
+    if student is None or len(student) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": student
+        }
+
+
+@app.route("/deleteStudent", methods=["GET"])
+def deleteStud():
+    data = request.args
+    bd.delete_student(int(data["student_id"]))
+
+
+# ========= GROUPS ==========
 
 
 @app.route("/updateGroup", methods=["POST"])
@@ -185,7 +169,42 @@ def addGroup():
 
 @app.route("/getAllGroups")
 def allGroups():
-    return bd.get_all_groups()
+    groups = bd.get_all_groups()
+    if groups is None or len(groups) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": groups
+        }
+
+
+@app.route("/getGroup", methods=["GET"])
+def getGroup():
+    data = request.args
+    group = bd.get_group_by_id(int(data["group_id"]))
+    if group is None or len(group) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": group
+        }
+
+
+@app.route("/deleteGroup", methods=["GET"])
+def deleteGroup():
+    data = request.args
+    bd.delete_group(int(data["group_id"]))
+
+
+# ======== SUBJECTS ==========
 
 
 @app.route("/updateSubject", methods=["POST"])
@@ -203,12 +222,57 @@ def addSub():
 
 @app.route("/getAllSubjects")
 def getSubjects():
-    return bd.get_all_subjects()
+    subjects = bd.get_all_subjects()
+    if subjects is None or len(subjects) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": subjects
+        }
+
+
+@app.route("/getSubject", methods=["GET"])
+def getSub():
+    data = request.args
+    subject = bd.get_subject_by_id(int(data["subject_id"]))
+    if subject is None or len(subject) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": subject
+        }
+
+
+@app.route("/deleteSubject", methods=["GET"])
+def deleteSub():
+    data = request.args
+    bd.delete_subject(int(data["subject_id"]))
+
+
+# ========= TIMETABLE ==========
 
 
 @app.route("/schedule")
-def schedule():
-    return bd.get_all_timetable()
+def schedules():
+    schedule = bd.get_all_timetable()
+    if schedule is None or len(schedule) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        return {
+            "status": "OK",
+            "data": schedule
+        }
 
 
 # @app.route('/static/userImages/<img_src>')
