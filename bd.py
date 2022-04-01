@@ -106,7 +106,7 @@ class DataBase(metaclass=Singleton):
     def get_student_attendance_by_id(self, student_id):
         attendance = []
         query = "SELECT * FROM attendance WHERE id = (%s)"
-        data = self.get_query(query, student_id)
+        data = self.get_query(query, data=str(student_id))
         if data:
             for elem in data:
                 attendance.append({
@@ -215,7 +215,7 @@ class DataBase(metaclass=Singleton):
     def get_teacher_subjects(self, teacher_id):
         subjects_id = []
         query = "SELECT * FROM subjects_teachers WHERE id_teacher = (%s)"
-        data = self.get_query(query, data=teacher_id)
+        data = self.get_query(query, data=str(teacher_id))
         if data:
             for subject in data:
                 subjects_id.append(subject[1])
@@ -288,7 +288,7 @@ class DataBase(metaclass=Singleton):
     def get_subject_timetable_by_id(self, subject_id):
         attendance_arr = []
         query = "SELECT * FROM subjects_groups WHERE id_subject = (%s)"
-        data = self.get_query(query, subject_id)
+        data = self.get_query(query, data=str(subject_id))
         if data:
             for attendance in data:
                 attendance_arr.append({
@@ -305,7 +305,7 @@ class DataBase(metaclass=Singleton):
     def get_subjects_by_group(self, group_id):
         subjects_arr = []
         query = "SELECT * FROM subjects_groups WHERE id_group = (%s)"
-        data = self.get_query(query, group_id)
+        data = self.get_query(query, data=str(group_id))
         if data:
             for subject in data:
                 subjects_arr.append({
