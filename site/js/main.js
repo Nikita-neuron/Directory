@@ -253,5 +253,22 @@ window.onload = function(){
             SubjectEditTable.children[0].children[i].children[1].innerHTML = "";
         }
     }
+
+
+
+    // headers = {
+    //     "HOST": "ec2-52-18-116-67.eu-west-1.compute.amazonaws.com",
+    //     "USER": "vrrwanhjlwjpnf",
+    //     "PASSWORD": "9fe0ed5b9491041a3d83c321a47250b8e264cf68efb7b5521c6a715e5c9f077e",
+    //     "student_id": "0"
+    // }
+    // var request = fetch("/getStudent", headers)
+
+    
 };
 
+// var data = {"student_id": "0"};
+// var url = new URL("http://localhost:8000/Directory/getStudent");
+
+// for (let k in data) {url.searchParams.append(k, data[k]); };
+// fetch(url);

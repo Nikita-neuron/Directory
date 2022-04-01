@@ -310,6 +310,10 @@
 
 
 
+
+
+
+
 .MainMainInnerBlock {
     border: 1px solid black;
     margin: 5px;
@@ -332,6 +336,19 @@
     width: 100%;
     min-height: 90%;
     max-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MainMainInnerBlock_MainDiv_Cell {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #3F4649;
+
+    width: 80%;
+    height: 95%;
 }
 
 
