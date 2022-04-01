@@ -123,6 +123,14 @@ def allStud():
             "data": {}
         }
     else:
+        for student in students:
+            group = student["id_group"]
+            group = bd.get_group_by_id(group)
+            id_headman = group["id_headman"]
+            if id_headman == student["id_student"]:
+                student["headman"] = "YES"
+            else:
+                student["headman"] = "NO"
         return {
             "status": "OK",
             "data": students
@@ -139,6 +147,13 @@ def getStud():
             "data": {}
         }
     else:
+        group = student["id_group"]
+        group = bd.get_group_by_id(group)
+        id_headman = group["id_headman"]
+        if id_headman == int(data["student_id"]):
+            student["headman"] = "YES"
+        else:
+            student["headman"] = "NO"
         return {
             "status": "OK",
             "data": student
