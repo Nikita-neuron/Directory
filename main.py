@@ -341,7 +341,7 @@ def schedules():
 
 @app.route('/UserImg')
 def photo():
-    id_student = request.json
+    id_student = request.args
     student = bd.get_student_by_id(int(id_student))
     img_src = student["image"]
     return send_file(io.BytesIO(img_src), attachment_filename='img_src.png', mimetype='image/png')
