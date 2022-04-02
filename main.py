@@ -44,7 +44,7 @@ def deleteTeach():
 @app.route("/addTeacher", methods=["POST"])
 def addTeach():
     data = request.json
-    if request.files:
+    if data:
         fileimage = request.files["image"]
         img = fileimage.read()
         fio = data["FIO"]
@@ -52,15 +52,15 @@ def addTeach():
         bd.add_teacher(fio[0], fio[1], fio[2], data["email"], data["gender"],
                        data["position"],
                        data["date_of_birth"], data["info"], img)
-        return {
-            "status": "OK"
-        }
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/updateTeacher", methods=["POST"])
 def updateTeach():
     data = request.json
-    if request.files:
+    if data:
         fileimage = request.files["image"]
         img = fileimage.read()
         fio = data["FIO"]
@@ -68,9 +68,9 @@ def updateTeach():
         bd.update_teacher(int(data["id_teacher"]), fio[0], fio[1], fio[2], data["email"],
                           data["gender"], data["position"],
                           data["date_of_birth"], data["info"], img)
-        return {
-            "status": "OK"
-        }
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/getAllTeachers")
@@ -95,18 +95,18 @@ def allTeach():
 def updateStud():
     data = request.json
     group = data["name_group"]
-    id = bd.get_group_by_name(group)
-    if request.files:
+    id_group = bd.get_group_by_name(group)
+    if data:
         fileimage = request.files["image"]
         img = fileimage.read()
         fio = data["FIO"]
         fio = fio.split()
         bd.update_student(int(data["id_student"]), fio[0], fio[1], fio[2], data["gender"],
                           data["email"],
-                          int(id["id"]), img, data["date_of_birth"], data["info"])
-        return {
-            "status": "OK"
-        }
+                          int(id_group["id"]), img, data["date_of_birth"], data["info"])
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/addStudent", methods=["POST"])
@@ -114,7 +114,7 @@ def addStud():
     data = request.json
     group = data["name_group"]
     id_group = bd.get_group_by_name(group)
-    if request.files:
+    if data:
         fileimage = request.files["image"]
         img = fileimage.read()
         fio = data["FIO"]
@@ -131,9 +131,9 @@ def addStud():
                     bd.update_group(group["id"], group["name"], id_student, group["level_education"],
                                     group["cipher"], group["subdivision"])
                     break
-        return {
-            "status": "OK"
-        }
+    return {
+        "status": "OK"
+    }
 
 
 @app.route("/getAllStudents")
@@ -148,6 +148,12 @@ def allStud():
         for student in students:
             group = student["id_group"]
             group = bd.get_group_by_id(group)
+            if group is None:
+                student["headman"] = "NO"
+                return{
+                    "status": "OK",
+                    "data": students
+                }
             id_headman = group["id_headman"]
             if id_headman == student["id"]:
                 student["headman"] = "YES"
@@ -333,9 +339,12 @@ def schedules():
         }
 
 
-# @app.route('/static/UserImg/<img>')
-# def photo(img_src):
-# return send_file(io.BytesIO(img), attachment_filename='user.png', mimetype='image/png')
+@app.route('/UserImg')
+def photo():
+    id_student = request.json
+    student = bd.get_student_by_id(int(id_student))
+    img_src = student["image"]
+    return send_file(io.BytesIO(img_src), attachment_filename='img_src.png', mimetype='image/png')
 
 
 if __name__ == "__main__":
