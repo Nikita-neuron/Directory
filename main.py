@@ -150,7 +150,7 @@ def allStud():
             group = bd.get_group_by_id(group)
             if group is None:
                 student["headman"] = "NO"
-                return{
+                return {
                     "status": "OK",
                     "data": students
                 }
@@ -212,11 +212,12 @@ def updateGroup():
     headman = data["headman"]
     headman = headman.split()
     students = bd.get_all_students()
+    id_headman = 0
     for student in students:
         if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
-            id_student = student["id"]
+            id_headman = student["id"]
             break
-    bd.update_group(int(data["id_group"]), data["name"], id_student, data["level_education"],
+    bd.update_group(int(data["id_group"]), data["name"], id_headman, data["level_education"],
                     data["cipher"], data["subdivision"])
     return {
         "status": "OK"
@@ -229,6 +230,7 @@ def addGroup():
     headman = data["headman"]
     headman = headman.split()
     students = bd.get_all_students()
+    id_student = 0
     for student in students:
         if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
             id_student = student["id"]
