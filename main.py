@@ -315,14 +315,6 @@ def addSub():
     data = request.json
     teachers = data["teachers"].split(',')
     groups = data["groups"].split(',')
-    for teacher in teachers:
-        teachers_arr.append({
-            data["name"]: teacher
-        })
-    for group in groups:
-        teachers_arr.append({
-            data["name"]: group
-        })
     bd.add_subject(data["name"], int(data["study_hours"]), data["level_education"], data["info"])
     return {
         "status": "OK"
@@ -347,8 +339,6 @@ def getSubjects():
 @app.route("/getSubject", methods=["GET"])
 def getSub():
     data = request.args
-    teachers = []
-    groups = []
     subject = bd.get_subject_by_id(int(data["id_subject"]))
     if subject is None or len(subject) == 0:
         return {
@@ -356,11 +346,18 @@ def getSub():
             "data": {}
         }
     else:
-        name = subject["name"]
-        for teacher in teachers_arr:
-            teachers.append(teacher[name])
-        for group in group_arr:
-            groups.append(group[name])
+        teachers = []
+        groups = []
+        schedules_a = bd.get_subject_timetable_by_id(int(data["id_subject"]))
+        for schedule in schedules_a:
+            teacher = bd.get_teacher_by_id(schedule["id_teacher"])
+            group = bd.get_group_by_id(schedule["id_group"])
+            teachers.append({
+                "name": teacher["name"],
+                "surname": teacher["surname"],
+                "patronymic": teacher["patronymic"]
+            })
+            groups.append(group["name"])
         return {
             "status": "OK",
             "data": subject,
