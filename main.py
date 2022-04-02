@@ -302,7 +302,6 @@ def updateSub():
     data = request.json
     teachers = data["teachers"]
     groups = data["groups"]
-    #for teacher in teachers:
     bd.update_subject(int(data["id_subject"]), data["name"], int(data["study_hours"]), data["level_education"],
                       data["info"])
     return {
@@ -313,8 +312,16 @@ def updateSub():
 @app.route("/addSubject", methods=["POST"])
 def addSub():
     data = request.json
-    teachers = data["teachers"].split(',')
-    groups = data["groups"].split(',')
+#    teachers = data["teachers"].split(',')
+#    groups = data["groups"].split(',')
+#    for teacher in teachers:
+#        teachers_arr.append({
+#            data["name"]: teacher
+#        })
+#    for group in groups:
+#        group_arr.append({
+#            data["name"]: group
+#        })
     bd.add_subject(data["name"], int(data["study_hours"]), data["level_education"], data["info"])
     return {
         "status": "OK"
