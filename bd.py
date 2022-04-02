@@ -54,7 +54,7 @@ class DataBase(metaclass=Singleton):
         try:
             with self.connection.cursor() as cursor:
                 if data:
-                    cursor.execute(query, data)
+                    cursor.execute(query, [data])
                 else:
                     cursor.execute(query)
                 return cursor.fetchall()
