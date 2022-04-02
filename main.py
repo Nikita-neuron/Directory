@@ -11,6 +11,8 @@ def main():
     return render_template("index.html")
 
 
+teachers_arr = []
+group_arr = []
 img = 0
 
 
@@ -263,7 +265,7 @@ def getGroup():
     students = bd.get_all_students()
     students_group = []
     for student in students:
-        if student["id_group"] == data:
+        if int(student["id_group"]) == int(data["id_group"]):
             students_group.append({
                 "name": student["name"],
                 "surname": student["surname"],
@@ -308,6 +310,16 @@ def updateSub():
 @app.route("/addSubject", methods=["POST"])
 def addSub():
     data = request.json
+    teachers = data["teachers"].split(',')
+    groups = data["groups"].split(',')
+    for teacher in teachers:
+        teachers_arr.append({
+            data["name"]: teacher
+        })
+    for group in groups:
+        teachers_arr.append({
+            data["name"]: group
+        })
     bd.add_subject(data["name"], int(data["study_hours"]), data["level_education"], data["info"])
     return {
         "status": "OK"
@@ -332,6 +344,8 @@ def getSubjects():
 @app.route("/getSubject", methods=["GET"])
 def getSub():
     data = request.args
+    teachers = []
+    groups = []
     subject = bd.get_subject_by_id(int(data["id_subject"]))
     if subject is None or len(subject) == 0:
         return {
@@ -339,10 +353,18 @@ def getSub():
             "data": {}
         }
     else:
+        name = subject["name"]
+        for teacher in teachers_arr:
+            teachers.append(teacher[name])
+        for group in group_arr:
+            groups.append(group[name])
         return {
             "status": "OK",
-            "data": subject
+            "data": subject,
+            "teachers": teachers,
+            "groups": groups
         }
+
 
 @app.route("/deleteSubject", methods=["GET"])
 def deleteSub():
