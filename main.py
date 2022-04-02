@@ -300,6 +300,9 @@ def deleteGroup():
 @app.route("/updateSubject", methods=["POST"])
 def updateSub():
     data = request.json
+    teachers = data["teachers"]
+    groups = data["groups"]
+    #for teacher in teachers:
     bd.update_subject(int(data["id_subject"]), data["name"], int(data["study_hours"]), data["level_education"],
                       data["info"])
     return {
