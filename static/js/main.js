@@ -610,7 +610,6 @@ window.onload = function(){
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
-            console.log(json);
 
             if (json["status"] != "None") {
 
