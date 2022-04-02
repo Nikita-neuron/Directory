@@ -115,7 +115,7 @@ def addStud():
     group = data["name_group"]
     id_group = bd.get_group_by_name(group)
     if data:
-        fileimage = request.files["image"]
+        fileimage = data["image"]
         img = fileimage.read()
         fio = data["FIO"]
         fio = fio.split()
@@ -177,6 +177,12 @@ def getStud():
     else:
         group = student["id_group"]
         group = bd.get_group_by_id(group)
+        if group is None:
+            student["headman"] = "NO"
+            return {
+                "status": "OK",
+                "data": student
+            }
         id_headman = group["id_headman"]
         if id_headman == int(data["student_id"]):
             student["headman"] = "YES"
