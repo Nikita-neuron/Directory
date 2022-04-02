@@ -507,11 +507,11 @@ class DataBase(metaclass=Singleton):
         tables = ["students", "subjects_groups"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_group = %s"""
-            student_tuple = group_id
+            student_tuple = str(group_id)
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM groups WHERE id = %s"""
-        student_tuple = group_id
+        student_tuple = str(group_id)
         self.insert_query(insert_query, student_tuple)
 
     # ===== TIMETABLE ======
