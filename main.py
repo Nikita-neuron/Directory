@@ -260,15 +260,26 @@ def allGroups():
 def getGroup():
     data = request.args
     group = bd.get_group_by_id(int(data["id_group"]))
+    students = bd.get_all_students()
+    students_group = []
+    for student in students:
+        if student["id_group"] == data:
+            students_group.append({
+                "name": student["name"],
+                "surname": student["surname"],
+                "patronymic": student["patronymic"]
+            })
     if group is None or len(group) == 0:
         return {
             "status": "None",
-            "data": {}
+            "data": {},
+            "group": students_group
         }
     else:
         return {
             "status": "OK",
-            "data": group
+            "data": group,
+            "group": students_group
         }
 
 
@@ -372,3 +383,4 @@ def photo():
 if __name__ == "__main__":
     bd = DataBase()
     app.run(debug=True)
+    bd.close()
