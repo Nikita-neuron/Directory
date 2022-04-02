@@ -81,6 +81,22 @@ window.onload = function(){
         updSearch(3, ValueOfSearch);
     }
 
+    //Поиск группы в расписании
+
+    const ScheduleTableList = document.getElementById("ScheduleTableList");
+    const ScheduleSearchField = document.getElementById("ScheduleSearchField");
+
+    ScheduleSearchField.oninput = function() {
+        for (let i = 0; i < ScheduleTableList.children.length; i++) {
+            if (ScheduleTableList.children[i].children[0].children[0].children[0].innerText.toLowerCase().includes(this.value.toLowerCase()) == false) {
+                ScheduleTableList.children[i].style.display = "none";
+            }
+            else {
+                ScheduleTableList.children[i].style.display = "flex";
+            }
+        }
+    }
+
 
 
     //Стилизированное радио
@@ -256,19 +272,360 @@ window.onload = function(){
 
 
 
-    // headers = {
-    //     "HOST": "ec2-52-18-116-67.eu-west-1.compute.amazonaws.com",
-    //     "USER": "vrrwanhjlwjpnf",
-    //     "PASSWORD": "9fe0ed5b9491041a3d83c321a47250b8e264cf68efb7b5521c6a715e5c9f077e",
-    //     "student_id": "0"
-    // }
-    // var request = fetch("/getStudent", headers)
+    //Get Запросы
+
+    //Получение всех студентов и вывод списка
+    StudentList = document.getElementById("StudentList");
+
+    const getAllStudents = async function() {
+        let url = new URL("http://127.0.0.1:5000/getAllStudents");
+    
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+
+            if (json["status"] != "None") {
+
+                for (let i = 0; i < json["data"].length; i++) {
+                    var str = '<div class="LeftListBlock_PersonCell JSStudentBTN" id="Student' + (i+1).toString() + '"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"][0] + '</span></div>';
+                    StudentList.innerHTML += str;
+                }
+
+            }
+            else {
+                console.log("База данных студентов пуста", json);
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+    // getAllStudents();
+
+
+
+
+    //Получение одного студента и вывод его данных
+
+    StudentInfo1 = document.getElementById("StudentInfo1");
+    StudentInfo2 = document.getElementById("StudentInfo2");
+    StudentInfo3 = document.getElementById("StudentInfo3");
+    StudentInfo4 = document.getElementById("StudentInfo4");
+    StudentInfo5 = document.getElementById("StudentInfo5");
+    StudentInfo6 = document.getElementById("StudentInfo6");
+    StudentInfo7 = document.getElementById("StudentInfo7");
+
+    const getOneStudent = async function() {
+        let data = { "student_id" : "0" };
+        let url = new URL("http://127.0.0.1:5000/getStudent");
+        for (let k in data) { url.searchParams.append(k, data[k]); }
+    
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+            
+            if (json["status"] != "None") {
+                StudentInfo1.innerHTML = json["data"]["surname"] + " " + json["data"]["name"] + " " + json["data"]["patronymic"];
+                StudentInfo2.innerHTML = json["data"]["gender"];
+                StudentInfo3.innerHTML = json["data"]["date_of_birth"];
+                StudentInfo4.innerHTML = json["data"]["email"];
+                StudentInfo5.innerHTML = json["data"]["surname"];
+                StudentInfo6.innerHTML = json["data"]["surname"];
+                StudentInfo7.innerHTML = json["data"]["surname"];
+            }
+            else {
+                console.log("Об этом студенте нет информации", json);
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+
+
+
+    //Добавление нового студента
+
+    const AddEditStudent1 = document.getElementById("AddEditStudent1");
+    const AddEditStudent2 = document.getElementById("AddEditStudent2");
+    const AddEditStudent3 = document.getElementById("AddEditStudent3");
+    const AddEditStudent4 = document.getElementById("AddEditStudent4");
+    const AddEditStudent5 = document.getElementById("AddEditStudent5");
+    const AddEditStudent6 = document.getElementById("AddEditStudent6");
+    const AddEditStudent7 = document.getElementById("AddEditStudent7");
+
+    const StudentFileInput = document.getElementById("StudentFileInput");
+    let StudentFile = StudentFileInput.files[0];
+
+    const AddEditStudentBTN = document.getElementById("AddEditStudentBTN");
+
+    const AddOneStudent = async function() {
+        let student = {
+            FIO: AddEditStudent1.innerHTML,
+            gender: AddEditStudent3.innerHTML,
+            name_group: AddEditStudent2.innerHTML,
+            date_of_birth: AddEditStudent4.innerHTML,
+            email: AddEditStudent5.innerHTML,
+            headman: AddEditStudent6.innerHTML,
+            info: AddEditStudent7.innerHTML,
+            image: StudentFile
+        };
+
+        let url = new URL("http://127.0.0.1:5000/addStudent");
+    
+        let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(student)
+        });
+        if (response.ok) {
+            let json = await response.json();
+            console.log(json);
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+    //Обновление студента
+
+    const EditOneStudent = async function() {
+        let student = {
+            id_student: 0,
+            FIO: AddEditStudent1.innerHTML,
+            gender: AddEditStudent3.innerHTML,
+            name_group: AddEditStudent2.innerHTML,
+            date_of_birth: AddEditStudent4.innerHTML,
+            email: AddEditStudent5.innerHTML,
+            headman: AddEditStudent6.innerHTML,
+            info: AddEditStudent7.innerHTML,
+            image: ""
+        };
+
+        let url = new URL("http://127.0.0.1:5000/updateStud");
+    
+        let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(student)
+        });
+        if (response.ok) {
+            let json = await response.json();
+            console.log(json);
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+
+    AddEditStudentBTN.onclick = function() {
+        // let StudentFile = StudentFileInput.files[0];
+        // let reader = new FileReader();
+        // reader.readAsDataURL(StudentFile);
+
+        // reader.onload = function() {
+        //     console.log(reader.result);
+        // };
+
+        // AddOneStudent();
+    }
+
+
+
+
+    //Удаление студента
+
+    const DeleteStudentBTN = document.getElementById("DeleteStudentBTN");
+
+    const delOneStudent = async function() {
+        let data = { "student_id" : "0" };
+        let url = new URL("http://127.0.0.1:5000/deleteStudent");
+        for (let k in data) { url.searchParams.append(k, data[k]); }
+    
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+    DeleteStudentBTN.onclick = function() {
+        // delOneStudent();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
+
+    //Добавление нового преподавателя
+
+    const AddEditTeacher1 = document.getElementById("AddEditTeacher1");
+    const AddEditTeacher2 = document.getElementById("AddEditTeacher2");
+    const AddEditTeacher3 = document.getElementById("AddEditTeacher3");
+    const AddEditTeacher4 = document.getElementById("AddEditTeacher4");
+    const AddEditTeacher5 = document.getElementById("AddEditTeacher5");
+    const AddEditTeacher6 = document.getElementById("AddEditTeacher6");
+
+    const AddEditTeacherBTN = document.getElementById("AddEditTeacherBTN");
+
+    let teacher = {
+        FIO: AddEditTeacher1.innerHTML,
+        position: AddEditTeacher3.innerHTML,
+        gender: AddEditTeacher2.innerHTML,
+        date_of_birth: AddEditTeacher4.innerHTML,
+        email: AddEditTeacher5.innerHTML,
+        info: AddEditTeacher6.innerHTML,
+        image: ""
+    };
+    const AddOneTeacher = async function() {
+        let url = new URL("http://127.0.0.1:5000/addTeacher");
+    
+        let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(teacher)
+        });
+        if (response.ok) {
+            let json = await response.json();
+            console.log(json);
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+
+    AddEditTeacherBTN.onclick = function() {
+        // AddOneTeacher();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Добавление группы
+
+    const AddEditGroup1 = document.getElementById("AddEditGroup1");
+    const AddEditGroup2 = document.getElementById("AddEditGroup2");
+    const AddEditGroup3 = document.getElementById("AddEditGroup3");
+    const AddEditGroup4 = document.getElementById("AddEditGroup4");
+    const AddEditGroup5 = document.getElementById("AddEditGroup5");
+
+    const AddEditGroupBTN = document.getElementById("AddEditGroupBTN");
+
+    const AddOneGroup = async function() {
+        let group = {
+            name: AddEditGroup1.innerHTML,
+            level_education: AddEditGroup2.innerHTML,
+            cipher: AddEditGroup3.innerHTML,
+            subdivision: AddEditGroup4.innerHTML,
+            headman: AddEditGroup5.innerHTML,
+        };
+
+        let url = new URL("http://127.0.0.1:5000/addGroup");
+    
+        let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(group)
+        });
+        if (response.ok) {
+            let json = await response.json();
+            console.log(json);
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+    //Обновление группы
+
+    const EditOneGroup = async function() {
+        let group = {
+            id_group: 0,
+            name: AddEditGroup1.innerHTML,
+            level_education: AddEditGroup2.innerHTML,
+            cipher: AddEditGroup3.innerHTML,
+            subdivision: AddEditGroup4.innerHTML,
+            headman: AddEditGroup5.innerHTML,
+        };
+
+        let url = new URL("http://127.0.0.1:5000/addGroup");
+    
+        let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(group)
+        });
+        if (response.ok) {
+            let json = await response.json();
+            console.log(json);
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+
+    AddEditGroupBTN.onclick = function() {
+        // AddOneGroup();
+    }
+
+
+    //Получение групп
+
+    GroupList = document.getElementById("GroupList");
+
+    const getAllGroups = async function() {
+        let url = new URL("http://127.0.0.1:5000/getAllGroups");
+    
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+
+            if (json["status"] != "None") {
+
+                for (let i = 0; i < json["data"].length; i++) {
+                    // var str = '<div class="LeftListBlock_PersonCell JSStudentBTN" id="Student' + (i+1).toString() + '"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"][0] + '</span></div>';
+                    var str = '<div class="Groups_Middle_GroupList_Cell"><img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg"><span>1. ИКБО-01-21</span></div>';
+                    GroupList.innerHTML += str;
+                }
+
+            }
+            else {
+                console.log("База данных групп пуста", json);
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+    getAllGroups();
 };
-
-// var data = {"student_id": "0"};
-// var url = new URL("http://localhost:8000/Directory/getStudent");
-
-// for (let k in data) {url.searchParams.append(k, data[k]); };
-// fetch(url);
