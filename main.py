@@ -372,3 +372,4 @@ def photo():
 if __name__ == "__main__":
     bd = DataBase()
     app.run(debug=True)
+    bd.close()
