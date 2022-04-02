@@ -209,7 +209,14 @@ def deleteStud():
 @app.route("/updateGroup", methods=["POST"])
 def updateGroup():
     data = request.json
-    bd.update_group(int(data["id_group"]), data["name"], int(data["id_headman"]), data["level_education"],
+    headman = data["headman"]
+    headman = headman.split()
+    students = bd.get_all_students()
+    for student in students:
+        if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
+            id_student = student["id"]
+            break
+    bd.update_group(int(data["id_group"]), data["name"], id_student, data["level_education"],
                     data["cipher"], data["subdivision"])
     return {
         "status": "OK"
@@ -219,7 +226,14 @@ def updateGroup():
 @app.route("/addGroup", methods=["POST"])
 def addGroup():
     data = request.json
-    bd.add_group(data["name"], data["id_headman"], data["level_education"], data["cipher"], data["subdivision"])
+    headman = data["headman"]
+    headman = headman.split()
+    students = bd.get_all_students()
+    for student in students:
+        if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
+            id_student = student["id"]
+            break
+    bd.add_group(data["name"], id_student, data["level_education"], data["cipher"], data["subdivision"])
     return {
         "status": "OK"
     }
