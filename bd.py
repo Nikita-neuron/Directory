@@ -545,4 +545,5 @@ if __name__ == "__main__":
     # db.add_subject("testSubject", 10000, "Бакалавр", "Some info")
     # db.update_group(1, "ИКБО-01-21", 0, "Бакалавриат", "09.03.04", "Институт технологий")
     print(db.get_all_groups())
+    print(db.get_group_by_id(10))
     db.close()
