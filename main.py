@@ -344,7 +344,6 @@ def getSub():
             "data": subject
         }
 
-
 @app.route("/deleteSubject", methods=["GET"])
 def deleteSub():
     data = request.args

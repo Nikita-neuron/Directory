@@ -21,13 +21,14 @@ class DataBase(metaclass=Singleton):
                 password=PASSWORD,
                 dbname=DB_NAME)
             self.connection.autocommit = True
+            print("[INFO DB] Connection successful")
         except Exception as _ex:
-            print("[INFO] Error with connection", _ex)
+            print("[INFO DB] Error with connection", _ex)
 
     def close(self):
         if self.connection:
             self.connection.close()
-            print("[INFO] PostgreSQL connection closed")
+            print("[INFO DB] PostgreSQL connection closed")
 
     def get_server_version(self):
         try:
@@ -37,7 +38,7 @@ class DataBase(metaclass=Singleton):
                 )
                 print(f"Server version: {cursor.fetchone()}")
         except Exception as _ex:
-            print("[INFO] Error with get server version", _ex)
+            print("[INFO DB] Error:", _ex)
 
     def insert_query(self, query, data):
         try:
@@ -47,7 +48,7 @@ class DataBase(metaclass=Singleton):
                 else:
                     cursor.execute(query)
         except Exception as _ex:
-            print("[INFO] Error with add student", _ex)
+            print("[INFO DB] Error:", _ex)
 
     def get_query(self, query, data=None):
         try:
@@ -58,7 +59,7 @@ class DataBase(metaclass=Singleton):
                     cursor.execute(query)
                 return cursor.fetchall()
         except Exception as _ex:
-            print("[INFO] Error with get all students", _ex)
+            print("[INFO DB] Error:", _ex)
             return None
 
     # ========= STUDENTS ===========
@@ -506,11 +507,11 @@ class DataBase(metaclass=Singleton):
         tables = ["students", "subjects_groups"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_group = %s"""
-            student_tuple = group_id
+            student_tuple = str(group_id)
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM groups WHERE id = %s"""
-        student_tuple = group_id
+        student_tuple = str(group_id)
         self.insert_query(insert_query, student_tuple)
 
     # ===== TIMETABLE ======
@@ -542,5 +543,5 @@ if __name__ == "__main__":
     # student_data = db.get_student_by_id(3)
     # print("Student:", student_data)
     # db.add_subject("testSubject", 10000, "Бакалавр", "Some info")
-    print(db.get_all_subjects())
+    print(db.get_all_groups())
     db.close()
