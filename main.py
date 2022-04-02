@@ -219,7 +219,7 @@ def updateGroup():
 @app.route("/addGroup", methods=["POST"])
 def addGroup():
     data = request.json
-    bd.add_group(data["name"], int(data["id_headman"]), data["level_education"], data["cipher"], data["subdivision"])
+    bd.add_group(data["name"], data["id_headman"], data["level_education"], data["cipher"], data["subdivision"])
     return {
         "status": "OK"
     }
