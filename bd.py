@@ -134,14 +134,14 @@ class DataBase(metaclass=Singleton):
                        id_group, image, date_of_birth, info):
         insert_query = """UPDATE students 
                             SET surname = %s, 
-                            SET name = %s, 
-                            SET patronymic = %s, 
-                            SET gender = %s, 
-                            SET email = %s, 
-                            SET id_group = %s, 
-                            SET image = %s,
-                            SET date_of_birth = %s,
-                            SET info = %s,
+                            name = %s, 
+                            patronymic = %s, 
+                            gender = %s, 
+                            email = %s, 
+                            id_group = %s, 
+                            image = %s,
+                            date_of_birth = %s,
+                            info = %s
                             WHERE id = %s"""
         student_tuple = (surname, name, patronymic, gender, email, id_group, image, date_of_birth,
                          info, student_id)
@@ -150,8 +150,8 @@ class DataBase(metaclass=Singleton):
     def update_student_attendance_by_id(self, student_id, id_subject, id_day, was_not_was):
         insert_query = """UPDATE attendance 
                             SET id_subject = %s, 
-                            SET id_day = %s, 
-                            SET was_not_was = %s, 
+                            id_day = %s, 
+                            was_not_was = %s 
                             WHERE id_student = %s"""
         student_tuple = (id_subject, id_day, was_not_was, student_id)
         self.insert_query(insert_query, student_tuple)
@@ -231,14 +231,14 @@ class DataBase(metaclass=Singleton):
     def update_teacher(self, teacher_id, surname, name, patronymic, email, gender, position, date_of_birth, info, image):
         insert_query = """UPDATE teachers 
                             SET surname = %s, 
-                            SET name = %s, 
-                            SET patronymic = %s, 
-                            SET email = %s,
-                            SET gender = %s,
-                            SET position = %s,
-                            SET date_of_birth = %s,
-                            SET info = %s,
-                            SET image = %s,
+                            name = %s, 
+                            patronymic = %s, 
+                            email = %s,
+                            gender = %s,
+                            position = %s,
+                            date_of_birth = %s,
+                            info = %s,
+                            image = %s
                             WHERE id = %s"""
         student_tuple = (surname, name, patronymic, email, gender, position, date_of_birth, info, image, teacher_id)
         self.insert_query(insert_query, student_tuple)
@@ -329,9 +329,9 @@ class DataBase(metaclass=Singleton):
     def update_subject(self, id_subject, name, study_hours, level_education, info):
         insert_query = """UPDATE subjects  
                             SET name = %s,
-                            SET study_hours = %s,
-                            SET level_education = %s,
-                            SET info = %s,
+                            study_hours = %s,
+                            level_education = %s,
+                            info = %s
                             WHERE id = %s"""
         subject_tuple = (name, study_hours, level_education, info, id_subject)
         self.insert_query(insert_query, subject_tuple)
@@ -383,8 +383,8 @@ class DataBase(metaclass=Singleton):
     def update_day(self, day_id, day, month, year):
         insert_query = """UPDATE days  
                             SET day = %s,
-                            SET month = %s,
-                            SET year = %s
+                            month = %s,
+                            year = %s
                             WHERE id = %s"""
         day_tuple = (day, month, year, day_id)
         self.insert_query(insert_query, day_tuple)
@@ -482,10 +482,10 @@ class DataBase(metaclass=Singleton):
     def update_group(self, group_id, name, id_headman, level_education, cipher, subdivision):
         insert_query = """UPDATE groups  
                             SET name = %s,
-                            SET id_headman = %s,
-                            SET level_education = %s,
-                            SET cipher = %s,
-                            SET subdivision = %s
+                            id_headman = %s,
+                            level_education = %s,
+                            cipher = %s,
+                            subdivision = %s
                             WHERE id = %s"""
         group_tuple = (name, id_headman, level_education, cipher, subdivision, group_id)
         self.insert_query(insert_query, group_tuple)
@@ -494,11 +494,11 @@ class DataBase(metaclass=Singleton):
                                      pair_number, even_odd, id_teacher, room):
         insert_query = """UPDATE subjects_groups  
                             SET id_subject = %s,
-                            SET day_of_week_number = %s,
-                            SET pair_number = %s,
-                            SET even_odd = %s,
-                            SET id_teacher = %s,
-                            SET room = %s
+                            day_of_week_number = %s,
+                            pair_number = %s,
+                            even_odd = %s,
+                            id_teacher = %s,
+                            room = %s
                             WHERE id_group = %s"""
         group_tuple = (id_subject, day_of_week_number, pair_number, even_odd, id_teacher, room, id_group)
         self.insert_query(insert_query, group_tuple)
@@ -543,5 +543,6 @@ if __name__ == "__main__":
     # student_data = db.get_student_by_id(3)
     # print("Student:", student_data)
     # db.add_subject("testSubject", 10000, "Бакалавр", "Some info")
+    # db.update_group(1, "ИКБО-01-21", 0, "Бакалавриат", "09.03.04", "Институт технологий")
     print(db.get_all_groups())
     db.close()
