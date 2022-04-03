@@ -505,7 +505,7 @@ class DataBase(metaclass=Singleton):
 
     def delete_timetable_by_group_id(self, id_group):
         insert_query = """DELETE FROM subjects_groups WHERE id_group = %s"""
-        student_tuple = (id_group)
+        student_tuple = (str(id_group))
         self.insert_query(insert_query, student_tuple)
 
     def delete_group(self, group_id):
@@ -551,5 +551,5 @@ if __name__ == "__main__":
     # db.update_group(1, "ИКБО-01-21", 0, "Бакалавриат", "09.03.04", "Институт технологий")
     # db.add_teacher("testSurname", "testName", "testPatronymic", "test@test.com", "Мужской", "Старший преподаватель",
     #                "09.12.1988", "SomeInfo", "")
-    print(db.get_all_teachers())
+    print(db.get_all_students())
     db.close()

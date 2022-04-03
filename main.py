@@ -15,6 +15,10 @@ def main():
 def editWindow():
     return render_template("editWindow.html")
 
+@app.route("/imageUpload")
+def imageUpload():
+    return render_template("imageUpload.html")
+
 
 teachers_arr = []
 group_arr = []
@@ -394,7 +398,7 @@ def deleteSub():
     }
 
 
-# ========= TIMETABLE ==========
+# ========= TIMETABLE/SCHEDULE ==========
 
 
 @app.route("/schedule")
@@ -412,26 +416,41 @@ def schedules():
         }
 
 
-@app.route("/getGroupTimetable")
+@app.route("/getGroupTimetable", methods=["GET"])
 def getTimetable():
     data = request.args
     timetable = bd.get_group_timetable_by_id(int(data["id_group"]))
     if timetable is None or len(timetable) == 0:
         return {
             "status": "None",
-            "timetable": {}
+            "data": {}
         }
     else:
         return {
             "status": "OK",
-            "timetable": timetable
+            "data": timetable
         }
 
 
-@app.route('/UserImg')
+@app.route("/addGroupTimetable", methods=["POST"])
+def addTimetable():
+    data = request.json
+    group_timetable = data["timetable"]
+    bd.delete_timetable_by_group_id(int(data["id_group"]))
+    for timetableGroup in group_timetable:
+        bd.add_group_timetable(int(timetableGroup["id_subject"]), int(timetableGroup["id_group"]),
+                               int(timetableGroup["day_of_week_number"]), timetableGroup["pair_number"],
+                               timetableGroup["even_odd"], int(timetableGroup["id_teacher"]),
+                               timetableGroup["room"])
+    return {
+        "status": "OK"
+    }
+
+
+@app.route('/UserImg', methods=["GET"])
 def photo():
-    id_student = request.args
-    student = bd.get_student_by_id(id_student)
+    data = request.args
+    student = bd.get_student_by_id(int(data["id_student"]))
     img_src = student["image"]
     return send_file(io.BytesIO(img_src), attachment_filename='img_src.png', mimetype='image/png')
 
