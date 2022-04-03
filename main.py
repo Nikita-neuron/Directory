@@ -183,7 +183,8 @@ def getStud():
             student["headman"] = "NO"
             return {
                 "status": "OK",
-                "data": student
+                "data": student,
+                "group": {}
             }
         id_headman = group["id_headman"]
         if id_headman == int(data["student_id"]):
@@ -192,7 +193,8 @@ def getStud():
             student["headman"] = "NO"
         return {
             "status": "OK",
-            "data": student
+            "data": student,
+            "group": group["name"]
         }
 
 
