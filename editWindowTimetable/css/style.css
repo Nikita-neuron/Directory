@@ -105,6 +105,19 @@ body {
     overflow: auto;
 }
 
+.choose-day-timetable::-webkit-scrollbar {
+    width: 20px;
+    background-color: #3F4649;
+}
+
+.choose-day-timetable::-webkit-scrollbar-thumb {
+    background-color: #353738;
+}
+
+.choose-day-timetable::-webkit-scrollbar-thumb:hover {
+    background-color: #2c2d2e;
+}
+
 .timetable-pair {
     width: 100%;
     background: rgb(45, 50, 52);
