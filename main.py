@@ -398,7 +398,7 @@ def deleteSub():
     }
 
 
-# ========= TIMETABLE ==========
+# ========= TIMETABLE/SCHEDULE ==========
 
 
 @app.route("/schedule")
@@ -447,10 +447,10 @@ def addTimetable():
     }
 
 
-@app.route('/UserImg')
+@app.route('/UserImg', methods=["GET"])
 def photo():
-    id_student = request.args
-    student = bd.get_student_by_id(id_student)
+    data = request.args
+    student = bd.get_student_by_id(int(data["id_student"]))
     img_src = student["image"]
     return send_file(io.BytesIO(img_src), attachment_filename='img_src.png', mimetype='image/png')
 
