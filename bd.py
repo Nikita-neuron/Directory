@@ -44,7 +44,7 @@ class DataBase(metaclass=Singleton):
         try:
             with self.connection.cursor() as cursor:
                 if data is not None:
-                    cursor.execute(query, data)
+                    cursor.execute(query, [data])
                 else:
                     cursor.execute(query)
         except Exception as _ex:
