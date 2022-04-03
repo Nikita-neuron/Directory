@@ -250,6 +250,18 @@ window.onload = function(){
         }
     }
 
+    const ScheduleEditWindow = document.getElementById("ScheduleEditWindow")
+    const editScheduleBTN = document.getElementById("editScheduleBTN")
+    const CloseEditSchedule = document.getElementById("CloseEditSchedule")
+
+    editScheduleBTN.onclick = function() {
+        ScheduleEditWindow.style.display = "flex";
+    }
+
+    CloseEditSchedule.onclick = function() {
+        ScheduleEditWindow.style.display = "none"
+    }
+
     const SubjectEditWindow = document.getElementById("SubjectEditWindow");
     const EditSubjectBTN = document.getElementById("EditSubjectBTN");
     const AddSubjectBTN = document.getElementById("AddSubjectBTN");
@@ -291,33 +303,6 @@ window.onload = function(){
             SubjectEditTable.children[0].children[i].children[1].innerHTML = "";
         }
     }
-
-    //Расписание
-
-    const ScheduleTable1 = document.getElementById("ScheduleTable1");
-    const ScheduleTable2 = document.getElementById("ScheduleTable2");
-    const ScheduleTable3 = document.getElementById("ScheduleTable3");
-    const ScheduleTable4 = document.getElementById("ScheduleTable4");
-    const ScheduleTable5 = document.getElementById("ScheduleTable5");
-    const ScheduleTable6 = document.getElementById("ScheduleTable6");
-    const ScheduleTable7 = document.getElementById("ScheduleTable7");
-    const ScheduleTable8 = document.getElementById("ScheduleTable8");
-
-    const ScheduleTableTakeHeight1 = document.getElementById("ScheduleTableTakeHeight1");
-    const ScheduleTableTakeHeight2 = document.getElementById("ScheduleTableTakeHeight2");
-    const ScheduleTableTakeHeight3 = document.getElementById("ScheduleTableTakeHeight3");
-
-    ScheduleTable1.style.height = ScheduleTableTakeHeight1.clientHeight;
-    ScheduleTable2.style.height = ScheduleTableTakeHeight2.clientHeight;
-    ScheduleTable3.style.height = ScheduleTableTakeHeight2.clientHeight;
-    var test = ScheduleTableTakeHeight2.clientHeight;
-    console.log(getComputedStyle(ScheduleTable2).height)
-    // ScheduleTable3.style.height = (ScheduleTableTakeHeight2.clientHeight * 7);
-
-
-
-
-
 
     //Запросы
 
@@ -922,4 +907,95 @@ window.onload = function(){
     DeleteSubjectBTN.onclick = function() {
         delOneSubject();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const chooseDayButtons = document.querySelectorAll(".choose-day-btn");
+    const addTimetablePair = document.querySelector(".add-timetable-pair");
+    const mainBoxSave = document.querySelector(".main-box-save");
+
+    const idGroup = 1;
+
+    let groupTimetable = {};
+    let subjects = {};
+    let teachers = {};
+
+    const EditSchedulegetAllSubjects = async function() {
+        let url = new URL("http://127.0.0.1:5000/getAllSubjects");
+
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+
+            if (json["status"] != "None") {
+                subjects = json["data"];
+                console.log(subjects);
+            }
+            else {
+                console.log("База данных пуста", json);
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+    const EditSchedulegetAllTeachers = async function() {
+        let url = new URL("http://127.0.0.1:5000/getAllTeachers");
+
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+
+            if (json["status"] != "None") {
+                teachers = json["data"];
+                console.log(teachers);
+            }
+            else {
+                console.log("База данных пуста", json);
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+    const EditSchedulegetGroupTimetable = async function() {
+        let url = new URL("http://127.0.0.1:5000/getGroupTimetable");
+        let data = { "id_group" : idGroup };
+        for (let k in data) { url.searchParams.append(k, data[k]); }
+
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+
+            if (json["status"] != "None") {
+                groupTimetable = json["data"];
+                console.log(groupTimetable)
+            }
+            else {
+                console.log("База данных пуста", json);
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+    EditSchedulegetAllSubjects();
+    EditSchedulegetAllTeachers();
+    EditSchedulegetGroupTimetable();
+
+    chooseDayButtons.forEach(elem => {
+        elem.addEventListener("click", e => {
+            chooseDayButtons.forEach()
+        });
+    });
 };
