@@ -42,6 +42,7 @@ imageSaveBtn.addEventListener("click", e => {
     else {
         let formData = new FormData();
         formData.append('image', file);
+        formData.append("fio", "f f f");
         sendUserImage(formData);
     }
 });

@@ -56,11 +56,13 @@ def deleteTeach():
 
 @app.route("/addTeacher", methods=["POST"])
 def addTeach():
-    data = request.json
+    data = request.form
     fio = data["FIO"]
     fio = fio.split()
+    image = ""
+    if request.files: image = request.files["image"].read()
     bd.add_teacher(fio[0], fio[1], fio[2], data["email"], data["gender"],
-                   data["position"], data["date_of_birth"], data["info"], "")
+                   data["position"], data["date_of_birth"], data["info"], image)
     return {
         "status": "OK"
     }
@@ -68,11 +70,13 @@ def addTeach():
 
 @app.route("/updateTeacher", methods=["POST"])
 def updateTeach():
-    data = request.json
+    data = request.form
     fio = data["FIO"]
     fio = fio.split()
+    image = ""
+    if request.files: image = request.files["image"].read()
     bd.update_teacher(int(data["id_teacher"]), fio[0], fio[1], fio[2], data["email"],
-                      data["gender"], data["position"], data["date_of_birth"], data["info"], "")
+                      data["gender"], data["position"], data["date_of_birth"], data["info"], image)
     return {
         "status": "OK"
     }
@@ -100,13 +104,15 @@ def allTeach():
 
 @app.route("/updateStud", methods=["POST"])
 def updateStud():
-    data = request.json
+    data = request.form
     group = data["name_group"]
     id_group = bd.get_group_by_name(group)
     fio = data["FIO"]
     fio = fio.split()
+    image = ""
+    if request.files: image = request.files["image"].read()
     bd.update_student(int(data["id_student"]), fio[0], fio[1], fio[2], data["gender"],
-                      data["email"], int(id_group["id"]), "", data["date_of_birth"], data["info"])
+                      data["email"], int(id_group["id"]), image, data["date_of_birth"], data["info"])
     return {
         "status": "OK"
     }
@@ -119,8 +125,10 @@ def addStud():
     id_group = bd.get_group_by_name(group)
     fio = data["FIO"]
     fio = fio.split()
+    image = ""
+    if request.files: image = request.files["image"].read()
     bd.add_student(fio[0], fio[1], fio[2], data["gender"], data["email"],
-                   id_group["id"], "", data["date_of_birth"], data["info"])
+                   id_group["id"], image, data["date_of_birth"], data["info"])
     if data["headman"] == "Да" or data["headman"] == "ДА":
         students = bd.get_all_students()
         for student in students:
@@ -145,6 +153,7 @@ def allStud():
         }
     else:
         for student in students:
+            student["image"] = ""
             group = student["id_group"]
             group = bd.get_group_by_id(group)
             if group is None:
@@ -174,6 +183,7 @@ def getStud():
             "data": {}
         }
     else:
+        student["image"] = ""
         group = student["id_group"]
         group = bd.get_group_by_id(group)
         if group is None:
@@ -458,6 +468,7 @@ def student_image(id_student):
 
 @app.route("/saveStudentImage/<id_student>", methods=["POST"])
 def save(id_student):
+    print(request.form.to_dict())
     if request.files:
         image = request.files["image"].read()
         student = bd.get_student_by_id(id_student)
