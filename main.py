@@ -447,12 +447,22 @@ def addTimetable():
     }
 
 
-@app.route('/UserImg', methods=["GET"])
+@app.route("/UserImg", methods=["GET"])
 def photo():
     data = request.args
     student = bd.get_student_by_id(int(data["id_student"]))
     img_src = student["image"]
     return send_file(io.BytesIO(img_src), attachment_filename='img_src.png', mimetype='image/png')
+
+
+@app.route("/saveStudentImage/<id_student>", methods=["POST"])
+def save(id_student):
+    data = request.json
+    fileimage = data["image"]
+    img = fileimage.read()
+    student = bd.get_student_by_id(id_student)
+    bd.update_student(student["id"], student["surname"], student["name"], student["patronymic"], student["gender"],
+                      student["email"], student["id_group"], img, student["date_of_birth"], student["info"])
 
 
 if __name__ == "__main__":
