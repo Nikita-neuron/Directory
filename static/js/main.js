@@ -346,6 +346,8 @@ window.onload = function(){
 
     const AddEditStudentBTN = document.getElementById("AddEditStudentBTN");
 
+    const StudentFileInput = document.getElementById("StudentFileInput");
+
     const AddOneStudent = async function() {
         let student = {
             FIO: AddEditStudent1.innerHTML,
@@ -378,48 +380,63 @@ window.onload = function(){
 
     SaveEditStudentId = document.getElementById("SaveEditStudentId");
 
-    const EditOneStudent = async function() {
-        if (SaveEditStudentId.innerHTML != "-") {
-            var GroupID = Number(SaveEditStudentId.innerHTML)
-        }
-        else {
-            return 0;
-        }
-
-        let student = {
-            id_student: 0,
-            FIO: AddEditStudent1.innerHTML,
-            gender: AddEditStudent3.innerHTML,
-            name_group: AddEditStudent2.innerHTML,
-            date_of_birth: AddEditStudent4.innerHTML,
-            email: AddEditStudent5.innerHTML,
-            headman: AddEditStudent6.innerHTML,
-            info: AddEditStudent7.innerHTML
-        };
-
-        let url = new URL("http://127.0.0.1:5000/updateStud");
+    // const getDefaultUserImage = async function() {
+    //     let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+    //     let file = new File([blobImage], 'image.png', blobImage)
+    //     let formData = new FormData();
+    //     formData.append('image', file);
+    //     sendUserImage(formData);
+    // }
     
+    const sendUserImage = async function(blob, Student_ID) {
+        let url = new URL("http://127.0.0.1:5000/saveStudentImage/" + Student_ID);
         let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(student)
+            method: 'POST',
+            body: blob
         });
         if (response.ok) {
-            let json = await response.json();
-            console.log(json);
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
     }
 
+    const EditOneStudent = async function() {
+        var Student_ID = -1
+        if (SaveEditStudentId.innerHTML != "-") {
+            var Student_ID = Number(SaveEditStudentId.innerHTML)
+        }
+        else {
+            return 0;
+        }
+
+        let formData = new FormData();
+        formData.append("FIO", AddEditStudent1.innerHTML);
+        formData.append("gender", AddEditStudent3.innerHTML);
+        formData.append("name_group", AddEditStudent2.innerHTML);
+        formData.append("date_of_birth", AddEditStudent4.innerHTML);
+        formData.append("email", AddEditStudent5.innerHTML);
+        formData.append("headman", AddEditStudent6.innerHTML);
+        formData.append("info", AddEditStudent7.innerHTML);
+
+        let file = StudentFileInput.files[0];
+        if (!file) {
+            let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            file = new File([blobImage], 'image.png', blobImage)
+            formData.append('image', file);
+        }
+        else {
+            formData.append('image', file);
+        }
+        sendUserImage(formData, Student_ID);
+    }
+
 
     AddEditStudentBTN.onclick = function() {
-        if (GroupEditMode == true) {
+        if (StudentEditMode == true) {
             EditOneStudent();
         }
-        else if (GroupEditMode == false) {
+        else if (StudentEditMode == false) {
             AddOneStudent();
         }
         else {
@@ -448,7 +465,7 @@ window.onload = function(){
     }
 
     DeleteStudentBTN.onclick = function() {
-        // delOneStudent();
+        delOneStudent();
     }
 
 
@@ -593,7 +610,7 @@ window.onload = function(){
     const DeleteTeacherBTN = document.getElementById("DeleteTeacherBTN");
 
     const delOneTeacher = async function() {
-        let data = { "student_id" : Number(SaveEditTeacherId.innerHTML) };
+        let data = { "id_teacher" : Number(SaveEditTeacherId.innerHTML) };
         let url = new URL("http://127.0.0.1:5000/deleteTeacher");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
@@ -908,6 +925,31 @@ window.onload = function(){
         delOneSubject();
     }
 
+    // Вывод расписания
+
+    const getOneSchedule = async function(Group_ID) {
+        let data = { "id_group" : Group_ID };
+        let url = new URL("http://127.0.0.1:5000/getTimetable");
+        for (let k in data) { url.searchParams.append(k, data[k]); }
+    
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+
+            console.log(json);
+            
+            if (json["status"] != "None") {
+                
+            }
+            else {
+                console.log("Об этом студенте нет информации", json);
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+    getOneSchedule(1);
 
 
 
@@ -924,23 +966,24 @@ window.onload = function(){
     const chooseDayButtons = document.querySelectorAll(".choose-day-btn");
     const addTimetablePair = document.querySelector(".add-timetable-pair");
     const mainBoxSave = document.querySelector(".main-box-save");
+    const chooseDayTimetable = document.querySelector(".choose-day-timetable");
+    
+    var idGroup = 1;
 
-    const idGroup = 1;
-
-    let groupTimetable = {};
-    let subjects = {};
-    let teachers = {};
-
+    let groupDBTimetable = [];
+    let currentDay = "1";
+    let subjects = [];
+    let teachers = [];
+    
     const EditSchedulegetAllSubjects = async function() {
         let url = new URL("http://127.0.0.1:5000/getAllSubjects");
-
+    
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
-
+    
             if (json["status"] != "None") {
                 subjects = json["data"];
-                console.log(subjects);
             }
             else {
                 console.log("База данных пуста", json);
@@ -949,17 +992,16 @@ window.onload = function(){
             alert("Ошибка HTTP: " + response.status);
         }
     }
-
+    
     const EditSchedulegetAllTeachers = async function() {
         let url = new URL("http://127.0.0.1:5000/getAllTeachers");
-
+    
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
-
+    
             if (json["status"] != "None") {
                 teachers = json["data"];
-                console.log(teachers);
             }
             else {
                 console.log("База данных пуста", json);
@@ -968,19 +1010,19 @@ window.onload = function(){
             alert("Ошибка HTTP: " + response.status);
         }
     }
-
-    const EditSchedulegetGroupTimetable = async function() {
+    
+    const getGroupTimetable = async function() {
         let url = new URL("http://127.0.0.1:5000/getGroupTimetable");
         let data = { "id_group" : idGroup };
         for (let k in data) { url.searchParams.append(k, data[k]); }
-
+    
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
-
+    
             if (json["status"] != "None") {
-                groupTimetable = json["data"];
-                console.log(groupTimetable)
+                groupDBTimetable = json["data"];
+                updateViewTimetable(currentDay);
             }
             else {
                 console.log("База данных пуста", json);
@@ -989,13 +1031,261 @@ window.onload = function(){
             alert("Ошибка HTTP: " + response.status);
         }
     }
+    
+    const sendGroupTimetable = async function (data) {
+        let url = new URL("http://127.0.0.1:5000/addGroupTimetable");
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(data)
+        });
+        if (response.ok) {
+            let json = await response.json();
+            console.log(json);
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+    
+    function updateViewTimetable(day) {
+        let dayTimetable = [];
+        currentDay = day;
+            
+        groupDBTimetable.forEach(timetable => {
+            if (timetable["day_of_week_number"] == currentDay) dayTimetable.push(timetable);
+        });
+    
+        chooseDayTimetable.innerHTML = "";
+    
+        dayTimetable.forEach(timetable => {
+            let html = `
+            <table class="timetable-pair">
+                <tr class="timetable-pair-row">
+                    <td><span>Номер пары:</span></td>
+                    <td><input id="pair-number" type="number" value="${timetable["pair_number"]}"></td>
+                </tr>
+                <tr class="timetable-pair-row">
+                    <td><span>Дисциплина:</span></td>
+                    <td>
+                        <select id="subject">
+                            <option value="">Выберите дисциплину</option>`;
+    
+            subjects.forEach(subject => {
+                if (subject["id"] == timetable["id_subject"]) {
+                    html += `<option selected value="${subject["id"]}">${subject["name"]}</option>`;
+                }
+                else {
+                    html += `<option value="${subject["id"]}">${subject["name"]}</option>`;
+                }
+            });
+            html +=`</select>
+                    </td>
+                </tr>
+                <tr class="timetable-pair-row">
+                    <td><span>Преподаватель:</span></td>
+                    <td>
+                        <select id="teacher">
+                            <option value="">Выберите преподавателя</option>`
+            teachers.forEach(teacher => {
+                if (teacher["id"] == timetable["id_teacher"]) {
+                    html += `<option selected value="${teacher["id"]}">${teacher["surname"]} ${teacher["name"]} ${teacher["patronymic"]}</option>`;
+                }
+                else {
+                    html += `<option value="${teacher["id"]}">${teacher["surname"]} ${teacher["name"]} ${teacher["patronymic"]}</option>`;
+                }
+            });
+            html +=    `</select>
+                    </td>
+                </tr>
+                <tr class="timetable-pair-row">
+                    <td><span>Кабинет:</span></td>
+                    <td><input id="room" type="text" value="${timetable["room"]}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="remove-pair">Удалить пару</button>
+                    </td>
+                </tr>
+            </table>
+            `;
+            chooseDayTimetable.insertAdjacentHTML('beforeend', html);
+            const removeBtn = chooseDayTimetable.lastElementChild.querySelector(".remove-pair");
+            removeBtn.addEventListener("click", e => {
+                let elem = chooseDayTimetable.lastElementChild;
+                let pairNumber = elem.querySelector("#pair-number").value;
+                if (pairNumber != "") {
+                    let index = -1;
+                    for (let i = 0; i < groupDBTimetable.length; i++) {
+                        timetable = groupDBTimetable[i];
+                        if (timetable["day_of_week_number"] == currentDay && timetable["pair_number"] == pairNumber) {
+                            index = i;
+                            break;
+                        }
+                    };
+                    if (index > -1) groupDBTimetable.splice(index, 1);
+                }
+                chooseDayTimetable.removeChild(elem);
+            });
+        });
+    }
+
     EditSchedulegetAllSubjects();
     EditSchedulegetAllTeachers();
-    EditSchedulegetGroupTimetable();
-
+    getGroupTimetable();
+    
     chooseDayButtons.forEach(elem => {
         elem.addEventListener("click", e => {
-            chooseDayButtons.forEach()
+            chooseDayButtons.forEach(btn => btn.classList.remove("active"));
+            elem.classList.add("active");
+    
+            let lastDayTimetable = chooseDayTimetable.children;
+            for (let i = 0; i < lastDayTimetable.length; i++) {
+                let elem = lastDayTimetable[i];
+                let pairNumber = elem.querySelector("#pair-number").value == "" ? -1: elem.querySelector("#pair-number").value;
+                let id_subject = elem.querySelector("#subject").value == "" ? -1: elem.querySelector("#subject").value;
+                let id_teacher = elem.querySelector("#teacher").value == "" ? -1: elem.querySelector("#teacher").value;
+                let room = elem.querySelector("#room").value;
+    
+                if (pairNumber != "") {
+                    let find = false;
+        
+                    groupDBTimetable.forEach(timetable => {
+                        if (timetable["day_of_week_number"] == currentDay && timetable["pair_number"] == pairNumber) {
+                            timetable["id_subject"] = id_subject;
+                            timetable["id_teacher"] = id_teacher;
+                            timetable["room"] = room;
+                            find = true;
+                        }
+                    });
+        
+                    if (!find) {
+                        groupDBTimetable.push({
+                            "id_subject": id_subject, 
+                            "id_group": idGroup, 
+                            "day_of_week_number": currentDay, 
+                            "pair_number": pairNumber, 
+                            "even_odd": "Чётная", 
+                            "id_teacher": id_teacher, 
+                            "room": room
+                        });
+                    }
+                }
+            }
+            updateViewTimetable(elem.dataset.day);
+        });
+    });
+    
+    addTimetablePair.addEventListener("click", e => {
+        let lastPair = "1";
+        if (chooseDayTimetable.childElementCount != 0) {
+            lastPair = chooseDayTimetable.lastElementChild.querySelector("#pair-number").value;
+        }
+    
+        if (lastPair != "") {
+            let html = `
+                <table class="timetable-pair">
+                    <tr class="timetable-pair-row">
+                        <td><span>Номер пары:</span></td>
+                        <td><input id="pair-number" type="number"></td>
+                    </tr>
+                    <tr class="timetable-pair-row">
+                        <td><span>Дисциплина:</span></td>
+                        <td>
+                            <select id="subject">
+                                <option value="">Выберите дисциплину</option>`;
+    
+            subjects.forEach(subject => {
+                html += `<option value="${subject["id"]}">${subject["name"]}</option>`;
+            });
+            html +=`</select>
+                    </td>
+                    </tr>
+                    <tr class="timetable-pair-row">
+                        <td><span>Преподаватель:</span></td>
+                        <td>
+                            <select id="teacher">
+                                <option value="">Выберите преподавателя</option>`
+            teachers.forEach(teacher => {
+                html += `<option value="${teacher["id"]}">${teacher["surname"]} ${teacher["name"]} ${teacher["patronymic"]}</option>`;
+            });
+            html +=    `</select>
+                        </td>
+                    </tr>
+                    <tr class="timetable-pair-row">
+                        <td><span>Кабинет:</span></td>
+                        <td><input id="room" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="remove-pair">Удалить пару</button>
+                        </td>
+                    </tr>
+                </table>
+            `;
+            chooseDayTimetable.insertAdjacentHTML('beforeend', html);
+    
+            const removeBtn = chooseDayTimetable.lastElementChild.querySelector(".remove-pair");
+            removeBtn.addEventListener("click", e => {
+                let elem = chooseDayTimetable.lastElementChild;
+                let pairNumber = elem.querySelector("#pair-number").value;
+                if (pairNumber != "") {
+                    let index = -1;
+                    for (let i = 0; i < groupDBTimetable.length; i++) {
+                        timetable = groupDBTimetable[i];
+                        if (timetable["day_of_week_number"] == currentDay && timetable["pair_number"] == pairNumber) {
+                            index = i;
+                            break;
+                        }
+                    };
+                    if (index > -1) groupDBTimetable.splice(index, 1);
+                }
+                chooseDayTimetable.removeChild(elem);
+            });
+        }
+    });
+    
+    mainBoxSave.addEventListener("click", e => {
+        let lastDayTimetable = chooseDayTimetable.children;
+        for (let i = 0; i < lastDayTimetable.length; i++) {
+            let elem = lastDayTimetable[i];
+            let pairNumber = elem.querySelector("#pair-number").value == "" ? -1: elem.querySelector("#pair-number").value;
+            let id_subject = elem.querySelector("#subject").value == "" ? -1: elem.querySelector("#subject").value;
+            let id_teacher = elem.querySelector("#teacher").value == "" ? -1: elem.querySelector("#teacher").value;
+            let room = elem.querySelector("#room").value;
+    
+            if (pairNumber != "") {
+                let find = false;
+    
+                groupDBTimetable.forEach(timetable => {
+                    if (timetable["day_of_week_number"] == currentDay && timetable["pair_number"] == pairNumber) {
+                        timetable["id_subject"] = id_subject;
+                        timetable["id_teacher"] = id_teacher;
+                        timetable["room"] = room;
+                        find = true;
+                    }
+                });
+    
+                if (!find) {
+                    groupDBTimetable.push({
+                        "id_subject": id_subject, 
+                        "id_group": idGroup, 
+                        "day_of_week_number": currentDay, 
+                        "pair_number": pairNumber, 
+                        "even_odd": "Чётная", 
+                        "id_teacher": id_teacher, 
+                        "room": room
+                    });
+                }
+            }
+        }
+    
+        console.log(groupDBTimetable);
+        sendGroupTimetable({
+            "status": "OK",
+            "id_group": idGroup,
+            "timetable": groupDBTimetable
         });
     });
 };

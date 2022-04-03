@@ -231,7 +231,7 @@
                     <!--Фото-->
                     <div class="RightInfoBlock_Photo_PhotoWrapper">
                         <div class="RightInfoBlock_Photo_Photo">
-                            <img src="../static/sysImgs\user.png" class="RightInfoBlock_Photo_Photo_Icon">
+                            <img src="../static/sysImgs\user.png" class="RightInfoBlock_Photo_Photo_Icon" id="StudentPhotoField">
                         </div>
                     </div>
 
@@ -311,6 +311,8 @@
             StudentInfo6 = document.getElementById("StudentInfo6");
             StudentInfo7 = document.getElementById("StudentInfo7");
 
+            StudentPhotoField = document.getElementById("StudentPhotoField");
+
             const getOneStudent = async function(Student_ID) {
                 SaveEditStudentId.innerHTML = Student_ID;
                 let data = { "student_id" : Student_ID };
@@ -331,6 +333,7 @@
                         StudentInfo5.innerHTML = json["data"]["email"];
                         StudentInfo6.innerHTML = json["data"]["headman"];
                         StudentInfo7.innerHTML = json["data"]["info"];
+                        getStudentImage(Student_ID);
                     }
                     else {
                         console.log("Об этом студенте нет информации", json);
@@ -338,6 +341,10 @@
                 } else {
                     alert("Ошибка HTTP: " + response.status);
                 }
+            }
+
+            const getStudentImage = function(Student_ID) {
+                StudentPhotoField.src = `http://127.0.0.1:5000/studentImage/${Student_ID}`;
             }
         </script>
 
@@ -552,7 +559,7 @@
             <div class="edit-box">
                 <div class="edit-menu">
                     <button class="close-btn" id="CloseEditSchedule">
-                        <img src="../static/sysImgs/delete.png" alt="delete">
+                        <img src="static/sysImgs/delete.png" alt="delete">
                     </button>
                 </div>
                 <div class="main-box">
@@ -570,7 +577,7 @@
                                 </div>
                             </div>
                             <div class="choose-day-timetable">
-                                <table class="timetable-pair">
+                                <!-- <table class="timetable-pair">
                                     <tr class="timetable-pair-row">
                                         <td><span>Номер пары:</span></td>
                                         <td><input type="number"></td>
@@ -607,10 +614,15 @@
                                         <td><span>Кабинет:</span></td>
                                         <td><input type="text"></td>
                                     </tr>
-                                </table>
-                                <div class="choose-day-timetable-buttons">
-                                    <button class="add-timetable-pair">Добавить пару</button>
-                                </div>
+                                    <tr>
+                                        <td>
+                                            <button class="remove-pair">Удалить пару</button>
+                                        </td>
+                                    </tr>
+                                </table> -->
+                            </div>
+                            <div class="choose-day-timetable-buttons">
+                                <button class="add-timetable-pair">Добавить пару</button>
                             </div>
                         </div>
                     </div>
@@ -1103,43 +1115,10 @@
                 <table class="Schedule_RightInfo_Table" border="all">
                     <tr class="Schedule_RightInfo_TableTopic">
                         <td>День недели</td>
-                    </tr>
-
-                    <tr class="Schedule_RightInfo_TableSecondTopic">
-                        <td>-</td>
-                    </tr>
-
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Понедельник</td>
-                    </tr>
-
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Вторник</td>
-                    </tr>
-
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Среда</td>
-                    </tr>
-
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Четверг</td>
-                    </tr>
-
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Пятница</td>
-                    </tr>
-
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Суббота</td>
-                    </tr>
-                </table>
-
-
-                <table class="Schedule_RightInfo_Table" border="all">
-                    <tr class="Schedule_RightInfo_TableTopic">
                         <td colspan="3">ИКБО-01-21</td>
                     </tr>
                     <tr class="Schedule_RightInfo_TableSecondTopic">
+                        <td>-</td>
                         <td>Дисциплина</td>
                         <td>№ Каб.</td>
                         <td>Преподаватель</td>
@@ -1147,6 +1126,7 @@
 
                     <!--Понедельник-->
                     <tr class="Schedule_RightInfo_TableChetRow">
+                        <td rowspan="7">Понедельник</td>
                         <td>Информатика</td>
                         <td>44</td>
                         <td>И.И.Иванов</td>
@@ -1184,6 +1164,7 @@
 
                     <!--Вторник-->
                     <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="7">Вторник</td>
                         <td>Информатика</td>
                         <td>44</td>
                         <td>И.И.Иванов</td>
@@ -1221,6 +1202,7 @@
 
                     <!--Среда-->
                     <tr class="Schedule_RightInfo_TableChetRow">
+                        <td rowspan="7">Среда</td>
                         <td>Информатика</td>
                         <td>44</td>
                         <td>И.И.Иванов</td>
@@ -1258,6 +1240,7 @@
 
                     <!--Четверг-->
                     <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="7">Четверг</td>
                         <td>Информатика</td>
                         <td>44</td>
                         <td>И.И.Иванов</td>
@@ -1295,6 +1278,7 @@
 
                     <!--Пятница-->
                     <tr class="Schedule_RightInfo_TableChetRow">
+                        <td rowspan="7">Пятница</td>
                         <td>Информатика</td>
                         <td>44</td>
                         <td>И.И.Иванов</td>
@@ -1332,242 +1316,7 @@
 
                     <!--Суббота-->
                     <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                </table>
-
-
-
-
-                <table class="Schedule_RightInfo_Table" border="all">
-                    <tr class="Schedule_RightInfo_TableTopic">
-                        <td colspan="3">ИКБО-02-22</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableSecondTopic">
-                        <td>Дисциплина</td>
-                        <td>№ Каб.</td>
-                        <td>Преподаватель</td>
-                    </tr>
-
-                    <!--Понедельник-->
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-
-                    <!--Вторник-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-
-                    <!--Среда-->
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-
-                    <!--Четверг-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-
-                    <!--Пятница-->
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-
-                    <!--Суббота-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="7">Суббота</td>
                         <td>Информатика</td>
                         <td>44</td>
                         <td>И.И.Иванов</td>
