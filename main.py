@@ -419,26 +419,28 @@ def getTimetable():
     if timetable is None or len(timetable) == 0:
         return {
             "status": "None",
-            "timetable": {}
+            "data": {}
         }
     else:
         return {
             "status": "OK",
-            "timetable": timetable
+            "data": timetable
         }
 
 
 @app.route("/addGroupTimetable", methods=["POST"])
 def addTimetable():
     data = request.json
-    timetable = bd.get_group_timetable_by_id(int(data["id_group"]))
-    if timetable is None:
-        bd.add_group_timetable(int(data["id_subject"]), int(data["id_group"]), int(data["day_of_week"]),
-                               data["pair_number"], data["even_odd"], int(data["id_teacher"]), data["room"])
-    else:
-        bd.delete_timetable_by_group_id(int(data["id_group"]))
-        bd.add_group_timetable(int(data["id_subject"]), int(data["id_group"]), int(data["day_of_week"]),
-                               data["pair_number"], data["even_odd"], int(data["id_teacher"]), data["room"])
+    group_timetable = data["timetable"]
+    bd.delete_timetable_by_group_id(int(data["id_group"]))
+    for timetableGroup in group_timetable:
+        bd.add_group_timetable(int(timetableGroup["id_subject"]), int(timetableGroup["id_group"]),
+                               int(timetableGroup["day_of_week_number"]), timetableGroup["pair_number"],
+                               timetableGroup["even_odd"], int(timetableGroup["id_teacher"]),
+                               timetableGroup["room"])
+    return {
+        "status": "OK"
+    }
 
 
 @app.route('/UserImg')
