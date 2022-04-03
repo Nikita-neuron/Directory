@@ -22,6 +22,7 @@ img = 0
 def getTeach():
     data = request.args
     teacher = bd.get_teacher_by_id(int(data["id_teacher"]))
+    teacher["image"] = ""
     if teacher is None or len(teacher) == 0:
         return {
             "status": "None",
@@ -84,6 +85,8 @@ def allTeach():
             "data": {}
         }
     else:
+        for teacher in teachers:
+            teacher["image"] = ""
         return {
             "status": "OK",
             "data": teachers
@@ -148,6 +151,7 @@ def allStud():
         }
     else:
         for student in students:
+            student["image"] = ""
             group = student["id_group"]
             group = bd.get_group_by_id(group)
             if group is None:
@@ -171,6 +175,7 @@ def allStud():
 def getStud():
     data = request.args
     student = bd.get_student_by_id(int(data["student_id"]))
+    student["image"] = ""
     if student is None or len(student) == 0:
         return {
             "status": "None",
@@ -182,7 +187,7 @@ def getStud():
         if group is None:
             student["headman"] = "NO"
             return {
-                "status": "OK",
+                "status": "None",
                 "data": student,
                 "group": {}
             }
