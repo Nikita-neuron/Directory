@@ -551,5 +551,5 @@ if __name__ == "__main__":
     # db.update_group(1, "ИКБО-01-21", 0, "Бакалавриат", "09.03.04", "Институт технологий")
     # db.add_teacher("testSurname", "testName", "testPatronymic", "test@test.com", "Мужской", "Старший преподаватель",
     #                "09.12.1988", "SomeInfo", "")
-    print(db.get_all_teachers())
+    print(db.get_all_students())
     db.close()

@@ -15,6 +15,10 @@ def main():
 def editWindow():
     return render_template("editWindow.html")
 
+@app.route("/imageUpload")
+def imageUpload():
+    return render_template("imageUpload.html")
+
 
 teachers_arr = []
 group_arr = []
