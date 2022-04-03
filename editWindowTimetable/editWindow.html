@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/maim.js" defer></script>
-    <title>Document</title>
+    <script src="./js/main.js" defer></script>
+    <title>Edit window</title>
 </head>
 <body>
     <div class="edit-window">
@@ -22,25 +22,25 @@
                         <div class="choose-day-menu">
                             <span class="choose-day-span">Выберите день недели:</span>
                             <div class="choose-day-buttons">
-                                <button class="choose-day-btn active">Понедельник</button>
-                                <button class="choose-day-btn">Вторник</button>
-                                <button class="choose-day-btn">Среда</button>
-                                <button class="choose-day-btn">Четверг</button>
-                                <button class="choose-day-btn">Пятница</button>
-                                <button class="choose-day-btn">Суббота</button>
+                                <button class="choose-day-btn active" data-day="1">Понедельник</button>
+                                <button class="choose-day-btn" data-day="2">Вторник</button>
+                                <button class="choose-day-btn" data-day="3">Среда</button>
+                                <button class="choose-day-btn" data-day="4">Четверг</button>
+                                <button class="choose-day-btn" data-day="5">Пятница</button>
+                                <button class="choose-day-btn" data-day="6">Суббота</button>
                             </div>
                         </div>
                         <div class="choose-day-timetable">
                             <table class="timetable-pair">
                                 <tr class="timetable-pair-row">
                                     <td><span>Номер пары:</span></td>
-                                    <td><input type="text"></td>
+                                    <td><input type="number"></td>
                                 </tr>
                                 <tr class="timetable-pair-row">
                                     <td><span>Дисциплина:</span></td>
                                     <td>
                                         <select name="pets" id="pet-select">
-                                            <option value="">--Please choose an option--</option>
+                                            <option value="">Выберите дисциплину</option>
                                             <option value="dog">Dog</option>
                                             <option value="cat">Cat</option>
                                             <option value="hamster">Hamster</option>
@@ -54,45 +54,7 @@
                                     <td><span>Преподаватель:</span></td>
                                     <td>
                                         <select name="pets" id="pet-select">
-                                            <option value="">--Please choose an option--</option>
-                                            <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="hamster">Hamster</option>
-                                            <option value="parrot">Parrot</option>
-                                            <option value="spider">Spider</option>
-                                            <option value="goldfish">Goldfish</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr class="timetable-pair-row">
-                                    <td><span>Кабинет:</span></td>
-                                    <td><input type="text"></td>
-                                </tr>
-                            </table>
-                            <table class="timetable-pair">
-                                <tr class="timetable-pair-row">
-                                    <td><span>Номер пары:</span></td>
-                                    <td><input type="text"></td>
-                                </tr>
-                                <tr class="timetable-pair-row">
-                                    <td><span>Дисциплина:</span></td>
-                                    <td>
-                                        <select name="pets" id="pet-select">
-                                            <option value="">--Please choose an option--</option>
-                                            <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="hamster">Hamster</option>
-                                            <option value="parrot">Parrot</option>
-                                            <option value="spider">Spider</option>
-                                            <option value="goldfish">Goldfish</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr class="timetable-pair-row">
-                                    <td><span>Преподаватель:</span></td>
-                                    <td>
-                                        <select name="pets" id="pet-select">
-                                            <option value="">--Please choose an option--</option>
+                                            <option value="">Выберите преподавателя</option>
                                             <option value="dog">Dog</option>
                                             <option value="cat">Cat</option>
                                             <option value="hamster">Hamster</option>

@@ -11,6 +11,11 @@ def main():
     return render_template("index.html")
 
 
+@app.route("/editWindow")
+def editWindow():
+    return render_template("editWindow.html")
+
+
 teachers_arr = []
 group_arr = []
 img = 0
@@ -307,8 +312,8 @@ def deleteGroup():
 @app.route("/updateSubject", methods=["POST"])
 def updateSub():
     data = request.json
-    #teachers = data["teachers"]
-    #groups = data["groups"]
+    # teachers = data["teachers"]
+    # groups = data["groups"]
     bd.update_subject(int(data["id_subject"]), data["name"], int(data["study_hours"]), data["level_education"],
                       data["info"])
     return {
@@ -319,16 +324,16 @@ def updateSub():
 @app.route("/addSubject", methods=["POST"])
 def addSub():
     data = request.json
-#    teachers = data["teachers"].split(',')
-#    groups = data["groups"].split(',')
-#    for teacher in teachers:
-#        teachers_arr.append({
-#            data["name"]: teacher
-#        })
-#    for group in groups:
-#        group_arr.append({
-#            data["name"]: group
-#        })
+    #    teachers = data["teachers"].split(',')
+    #    groups = data["groups"].split(',')
+    #    for teacher in teachers:
+    #        teachers_arr.append({
+    #            data["name"]: teacher
+    #        })
+    #    for group in groups:
+    #        group_arr.append({
+    #            data["name"]: group
+    #        })
     bd.add_subject(data["name"], int(data["study_hours"]), data["level_education"], data["info"])
     return {
         "status": "OK"
@@ -412,12 +417,12 @@ def getTimetable():
     data = request.args
     timetable = bd.get_group_timetable_by_id(int(data["id_group"]))
     if timetable is None or len(timetable) == 0:
-        return{
+        return {
             "status": "None",
             "timetable": {}
         }
     else:
-        return{
+        return {
             "status": "OK",
             "timetable": timetable
         }

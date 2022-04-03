@@ -44,7 +44,7 @@ class DataBase(metaclass=Singleton):
         try:
             with self.connection.cursor() as cursor:
                 if data is not None:
-                    cursor.execute(query, [data])
+                    cursor.execute(query, data)
                 else:
                     cursor.execute(query)
         except Exception as _ex:
@@ -340,11 +340,11 @@ class DataBase(metaclass=Singleton):
         tables = ["subjects_groups", "subjects_groups", "attendance"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_subject = %s"""
-            student_tuple = id_subject
+            student_tuple = (id_subject)
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM subjects WHERE id = %s"""
-        student_tuple = id_subject
+        student_tuple = (id_subject)
         self.insert_query(insert_query, student_tuple)
 
     # ===== DAYS ====
@@ -393,11 +393,11 @@ class DataBase(metaclass=Singleton):
         tables = ["attendance"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_day = %s"""
-            student_tuple = day_id
+            student_tuple = (day_id)
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM days WHERE id = %s"""
-        student_tuple = day_id
+        student_tuple = (day_id)
         self.insert_query(insert_query, student_tuple)
 
     # ====== GROUPS =====
@@ -505,18 +505,18 @@ class DataBase(metaclass=Singleton):
 
     def delete_timetable_by_group_id(self, id_group):
         insert_query = """DELETE FROM subjects_groups WHERE id_group = %s"""
-        student_tuple = str(id_group)
+        student_tuple = (id_group)
         self.insert_query(insert_query, student_tuple)
 
     def delete_group(self, group_id):
         tables = ["students", "subjects_groups"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_group = %s"""
-            student_tuple = str(group_id)
+            student_tuple = (group_id)
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM groups WHERE id = %s"""
-        student_tuple = str(group_id)
+        student_tuple = (group_id)
         self.insert_query(insert_query, student_tuple)
 
     # ===== TIMETABLE ======
@@ -549,6 +549,7 @@ if __name__ == "__main__":
     # print("Student:", student_data)
     # db.add_subject("testSubject", 10000, "Бакалавр", "Some info")
     # db.update_group(1, "ИКБО-01-21", 0, "Бакалавриат", "09.03.04", "Институт технологий")
-    print(db.get_all_groups())
-    print(db.get_group_by_id(10))
+    # db.add_teacher("testSurname", "testName", "testPatronymic", "test@test.com", "Мужской", "Старший преподаватель",
+    #                "09.12.1988", "SomeInfo", "")
+    print(db.get_all_teachers())
     db.close()
