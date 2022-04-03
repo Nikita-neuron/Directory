@@ -428,6 +428,13 @@ def getTimetable():
         }
 
 
+@app.route("/addGroupTimetable")
+def addTimetable():
+    data = request.json
+    bd.add_group_timetable(int(data["id_subject"]), int(data["id_group"]), int(data["day_of_week"]),
+                           data["pair_number"], data["even_odd"], int(data["id_teacher"]))
+
+
 @app.route('/UserImg')
 def photo():
     id_student = request.args
