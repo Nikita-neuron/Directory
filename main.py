@@ -412,7 +412,7 @@ def schedules():
         }
 
 
-@app.route("/getGroupTimetable")
+@app.route("/getGroupTimetable", methods=["GET"])
 def getTimetable():
     data = request.args
     timetable = bd.get_group_timetable_by_id(int(data["id_group"]))
@@ -428,7 +428,7 @@ def getTimetable():
         }
 
 
-@app.route("/addGroupTimetable")
+@app.route("/addGroupTimetable", methods=["POST"])
 def addTimetable():
     data = request.json
     bd.add_group_timetable(int(data["id_subject"]), int(data["id_group"]), int(data["day_of_week"]),
