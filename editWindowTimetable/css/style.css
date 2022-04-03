@@ -70,6 +70,9 @@ body {
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .choose-day-buttons {
@@ -99,15 +102,48 @@ body {
 
 .choose-day-timetable {
     margin-top: 10px;
+    overflow: auto;
 }
 
 .timetable-pair {
     width: 100%;
-    border: #000 solid 1px;
+    background: rgb(45, 50, 52);
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .timetable-pair input, .timetable-pair select {
     width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1vw;
+    color: #B6D149;
+    border: 2px solid #232526;
+    background: transparent;
+}
+
+.timetable-pair select option {
+    background: rgb(63, 70, 73);
+    color: #B6D149;
+}
+
+.choose-day-timetable-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-timetable-pair {
+    background-color: rgb(35, 168, 109);
+    color: rgb(2, 60, 31);
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1vw;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .main-box-buttons {
