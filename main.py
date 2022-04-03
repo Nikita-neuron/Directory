@@ -302,8 +302,8 @@ def deleteGroup():
 @app.route("/updateSubject", methods=["POST"])
 def updateSub():
     data = request.json
-    teachers = data["teachers"]
-    groups = data["groups"]
+    #teachers = data["teachers"]
+    #groups = data["groups"]
     bd.update_subject(int(data["id_subject"]), data["name"], int(data["study_hours"]), data["level_education"],
                       data["info"])
     return {
@@ -399,6 +399,22 @@ def schedules():
         return {
             "status": "OK",
             "data": schedule
+        }
+
+
+@app.route("/getGroupTimetable")
+def getTimetable():
+    data = request.args
+    timetable = bd.get_group_timetable_by_id(int(data["id_group"]))
+    if timetable is None or len(timetable) == 0:
+        return{
+            "status": "None",
+            "timetable": {}
+        }
+    else:
+        return{
+            "status": "OK",
+            "timetable": timetable
         }
 
 
