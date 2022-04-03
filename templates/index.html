@@ -39,8 +39,56 @@
 
         <div class="MainMainInnerBlock" id="mainWindow">
             <div class="MainMainInnerBlock_MainDiv">
-                <div class="MainMainInnerBlock_MainDiv_Cell">
+                <div class="MainMainInnerBlock_MainDiv_Cell MainMainInnerBlock_MainDiv_Cell_Topic" style="height: 7%;">
+                    Информация
+                </div>
 
+                <div class="MainMainInnerBlock_MainDiv_Cell" style="height: 90%; padding: 15px;">
+                    <span class="MainMainInnerBlock_MainDiv_Cell_SecondTopic">
+                        Основные сведения
+                    </span>
+                    <br>
+                    <br>
+                    <span class="MainMainInnerBlock_MainDiv_Cell_Text">
+                        Вы находитесь на информационной вкладке (главной странице)  нашего WEB-приложения.  Его задачей является систематизация имеющихся данных по расписанию всех учащихся и сотрудников ВУЗа, удобное предоставление информации по учебным предметам, группам, студентам и преподавателям, а также поддержка возможости масштабирования и модификации вышеназванного содержимого.
+                        Для того, что перейти на интересующую Вас вкладку, воспользуйтесь соответствующими кнопками в верхней панели. 
+                        Поддерживается изменение, добавление или удаление данных, для чего Вы можете воспользоваться особыми кнопками (обычно они выделены красным или жёлтым цветом).
+                    </span>
+                    <br>
+                    <br>
+                    <span class="MainMainInnerBlock_MainDiv_Cell_SecondTopic">
+                        Авторы/разработчики
+                    </span>
+                    <br>
+                    <br>
+                    <span class="MainMainInnerBlock_MainDiv_Cell_Text">
+                        Приложение создано студентами РТУ МИРЭА группы ИКБО-05-21 в рамках ознакомительной практики. Ниже представлены имена разрабочиков  и их основные задачи в ходе выполнения работы.
+                    </span>
+                    <br>
+                    <br>
+                    <span class="MainMainInnerBlock_MainDiv_Cell_Text">
+                        <span style="font-weight: bold;">Никита Андреевич Шалов.</span> <span style="font-style: italic;">Back-end. Разработка серверной части, базы данных, её архитектуры и составных таблиц данных.</span>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="MainMainInnerBlock_MainDiv_Cell_Text">
+                        <span style="font-weight: bold;">Магомед Ахмедович Мальсагов.</span> <span style="font-style: italic;">Back-end. Разработка и программирование внутренней реализации сайта.</span>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="MainMainInnerBlock_MainDiv_Cell_Text">
+                        <span style="font-weight: bold;">Андрей Георгиевич Романенко.</span> <span style="font-style: italic;">Front-end. Разработка дизайна страниц и других элементов сайта, базовое наполнение.</span>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="MainMainInnerBlock_MainDiv_Cell_Text">
+                        <span style="font-weight: bold;">Георгий Алексеевич Новиков.</span> <span style="font-style: italic;">Front-end. Разработка клиентской части, вёрстка сайта, адаптация исходного дизайна.</span>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="MainMainInnerBlock_MainDiv_Cell_Text">
+                        <span style="font-weight: bold;">Артём Александрович Никитин.</span> <span style="font-style: italic;">Back-end. Разработка функциональных особенностей внутренней части веб-сайта.</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -79,6 +127,8 @@
 
                 </div>
 
+                <div style="display: none;" id="SaveEditStudentId">-</div>
+
                 <!--Кнопка добавить студента-->
                 <div class="LeftListBlock_AddPersonBTN" id="StudentAddPersonBTN">
                     Добавить студента
@@ -99,7 +149,7 @@
                             <tr>
                                 <!--ФИО-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">ФИО:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo1">Руслан Антонович Дыров</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo1">-</td>
                             </tr>
                         </table>
                         
@@ -112,31 +162,31 @@
                             <tr>
                                 <!--Группа-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Группа:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo2">ИКБО-20-14</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo2">-</td>
                             </tr>
 
                             <tr>
                                 <!--Пол-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Пол:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo3">Мужской</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo3">-</td>
                             </tr>
 
                             <tr>
                                 <!--Дата рождения-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Дата рождения:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo4">06.03.1922</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo4">-</td>
                             </tr>
 
                             <tr>
                                 <!--Email-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">E-mail:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo5">rak@mirea.ru</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo5">-</td>
                             </tr>
 
                             <tr>
                                 <!--Староста\Помощник-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Староста\Помощник:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo6">Нет</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo6">-</td>
                             </tr>
                         </table>
                         
@@ -149,7 +199,7 @@
                             <tr>
                                 <!--Информация-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Информация:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo7">Отсутствует</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="StudentInfo7">-</td>
                             </tr>
                         </table>
 
@@ -252,6 +302,45 @@
             </div>
         </div>
 
+        <script>
+            StudentInfo1 = document.getElementById("StudentInfo1");
+            StudentInfo2 = document.getElementById("StudentInfo2");
+            StudentInfo3 = document.getElementById("StudentInfo3");
+            StudentInfo4 = document.getElementById("StudentInfo4");
+            StudentInfo5 = document.getElementById("StudentInfo5");
+            StudentInfo6 = document.getElementById("StudentInfo6");
+            StudentInfo7 = document.getElementById("StudentInfo7");
+
+            const getOneStudent = async function(Student_ID) {
+                SaveEditStudentId.innerHTML = Student_ID;
+                let data = { "student_id" : Student_ID };
+                let url = new URL("http://127.0.0.1:5000/getStudent");
+                for (let k in data) { url.searchParams.append(k, data[k]); }
+            
+                let response = await fetch(url);
+                if (response.ok) {
+                    let json = await response.json();
+
+                    console.log(json);
+                    
+                    if (json["status"] != "None") {
+                        StudentInfo1.innerHTML = json["data"]["surname"] + " " + json["data"]["name"] + " " + json["data"]["patronymic"];
+                        StudentInfo2.innerHTML = json["group"]["gender"];
+                        StudentInfo3.innerHTML = json["data"]["gender"];
+                        StudentInfo4.innerHTML = json["data"]["date_of_birth"];
+                        StudentInfo5.innerHTML = json["data"]["email"];
+                        StudentInfo6.innerHTML = json["data"]["headman"];
+                        StudentInfo7.innerHTML = json["data"]["info"];
+                    }
+                    else {
+                        console.log("Об этом студенте нет информации", json);
+                    }
+                } else {
+                    alert("Ошибка HTTP: " + response.status);
+                }
+            }
+        </script>
+
 
 
 
@@ -280,7 +369,7 @@
                     Редактировать группу
                 </div>
 
-                <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;">
+                <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;" id="DeleteGroupBTN">
                     <img src="../static/sysImgs\delete.png", style="width: 2vw; height: 2vw;">
                 </div>
 
@@ -291,13 +380,15 @@
                 <div class="Groups_Middle_GroupList_List" id="GroupList">
 
                     <!--
-                    <div class="Groups_Middle_GroupList_Cell">
+                    <div class="Groups_Middle_GroupList_Cell JSGroupBTN" id="Group1">
                         <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
                         <span>1. ИКБО-01-21</span>
                     </div>
                     -->
                     
                 </div>
+
+                <div style="display: none;" id="SaveEditGroupId">-</div>
 
             </div>
 
@@ -307,7 +398,7 @@
                         <!--Заголовок в виде названия группы-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Группа:</td>
-                            <td class="RightInfoBlock_MainInfo_TableText">ИКБО-01-21</td>
+                            <td class="RightInfoBlock_MainInfo_TableText" id="GroupInfo1">-</td>
                         </tr>
                     </table>
                 </div>
@@ -318,24 +409,24 @@
                             <!--Уровень образования-->
                             <tr>
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Уровень образования:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">Бакалавриат</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="GroupInfo2">-</td>
                             </tr>
     
                             <!--Направление-->
                             <tr>
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Направление (шифр):</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">09.03.04</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="GroupInfo3">-</td>
                             </tr>
     
                             <!--Подразделение-->
                             <tr>
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Подразделение:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">Институт технологий</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="GroupInfo4">-</td>
                             </tr>
     
                             <tr>
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Староста группы:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">Иванов Иван Иванович</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="GroupInfo5">-</td>
                             </tr>
                         </table>
                     </div>
@@ -345,63 +436,62 @@
                             Список студентов группы
                         </div>
 
-                        <div class="Groups_Right_MainInfo_DownBlock_LeftCell_List">
+                        <div class="Groups_Right_MainInfo_DownBlock_LeftCell_List" id="GroupStudentList">
+
+                            <!--
                             <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
                                 1. И.И.Иванов
                             </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
-                            <div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">
-                                1. И.И.Иванов
-                            </div>
+                            -->
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            GroupInfo1 = document.getElementById("GroupInfo1");
+            GroupInfo2 = document.getElementById("GroupInfo2");
+            GroupInfo3 = document.getElementById("GroupInfo3");
+            GroupInfo4 = document.getElementById("GroupInfo4");
+            GroupInfo5 = document.getElementById("GroupInfo5");
+
+            SaveEditGroupId = document.getElementById("SaveEditGroupId");
+
+            GroupStudentList = document.getElementById("GroupStudentList");
+
+            const getOneGroup = async function(Group_ID) {
+                SaveEditGroupId.innerHTML = Group_ID;
+                let data = { "id_group" : Group_ID };
+                let url = new URL("http://127.0.0.1:5000/getGroup");
+                for (let k in data) { url.searchParams.append(k, data[k]); }
+            
+                let response = await fetch(url);
+                if (response.ok) {
+                    let json = await response.json();
+                    
+                    if (json["status"] != "None") {
+                        GroupInfo1.innerHTML = json["data"]["name"];
+                        GroupInfo2.innerHTML = json["data"]["level_education"];
+                        GroupInfo3.innerHTML = json["data"]["cipher"];
+                        GroupInfo4.innerHTML = json["data"]["subdivision"];
+                        GroupInfo5.innerHTML = json["data"]["id_headman"];
+
+                        for (let i = 0; i < json["group"].length; i++) {
+                            var str = '<div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">' + (i + 1).toString() + '. ' + json["group"][i]["surname"][0] + '. ' + json["group"][i]["name"][0] + '. ' + json["group"][i]["patronymic"] + '</div>';
+                            GroupStudentList.innerHTML += str;
+                        }
+                     }
+                    else {
+                        console.log("Об этой группе нет информации", json);
+                    }
+                } else {
+                    alert("Ошибка HTTP: " + response.status);
+                }
+            }
+        </script>
+
 
         <div class="PersonEditInfo_Window" id="GroupEditWindow">
             <div class="PersonEditInfo_Window_EditWindow">
@@ -476,108 +566,16 @@
                 <!--Список студентов-->
                 <div class="LeftListBlock_PersonsList", style="height: 70%;", id="TeacherList">
 
+                    <!--
                     <div class="LeftListBlock_PersonCell">
                         <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
                         <span>1. С.Ф.Собакин</span>
                     </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
-                    <div class="LeftListBlock_PersonCell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. И.И.Иванов</span>
-                    </div>
+                    -->
 
                 </div>
+
+                <div style="display: none;" id="SaveEditTeacherId">-</div>
 
                 <!--Кнопка добавить студента-->
                 <div class="LeftListBlock_AddPersonBTN" id="TeacherAddPersonBTN">
@@ -599,7 +597,7 @@
                             <tr>
                                 <!--ФИО-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">ФИО:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">Сергей Федорович Собакин</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="TeacherInfo1">-</td>
                             </tr>
                         </table>
                         
@@ -612,25 +610,25 @@
                             <tr>
                                 <!--Группа-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Должность:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">Заведующий(ая) кафедрой</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="TeacherInfo2">-</td>
                             </tr>
 
                             <tr>
                                 <!--Пол-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Пол:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">Мужской</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="TeacherInfo3">-</td>
                             </tr>
 
                             <tr>
                                 <!--Дата рождения-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Дата рождения:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">06.03.1922</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="TeacherInfo4">-</td>
                             </tr>
 
                             <tr>
                                 <!--Email-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">E-mail:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">rak@mirea.ru</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="TeacherInfo5">-</td>
                             </tr>
                         </table>
                         
@@ -643,7 +641,7 @@
                             <tr>
                                 <!--Информация-->
                                 <td class="RightInfoBlock_MainInfo_TableTopic">Информация:</td>
-                                <td class="RightInfoBlock_MainInfo_TableText">Отсутствует</td>
+                                <td class="RightInfoBlock_MainInfo_TableText" id="TeacherInfo6">-</td>
                             </tr>
                         </table>
 
@@ -653,11 +651,11 @@
                     <div class="RightInfoBlock_MainInfo_Cell", style="height: 10%; display: flex; flex-direction: row; align-items: center; justify-content: space-evenly;">
 
                         <!--Ряд кнопок-->
-                        <div class="RightInfoBlock_MainInfo_Btns", style="width: 80%; background-color: #FCB43F;" id="TeacherEditInfoBTN" onclick="Edit = true">
+                        <div class="RightInfoBlock_MainInfo_Btns", style="width: 80%; background-color: #FCB43F;" id="TeacherEditInfoBTN">
                             Редактировать информацию
                         </div>
 
-                        <div class="RightInfoBlock_MainInfo_Btns", style="width: 15%; background-color: #A54933;">
+                        <div class="RightInfoBlock_MainInfo_Btns", style="width: 15%; background-color: #A54933;" id="DeleteTeacherBTN">
                             <img src="../static/sysImgs\delete.png", style="width: 2vw; height: 2vw;">
                         </div>
 
@@ -742,6 +740,43 @@
             </div>
         </div>
 
+        <script>
+            TeacherInfo1 = document.getElementById("TeacherInfo1");
+            TeacherInfo2 = document.getElementById("TeacherInfo2");
+            TeacherInfo3 = document.getElementById("TeacherInfo3");
+            TeacherInfo4 = document.getElementById("TeacherInfo4");
+            TeacherInfo5 = document.getElementById("TeacherInfo5");
+            TeacherInfo6 = document.getElementById("TeacherInfo6");
+
+            SaveEditTeacherId = document.getElementById("SaveEditTeacherId");
+
+            const getOneTeacher = async function(Teacher_ID) {
+                SaveEditTeacherId.innerHTML = Teacher_ID;
+                let data = { "id_teacher" : Teacher_ID };
+                let url = new URL("http://127.0.0.1:5000/getTeacher");
+                for (let k in data) { url.searchParams.append(k, data[k]); }
+            
+                let response = await fetch(url);
+                if (response.ok) {
+                    let json = await response.json();
+                    
+                    if (json["status"] != "None") {
+                        TeacherInfo1.innerHTML = json["data"]["surname"] + " " + json["data"]["name"] + " " + json["data"]["patronymic"];
+                        TeacherInfo2.innerHTML = json["data"]["position"];
+                        TeacherInfo3.innerHTML = json["data"]["gender"];
+                        TeacherInfo4.innerHTML = json["data"]["date_of_birth"];
+                        TeacherInfo5.innerHTML = json["data"]["email"];
+                        TeacherInfo6.innerHTML = json["data"]["info"];
+                    }
+                    else {
+                        console.log("Об этой группе нет информации", json);
+                    }
+                } else {
+                    alert("Ошибка HTTP: " + response.status);
+                }
+            }
+        </script>
+
 
 
 
@@ -765,7 +800,7 @@
                     Редактировать предмет
                 </div>
 
-                <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;">
+                <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;" id="DeleteSubjectBTN">
                     <img src="../static/sysImgs\delete.png", style="width: 2vw; height: 2vw;">
                 </div>
 
@@ -775,93 +810,16 @@
                 
                 <div class="Groups_Middle_GroupList_List" id="SubjectList">
 
+                    <!--
                     <div class="Groups_Middle_GroupList_Cell">
                         <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
                         <span>1. Физика</span>
                     </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>2. Химия</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
-                    <div class="Groups_Middle_GroupList_Cell">
-                        <img src="../static/sysImgs\info.png" class="LeftListBlock_PersonCell_InfoImg">
-                        <span>1. Предмет</span>
-                    </div>
+                    -->
                     
-
                 </div>
+
+                <div style="display: none;" id="SaveEditSubjectId">-</div>
 
             </div>
 
@@ -871,7 +829,7 @@
                         <!--Предмет-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Предмет:</td>
-                            <td class="RightInfoBlock_MainInfo_TableText">Физика</td>
+                            <td class="RightInfoBlock_MainInfo_TableText" id="SubjectInfo1">-</td>
                         </tr>
                     </table>
                 </div>
@@ -881,13 +839,13 @@
                         <!--Учебные часы-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Учебные часы:</td>
-                            <td class="RightInfoBlock_MainInfo_TableText">10000 часов</td>
+                            <td class="RightInfoBlock_MainInfo_TableText" id="SubjectInfo2">-</td>
                         </tr>
 
                         <!--Уровень образования-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Уровень образования:</td>
-                            <td class="RightInfoBlock_MainInfo_TableText">Бакалавриат (семестр 1, курс 1)</td>
+                            <td class="RightInfoBlock_MainInfo_TableText" id="SubjectInfo3">-</td>
                         </tr>
                     </table>
                 </div>
@@ -896,7 +854,7 @@
                     <table class="RightInfoBlock_MainInfo_Table" style="border: 1px solid black;" id="SubjectInfoTable3">
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Преподаватели:</td>
-                            <td class="RightInfoBlock_MainInfo_TableText">И.И. Иванов, И. И. Иванова</td>
+                            <td class="RightInfoBlock_MainInfo_TableText" id="SubjectInfo4">-</td>
                         </tr>
                     </table>
                 </div>
@@ -906,7 +864,7 @@
                         <!--Учебные группы-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">Учебные группы:</td>
-                            <td class="RightInfoBlock_MainInfo_TableText">ИИОО-01-01, ИИОО-01-02, ИИОО-01-03, ИИОО-01-04, ИИОО-01-05, ИИОО-01-06, ИИОО-01-07, ИИОО-01-08, ИИОО-01-09, ИИОО-01-10, ИИОО-01-11, ИИОО-01-12, ИИОО-01-13, ИИОО-01-14, ИИОО-01-15, ИИОО-01-16, ИИОО-01-17, ИИОО-01-18, ИИОО-01-19, ИИОО-01-20, ИИОО-01-21, ИИОО-01-22</td>
+                            <td class="RightInfoBlock_MainInfo_TableText" id="SubjectInfo5">-</td>
                         </tr>
                     </table>
                 </div>
@@ -916,7 +874,7 @@
                         <!--О предмете-->
                         <tr>
                             <td class="RightInfoBlock_MainInfo_TableTopic">О предмете:</td>
-                            <td class="RightInfoBlock_MainInfo_TableText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores sunt iusto harum architecto quis dolore corporis? Ut molestiae amet ad at nam necessitatibus, minima nostrum voluptas accusamus. Quaerat, labore quos.</td>
+                            <td class="RightInfoBlock_MainInfo_TableText" id="SubjectInfo6">-</td>
                         </tr>
                     </table>
                 </div>
@@ -936,38 +894,28 @@
                         <table class="PersonEditInfo_Window_EditWindow_Table" id="SubjectEditTable">
                             <tr>
                                 <td>Предмет:</td>
-                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell" id="AddEditSubject1"></td>
                             </tr>
     
                             <tr>
                                 <td>Учебные часы:</td>
-                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell" id="AddEditSubject2"></td>
                             </tr>
     
                             <tr>
                                 <td>Уровень образования:</td>
-                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
-                            </tr>
-    
-                            <tr>
-                                <td>Преподаватели:</td>
-                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
-                            </tr>
-    
-                            <tr>
-                                <td>Учебные группы:</td>
-                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell" id="AddEditSubject3"></td>
                             </tr>
     
                             <tr>
                                 <td>О предмете:</td>
-                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell"></td>
+                                <td contenteditable="true" class="PersonEditInfo_Window_EditWindow_TableCell" id="AddEditSubject6"></td>
                             </tr>
                         </table>
                     </div>
 
                     <div class="PersonEditInfo_Window_EditWindow_Cell" style="height: 15%; display: flex; align-items: center; justify-content: center;">
-                        <div class="PersonEditInfo_Window_EditWindow_SaveBTN">
+                        <div class="PersonEditInfo_Window_EditWindow_SaveBTN" id="AddEditSubjectBTN">
                             Сохранить
                         </div>
                     </div>
@@ -975,7 +923,54 @@
             </div>
         </div>
 
+        <script>
+            SubjectInfo1 = document.getElementById("SubjectInfo1");
+            SubjectInfo2 = document.getElementById("SubjectInfo2");
+            SubjectInfo3 = document.getElementById("SubjectInfo3");
+            SubjectInfo4 = document.getElementById("SubjectInfo4");
+            SubjectInfo5 = document.getElementById("SubjectInfo5");
+            SubjectInfo6 = document.getElementById("SubjectInfo6");
 
+            SaveEditSubjectId = document.getElementById("SaveEditSubjectId");
+
+            const getOneSubject = async function(Subject_ID) {
+                SaveEditSubjectId.innerHTML = Subject_ID;
+                let data = { "id_subject" : Subject_ID };
+                let url = new URL("http://127.0.0.1:5000/getSubject");
+                for (let k in data) { url.searchParams.append(k, data[k]); }
+            
+                let response = await fetch(url);
+                if (response.ok) {
+                    let json = await response.json();
+
+                    console.log("Предмет",json);
+                    
+                    if (json["status"] != "None") {
+                        SubjectInfo1.innerHTML = json["data"]["name"]
+                        SubjectInfo2.innerHTML = json["data"]["study_hours"]
+                        SubjectInfo3.innerHTML = json["data"]["level_education"]
+                        SubjectInfo6.innerHTML = json["data"]["info"]
+
+                        var TeacherStr = "";
+                        for (let i = 0; i < json["teachers"].length; i++) {
+                            TeacherStr += json["teachers"][i]["surname"][0] + ". " + json["teachers"][i]["name"][0] + ". " + json["teachers"][i]["patronymic"];
+                        }
+                        SubjectInfo4.innerHTML = TeacherStr;
+
+                        var GroupStr = "";
+                        for (let i = 0; i < json["groups"].length; i++) {
+                            GroupStr += json["groups"][i];
+                        }
+                        SubjectInfo5.innerHTML = GroupStr;
+                    }
+                    else {
+                        console.log("Об этой группе нет информации", json);
+                    }
+                } else {
+                    alert("Ошибка HTTP: " + response.status);
+                }
+            }
+        </script>
 
 
 
@@ -1024,6 +1019,40 @@
             </div>
 
             <div class="Schedule_RightInfo" id="ScheduleTableList">
+                <table class="Schedule_RightInfo_Table" border="all">
+                    <tr class="Schedule_RightInfo_TableTopic">
+                        <td>День недели</td>
+                    </tr>
+
+                    <tr class="Schedule_RightInfo_TableSecondTopic">
+                        <td>-</td>
+                    </tr>
+
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Понедельник</td>
+                    </tr>
+
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Вторник</td>
+                    </tr>
+
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Среда</td>
+                    </tr>
+
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Четверг</td>
+                    </tr>
+
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Пятница</td>
+                    </tr>
+
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Суббота</td>
+                    </tr>
+                </table>
+
 
                 <table class="Schedule_RightInfo_Table" border="all">
                     <tr class="Schedule_RightInfo_TableTopic">

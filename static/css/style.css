@@ -338,8 +338,9 @@
     max-height: 100%;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .MainMainInnerBlock_MainDiv_Cell {
@@ -347,10 +348,53 @@
     border-radius: 10px;
     background-color: #3F4649;
 
-    width: 80%;
-    height: 95%;
+    line-height: 1.1vw;
+
+    width: 95%;
+
+    overflow: auto;
 }
 
+.MainMainInnerBlock_MainDiv_Cell::-webkit-scrollbar {
+    width: 20px;
+    background-color: #3F4649;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.MainMainInnerBlock_MainDiv_Cell::-webkit-scrollbar-thumb {
+    background-color: #353738;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.MainMainInnerBlock_MainDiv_Cell::-webkit-scrollbar-thumb:hover {
+    background-color: #2c2d2e;
+}
+
+.MainMainInnerBlock_MainDiv_Cell_Topic {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2vw;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MainMainInnerBlock_MainDiv_Cell_SecondTopic {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.MainMainInnerBlock_MainDiv_Cell_Text {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1vw;
+}
 
 
 
@@ -988,6 +1032,23 @@
     align-items: center;
 
     overflow: auto;
+}
+
+.Groups_Right_MainInfo_UpperBlock::-webkit-scrollbar {
+    width: 20px;
+    background-color: #3F4649;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.Groups_Right_MainInfo_UpperBlock::-webkit-scrollbar-thumb {
+    background-color: #353738;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.Groups_Right_MainInfo_UpperBlock::-webkit-scrollbar-thumb:hover {
+    background-color: #2c2d2e;
 }
 
 .Groups_Right_MainInfo_DownBlock {
