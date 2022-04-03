@@ -192,7 +192,7 @@ def getStud():
         if group is None:
             student["headman"] = "NO"
             return {
-                "status": "None",
+                "status": "OK",
                 "data": student,
                 "group": {}
             }
