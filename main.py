@@ -15,6 +15,7 @@ def main():
 def editWindow():
     return render_template("editWindow.html")
 
+
 @app.route("/imageUpload")
 def imageUpload():
     return render_template("imageUpload.html")
@@ -413,6 +414,37 @@ def schedules():
         return {
             "status": "OK",
             "data": schedule
+        }
+
+
+@app.route("/getTimetable", methods=["GET"])
+def timetable_group():
+    data = request.args
+    timetable = bd.get_group_timetable_by_id(int(data["id_group"]))
+    if timetable is None or len(timetable) == 0:
+        return {
+            "status": "None",
+            "data": {}
+        }
+    else:
+        group_timetable = []
+        group = bd.get_group_by_id(data["id_group"])
+        schedule = bd.get_all_timetable()
+        for day in schedule:
+            teacher = bd.get_teacher_by_id(day["id_teacher"])
+            subject = bd.get_subject_by_id(day["id_subject"])
+            if day["id_group"] == int(data["id_group"]):
+                group_timetable.append({
+                    "data": day,
+                    "name": teacher["name"],
+                    "surname": teacher["surname"],
+                    "patronymic": teacher["patronymic"],
+                    "subject": subject["name"]
+                })
+        return {
+            "name": group["name"],
+            "level_education": group["level_education"],
+            "data": group_timetable
         }
 
 
