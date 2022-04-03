@@ -431,6 +431,7 @@ def getTimetable():
 @app.route("/addGroupTimetable", methods=["POST"])
 def addTimetable():
     data = request.json
+    bd.delete_timetable_by_group_id(int(data["id_group"]))
     bd.add_group_timetable(int(data["id_subject"]), int(data["id_group"]), int(data["day_of_week"]),
                            data["pair_number"], data["even_odd"], int(data["id_teacher"]), data["room"])
 
