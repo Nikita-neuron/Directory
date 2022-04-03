@@ -503,6 +503,11 @@ class DataBase(metaclass=Singleton):
         group_tuple = (id_subject, day_of_week_number, pair_number, even_odd, id_teacher, room, id_group)
         self.insert_query(insert_query, group_tuple)
 
+    def delete_timetable_by_group_id(self, id_group):
+        insert_query = """DELETE FROM subjects_groups WHERE id_group = %s"""
+        student_tuple = str(id_group)
+        self.insert_query(insert_query, student_tuple)
+
     def delete_group(self, group_id):
         tables = ["students", "subjects_groups"]
         for table in tables:
