@@ -250,17 +250,10 @@ window.onload = function(){
         }
     }
 
-    const ScheduleEditWindow = document.getElementById("ScheduleEditWindow")
-    const editScheduleBTN = document.getElementById("editScheduleBTN")
-    const CloseEditSchedule = document.getElementById("CloseEditSchedule")
-
-    editScheduleBTN.onclick = function() {
-        ScheduleEditWindow.style.display = "flex";
-    }
-
-    CloseEditSchedule.onclick = function() {
-        ScheduleEditWindow.style.display = "none"
-    }
+    let ScheduleEditWindow = document.getElementById("ScheduleEditWindow");
+    let editScheduleBTN = document.getElementById("editScheduleBTN");
+    let CloseEditSchedule = document.getElementById("CloseEditSchedule");
+    let SaveEditGroupId = document.getElementById("SaveEditGroupId");
 
     const SubjectEditWindow = document.getElementById("SubjectEditWindow");
     const EditSubjectBTN = document.getElementById("EditSubjectBTN");
@@ -561,6 +554,7 @@ window.onload = function(){
     // Обновление преподавателей
 
     SaveEditTeacherId = document.getElementById("SaveEditTeacherId");
+    let TeacherPhotoField = document.getElementById("TeacherPhotoField");
 
     const EditOneTeacher = async function() {
         let TeacherID = -1;
@@ -582,7 +576,7 @@ window.onload = function(){
 
         let file = AddEditTeacherPhoto.files[0];
         if (!file) {
-            let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            let blobImage = await fetch(TeacherPhotoField.src).then(r => r.blob());
             file = new File([blobImage], 'image.png', blobImage)
             formData.append('image', file);
         }
@@ -990,23 +984,13 @@ window.onload = function(){
     getOneSchedule(1);
 
 
-
-
-
-
-
-
-
-
-
-
-
+    // Редактирование расписания
     const chooseDayButtons = document.querySelectorAll(".choose-day-btn");
     const addTimetablePair = document.querySelector(".add-timetable-pair");
     const mainBoxSave = document.querySelector(".main-box-save");
     const chooseDayTimetable = document.querySelector(".choose-day-timetable");
     
-    var idGroup = 1;
+    let idGroup = 1;
 
     let groupDBTimetable = [];
     let currentDay = "1";
@@ -1064,6 +1048,8 @@ window.onload = function(){
             }
             else {
                 console.log("База данных пуста", json);
+                groupDBTimetable = [];
+                updateViewTimetable(currentDay);
             }
         } else {
             alert("Ошибка HTTP: " + response.status);
@@ -1081,7 +1067,7 @@ window.onload = function(){
         });
         if (response.ok) {
             let json = await response.json();
-            console.log(json);
+            ScheduleEditWindow.style.display = "none"
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
@@ -1168,10 +1154,6 @@ window.onload = function(){
             });
         });
     }
-
-    EditSchedulegetAllSubjects();
-    EditSchedulegetAllTeachers();
-    getGroupTimetable();
     
     chooseDayButtons.forEach(elem => {
         elem.addEventListener("click", e => {
@@ -1319,11 +1301,31 @@ window.onload = function(){
             }
         }
     
-        console.log(groupDBTimetable);
         sendGroupTimetable({
             "status": "OK",
             "id_group": idGroup,
             "timetable": groupDBTimetable
         });
     });
+
+    ScheduleEditWindow = document.getElementById("ScheduleEditWindow");
+    editScheduleBTN = document.getElementById("editScheduleBTN");
+    CloseEditSchedule = document.getElementById("CloseEditSchedule");
+    SaveEditGroupId = document.getElementById("SaveEditGroupId");
+
+    editScheduleBTN.onclick = function() {
+        let GroupInfo1 = document.getElementById("GroupInfo1");
+        if (GroupInfo1.innerHTML != "-") {
+            ScheduleEditWindow.style.display = "flex";
+            idGroup = Number(SaveEditGroupId.innerHTML);
+
+            EditSchedulegetAllSubjects();
+            EditSchedulegetAllTeachers();
+            getGroupTimetable();
+        }
+    }
+
+    CloseEditSchedule.onclick = function() {
+        ScheduleEditWindow.style.display = "none"
+    }
 };
