@@ -344,6 +344,7 @@ window.onload = function(){
             }
         } else {
             alert("Ошибка HTTP: " + response.status);
+            console.log("test");
         }
     }
     getAllStudents();
