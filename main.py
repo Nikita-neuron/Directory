@@ -359,24 +359,24 @@ def getSub():
         for schedule in schedules_a:
             teacher = bd.get_teacher_by_id(schedule["id_teacher"])
             group = bd.get_group_by_id(schedule["id_group"])
-            if teacher is None or group is None:
-                return{
-                    "status": "OK",
-                    "data": subject
-                }
-            else:
-                teachers.append({
-                    "name": teacher["name"],
-                    "surname": teacher["surname"],
-                    "patronymic": teacher["patronymic"]
-                })
+            teachers.append({
+                "name": teacher["name"],
+                "surname": teacher["surname"],
+                "patronymic": teacher["patronymic"]
+            })
             groups.append(group["name"])
-        return {
-            "status": "OK",
-            "data": subject,
-            "teachers": teachers,
-            "groups": groups
-        }
+        if teachers is None or groups is None:
+            return{
+                "status": "OK",
+                "data": subject
+            }
+        else:
+            return {
+                "status": "OK",
+                "data": subject,
+                "teachers": teachers,
+                "groups": groups
+            }
 
 
 @app.route("/deleteSubject", methods=["GET"])
