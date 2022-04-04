@@ -106,13 +106,15 @@ def allTeach():
 def updateStud():
     data = request.form
     group = data["name_group"]
-    id_group = bd.get_group_by_name(group)
+    group = bd.get_group_by_name(group)
+    group_id = 0
+    if group is not None: group_id = int(group["id"])
     fio = data["FIO"]
     fio = fio.split()
     image = ""
     if request.files: image = request.files["image"].read()
     bd.update_student(int(data["id_student"]), fio[0], fio[1], fio[2], data["gender"],
-                      data["email"], int(id_group["id"]), image, data["date_of_birth"], data["info"])
+                      data["email"], group_id, image, data["date_of_birth"], data["info"])
     return {
         "status": "OK"
     }
@@ -120,15 +122,17 @@ def updateStud():
 
 @app.route("/addStudent", methods=["POST"])
 def addStud():
-    data = request.json
+    data = request.form
     group = data["name_group"]
-    id_group = bd.get_group_by_name(group)
+    group = bd.get_group_by_name(group)
+    group_id = 0
+    if group is not None: group_id = int(group["id"])
     fio = data["FIO"]
     fio = fio.split()
     image = ""
     if request.files: image = request.files["image"].read()
     bd.add_student(fio[0], fio[1], fio[2], data["gender"], data["email"],
-                   id_group["id"], image, data["date_of_birth"], data["info"])
+                   group_id, image, data["date_of_birth"], data["info"])
     if data["headman"] == "Да" or data["headman"] == "ДА":
         students = bd.get_all_students()
         for student in students:
@@ -157,16 +161,13 @@ def allStud():
             group = student["id_group"]
             group = bd.get_group_by_id(group)
             if group is None:
-                student["headman"] = "NO"
-                return {
-                    "status": "OK",
-                    "data": students
-                }
-            id_headman = group["id_headman"]
-            if id_headman == student["id"]:
-                student["headman"] = "YES"
+                student["headman"] = "Нет"
             else:
-                student["headman"] = "NO"
+                id_headman = group["id_headman"]
+                if id_headman == student["id"]:
+                    student["headman"] = "Да"
+                else:
+                    student["headman"] = "Нет"
         return {
             "status": "OK",
             "data": students
@@ -242,10 +243,11 @@ def addGroup():
     headman = headman.split()
     students = bd.get_all_students()
     id_student = 0
-    for student in students:
-        if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
-            id_student = student["id"]
-            break
+    if len(headman) == 3:
+        for student in students:
+            if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
+                id_student = student["id"]
+                break
     bd.add_group(data["name"], id_student, data["level_education"], data["cipher"], data["subdivision"])
     return {
         "status": "OK"
@@ -411,15 +413,24 @@ def timetable_group():
         group = bd.get_group_by_id(data["id_group"])
         schedule = bd.get_all_timetable()
         for day in schedule:
+            teacher_name = ""
+            teacher_surname = ""
+            teacher_patronymic = ""
+            subject_name = ""
             teacher = bd.get_teacher_by_id(day["id_teacher"])
+            if teacher is not None:
+                teacher_name = teacher["name"]
+                teacher_surname = teacher["surname"]
+                teacher_patronymic = teacher["patronymic"]
             subject = bd.get_subject_by_id(day["id_subject"])
+            if subject is not None: subject_name = subject["name"]
             if day["id_group"] == int(data["id_group"]):
                 group_timetable.append({
                     "data": day,
-                    "name": teacher["name"],
-                    "surname": teacher["surname"],
-                    "patronymic": teacher["patronymic"],
-                    "subject": subject["name"]
+                    "name": teacher_name,
+                    "surname": teacher_surname,
+                    "patronymic": teacher_patronymic,
+                    "subject": subject_name
                 })
         return {
             "name": group["name"],

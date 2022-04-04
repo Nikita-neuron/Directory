@@ -336,6 +336,19 @@ window.onload = function(){
 
     //Добавление нового студента
 
+    const addStudentData = async function(formData) {
+        let url = new URL("http://127.0.0.1:5000/addStudent");
+        let response = await fetch(url, {
+            method: 'POST',
+            body: formData
+        });
+        if (response.ok) {
+            window.location.reload();
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
     const AddEditStudent1 = document.getElementById("AddEditStudent1");
     const AddEditStudent2 = document.getElementById("AddEditStudent2");
     const AddEditStudent3 = document.getElementById("AddEditStudent3");
@@ -349,36 +362,32 @@ window.onload = function(){
     const StudentFileInput = document.getElementById("StudentFileInput");
 
     const AddOneStudent = async function() {
-        let student = {
-            FIO: AddEditStudent1.innerHTML,
-            gender: AddEditStudent3.innerHTML,
-            name_group: AddEditStudent2.innerHTML,
-            date_of_birth: AddEditStudent4.innerHTML,
-            email: AddEditStudent5.innerHTML,
-            headman: AddEditStudent6.innerHTML,
-            info: AddEditStudent7.innerHTML
-        };
+        let formData = new FormData();
+        formData.append("FIO", AddEditStudent1.innerHTML);
+        formData.append("gender", AddEditStudent3.innerHTML);
+        formData.append("name_group", AddEditStudent2.innerHTML);
+        formData.append("date_of_birth", AddEditStudent4.innerHTML);
+        formData.append("email", AddEditStudent5.innerHTML);
+        formData.append("headman", AddEditStudent6.innerHTML);
+        formData.append("info", AddEditStudent7.innerHTML);
 
-        let url = new URL("http://127.0.0.1:5000/addStudent");
-    
-        let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(student)
-        });
-        if (response.ok) {
-            let json = await response.json();
-            console.log(json);
-        } else {
-            alert("Ошибка HTTP: " + response.status);
+        let file = StudentFileInput.files[0];
+        if (!file) {
+            let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            file = new File([blobImage], 'image.png', blobImage)
+            formData.append('image', file);
         }
+        else {
+            formData.append('image', file);
+        }
+
+       addStudentData(formData);
     }
 
     //Обновление студента
 
     SaveEditStudentId = document.getElementById("SaveEditStudentId");
+    let StudentPhotoField = document.getElementById("StudentPhotoField");
 
     // const getDefaultUserImage = async function() {
     //     let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
@@ -388,11 +397,11 @@ window.onload = function(){
     //     sendUserImage(formData);
     // }
     
-    const sendUserImage = async function(blob, Student_ID) {
-        let url = new URL("http://127.0.0.1:5000/saveStudentImage/" + Student_ID);
+    const updateStudentData = async function(formData) {
+        let url = new URL("http://127.0.0.1:5000/updateStud");
         let response = await fetch(url, {
             method: 'POST',
-            body: blob
+            body: formData
         });
         if (response.ok) {
             window.location.reload();
@@ -418,17 +427,18 @@ window.onload = function(){
         formData.append("email", AddEditStudent5.innerHTML);
         formData.append("headman", AddEditStudent6.innerHTML);
         formData.append("info", AddEditStudent7.innerHTML);
+        formData.append("id_student", Student_ID);
 
         let file = StudentFileInput.files[0];
         if (!file) {
-            let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            let blobImage = await fetch(StudentPhotoField.src).then(r => r.blob());
             file = new File([blobImage], 'image.png', blobImage)
             formData.append('image', file);
         }
         else {
             formData.append('image', file);
         }
-        sendUserImage(formData, Student_ID);
+        updateStudentData(formData);
     }
 
 

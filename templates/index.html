@@ -327,7 +327,7 @@
                     
                     if (json["status"] != "None") {
                         StudentInfo1.innerHTML = json["data"]["surname"] + " " + json["data"]["name"] + " " + json["data"]["patronymic"];
-                        StudentInfo2.innerHTML = json["group"]["gender"];
+                        StudentInfo2.innerHTML = json["group"];
                         StudentInfo3.innerHTML = json["data"]["gender"];
                         StudentInfo4.innerHTML = json["data"]["date_of_birth"];
                         StudentInfo5.innerHTML = json["data"]["email"];
