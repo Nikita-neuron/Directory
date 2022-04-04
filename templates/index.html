@@ -767,7 +767,7 @@
                     <!--Фото-->
                     <div class="RightInfoBlock_Photo_PhotoWrapper">
                         <div class="RightInfoBlock_Photo_Photo">
-                            <img src="../static/sysImgs\user.png" class="RightInfoBlock_Photo_Photo_Icon">
+                            <img src="../static/sysImgs\user.png" class="RightInfoBlock_Photo_Photo_Icon" id="TeacherPhotoField">
                         </div>
                     </div>
 
@@ -842,6 +842,7 @@
             TeacherInfo6 = document.getElementById("TeacherInfo6");
 
             SaveEditTeacherId = document.getElementById("SaveEditTeacherId");
+            let teacherPhoto = document.getElementById("TeacherPhotoField");
 
             const getOneTeacher = async function(Teacher_ID) {
                 SaveEditTeacherId.innerHTML = Teacher_ID;
@@ -860,6 +861,7 @@
                         TeacherInfo4.innerHTML = json["data"]["date_of_birth"];
                         TeacherInfo5.innerHTML = json["data"]["email"];
                         TeacherInfo6.innerHTML = json["data"]["info"];
+                        getTeacherImage(Teacher_ID);
                     }
                     else {
                         console.log("Об этой группе нет информации", json);
@@ -867,6 +869,9 @@
                 } else {
                     alert("Ошибка HTTP: " + response.status);
                 }
+            }
+            const getTeacherImage = function(Teacher_ID) {
+                teacherPhoto.src = `http://127.0.0.1:5000/teacherImage/${Teacher_ID}`;
             }
         </script>
 

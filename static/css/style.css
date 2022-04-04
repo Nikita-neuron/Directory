@@ -691,7 +691,8 @@
 .RightInfoBlock_Photo_Photo_Icon {
     /* width: 5vw; */
     /* height: 5vw; */
-    width: 90%;
+    max-width: 90%;
+    max-height: 90%;
 
     margin: auto;
     position: absolute;

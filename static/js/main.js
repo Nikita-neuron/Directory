@@ -469,6 +469,7 @@ window.onload = function(){
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
@@ -504,33 +505,56 @@ window.onload = function(){
     const AddEditTeacher4 = document.getElementById("AddEditTeacher4");
     const AddEditTeacher5 = document.getElementById("AddEditTeacher5");
     const AddEditTeacher6 = document.getElementById("AddEditTeacher6");
+    const AddEditTeacherPhoto = document.getElementById("TeacherFileInput");
 
     const AddEditTeacherBTN = document.getElementById("AddEditTeacherBTN");
 
-    let teacher = {
-        FIO: AddEditTeacher1.innerHTML,
-        position: AddEditTeacher3.innerHTML,
-        gender: AddEditTeacher2.innerHTML,
-        date_of_birth: AddEditTeacher4.innerHTML,
-        email: AddEditTeacher5.innerHTML,
-        info: AddEditTeacher6.innerHTML
-    };
-    const AddOneTeacher = async function() {
+    const addTeacherData = async function(formData) {
         let url = new URL("http://127.0.0.1:5000/addTeacher");
-    
         let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(teacher)
+            method: 'POST',
+            body: formData
         });
         if (response.ok) {
-            let json = await response.json();
-            console.log(json);
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
+    }
+
+    const updateTeacherData = async function(formData) {
+        let url = new URL("http://127.0.0.1:5000/updateTeacher");
+        let response = await fetch(url, {
+            method: 'POST',
+            body: formData
+        });
+        if (response.ok) {
+            window.location.reload();
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+    const AddOneTeacher = async function() {
+        let formData = new FormData();
+        formData.append("FIO", AddEditTeacher1.innerHTML);
+        formData.append("position", AddEditTeacher3.innerHTML);
+        formData.append("gender", AddEditTeacher2.innerHTML);
+        formData.append("date_of_birth", AddEditTeacher4.innerHTML);
+        formData.append("email", AddEditTeacher5.innerHTML);
+        formData.append("info", AddEditTeacher6.innerHTML);
+
+        let file = AddEditTeacherPhoto.files[0];
+        if (!file) {
+            let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            file = new File([blobImage], 'image.png', blobImage)
+            formData.append('image', file);
+        }
+        else {
+            formData.append('image', file);
+        }
+
+        addTeacherData(formData);
     }
 
 
@@ -539,37 +563,34 @@ window.onload = function(){
     SaveEditTeacherId = document.getElementById("SaveEditTeacherId");
 
     const EditOneTeacher = async function() {
+        let TeacherID = -1;
         if (SaveEditTeacherId.innerHTML != "-") {
-            var GroupID = Number(SaveEditTeacherId.innerHTML)
+            TeacherID = Number(SaveEditTeacherId.innerHTML)
         }
         else {
             return 0;
         }
 
-        let teacher = {
-            FIO: AddEditTeacher1.innerHTML,
-            position: AddEditTeacher3.innerHTML,
-            gender: AddEditTeacher2.innerHTML,
-            date_of_birth: AddEditTeacher4.innerHTML,
-            email: AddEditTeacher5.innerHTML,
-            info: AddEditTeacher6.innerHTML
-        };
+        let formData = new FormData();
+        formData.append("FIO", AddEditTeacher1.innerHTML);
+        formData.append("position", AddEditTeacher3.innerHTML);
+        formData.append("gender", AddEditTeacher2.innerHTML);
+        formData.append("date_of_birth", AddEditTeacher4.innerHTML);
+        formData.append("email", AddEditTeacher5.innerHTML);
+        formData.append("info", AddEditTeacher6.innerHTML);
+        formData.append("id_teacher", TeacherID);
 
-        let url = new URL("http://127.0.0.1:5000/updateTeacher");
-    
-        let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(teacher)
-        });
-        if (response.ok) {
-            let json = await response.json();
-            console.log(json);
-        } else {
-            alert("Ошибка HTTP: " + response.status);
+        let file = AddEditTeacherPhoto.files[0];
+        if (!file) {
+            let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            file = new File([blobImage], 'image.png', blobImage)
+            formData.append('image', file);
         }
+        else {
+            formData.append('image', file);
+        }
+
+        updateTeacherData(formData);
     }
 
     AddEditTeacherBTN.onclick = function() {
@@ -627,6 +648,7 @@ window.onload = function(){
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
@@ -681,6 +703,7 @@ window.onload = function(){
         if (response.ok) {
             let json = await response.json();
             console.log(json);
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
@@ -719,6 +742,7 @@ window.onload = function(){
         if (response.ok) {
             let json = await response.json();
             console.log(json);
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
@@ -782,6 +806,7 @@ window.onload = function(){
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
@@ -828,6 +853,7 @@ window.onload = function(){
         if (response.ok) {
             let json = await response.json();
             console.log(json);
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
@@ -865,6 +891,7 @@ window.onload = function(){
         if (response.ok) {
             let json = await response.json();
             console.log(json);
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
@@ -926,6 +953,7 @@ window.onload = function(){
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
+            window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
         }

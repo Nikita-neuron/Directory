@@ -477,6 +477,13 @@ def student_image(id_student):
     return send_file(io.BytesIO(student_img), download_name='img_src.png', mimetype='image/png')
 
 
+@app.route("/teacherImage/<id_teacher>", methods=["GET"])
+def teacher_image(id_teacher):
+    teacher = bd.get_teacher_by_id(int(id_teacher))
+    teacher_img = teacher["image"]
+    return send_file(io.BytesIO(teacher_img), download_name='img_src.png', mimetype='image/png')
+
+
 @app.route("/saveStudentImage/<id_student>", methods=["POST"])
 def save(id_student):
     print(request.form.to_dict())
