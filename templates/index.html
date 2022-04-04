@@ -321,7 +321,6 @@
             
                 setOnLoadScreen();
                 let response = await fetch(url);
-                setOffLoadScreen();
                 if (response.ok) {
                     let json = await response.json();
 
@@ -335,7 +334,8 @@
                         StudentInfo5.innerHTML = json["data"]["email"];
                         StudentInfo6.innerHTML = json["data"]["headman"];
                         StudentInfo7.innerHTML = json["data"]["info"];
-                        getStudentImage(Student_ID);
+                        await getStudentImage(Student_ID);
+                        setOffLoadScreen();
                     }
                     else {
                         console.log("Об этом студенте нет информации", json);
@@ -345,7 +345,7 @@
                 }
             }
 
-            const getStudentImage = function(Student_ID) {
+            const getStudentImage = async function(Student_ID) {
                 StudentPhotoField.src = `http://127.0.0.1:5000/studentImage/${Student_ID}`;
             }
         </script>
@@ -857,7 +857,6 @@
             
                 setOnLoadScreen();
                 let response = await fetch(url);
-                setOffLoadScreen();
                 if (response.ok) {
                     let json = await response.json();
                     
@@ -868,7 +867,8 @@
                         TeacherInfo4.innerHTML = json["data"]["date_of_birth"];
                         TeacherInfo5.innerHTML = json["data"]["email"];
                         TeacherInfo6.innerHTML = json["data"]["info"];
-                        getTeacherImage(Teacher_ID);
+                        await getTeacherImage(Teacher_ID);
+                        setOffLoadScreen();
                     }
                     else {
                         console.log("Об этой группе нет информации", json);
@@ -877,7 +877,7 @@
                     alert("Ошибка HTTP: " + response.status);
                 }
             }
-            const getTeacherImage = function(Teacher_ID) {
+            const getTeacherImage = async function(Teacher_ID) {
                 teacherPhoto.src = `http://127.0.0.1:5000/teacherImage/${Teacher_ID}`;
             }
         </script>
