@@ -1050,11 +1050,11 @@
                         SubjectInfo3.innerHTML = json["data"]["level_education"]
                         SubjectInfo6.innerHTML = json["data"]["info"]
 
-                        var TeacherStr = "";
+                        var SubjectStr = "";
                         for (let i = 0; i < json["teachers"].length; i++) {
-                            TeacherStr += json["teachers"][i]["surname"][0] + ". " + json["teachers"][i]["name"][0] + ". " + json["teachers"][i]["patronymic"];
+                            SubjectStr += json["teachers"][i]["surname"][0] + ". " + json["teachers"][i]["name"][0] + ". " + json["teachers"][i]["patronymic"];
                         }
-                        SubjectInfo4.innerHTML = TeacherStr;
+                        SubjectInfo4.innerHTML = SubjectStr;
 
                         var GroupStr = "";
                         for (let i = 0; i < json["groups"].length; i++) {
@@ -1118,6 +1118,8 @@
             </div>
 
             <div class="Schedule_RightInfo" id="ScheduleTableList">
+
+                <!--
                 <table class="Schedule_RightInfo_Table" border="all">
                     <tr class="Schedule_RightInfo_TableTopic">
                         <td>День недели</td>
@@ -1130,7 +1132,6 @@
                         <td>Преподаватель</td>
                     </tr>
 
-                    <!--Понедельник-->
                     <tr class="Schedule_RightInfo_TableChetRow">
                         <td rowspan="7">Понедельник</td>
                         <td>Информатика</td>
@@ -1168,7 +1169,6 @@
                         <td>И.И.Иванов</td>
                     </tr>
 
-                    <!--Вторник-->
                     <tr class="Schedule_RightInfo_TableNeChetRow">
                         <td rowspan="7">Вторник</td>
                         <td>Информатика</td>
@@ -1206,7 +1206,6 @@
                         <td>И.И.Иванов</td>
                     </tr>
 
-                    <!--Среда-->
                     <tr class="Schedule_RightInfo_TableChetRow">
                         <td rowspan="7">Среда</td>
                         <td>Информатика</td>
@@ -1244,7 +1243,6 @@
                         <td>И.И.Иванов</td>
                     </tr>
 
-                    <!--Четверг-->
                     <tr class="Schedule_RightInfo_TableNeChetRow">
                         <td rowspan="7">Четверг</td>
                         <td>Информатика</td>
@@ -1282,7 +1280,6 @@
                         <td>И.И.Иванов</td>
                     </tr>
 
-                    <!--Пятница-->
                     <tr class="Schedule_RightInfo_TableChetRow">
                         <td rowspan="7">Пятница</td>
                         <td>Информатика</td>
@@ -1320,7 +1317,6 @@
                         <td>И.И.Иванов</td>
                     </tr>
 
-                    <!--Суббота-->
                     <tr class="Schedule_RightInfo_TableNeChetRow">
                         <td rowspan="7">Суббота</td>
                         <td>Информатика</td>
@@ -1358,6 +1354,7 @@
                         <td>И.И.Иванов</td>
                     </tr>
                 </table>
+                -->
 
             </div>
         </div>

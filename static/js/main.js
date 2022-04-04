@@ -613,7 +613,6 @@ window.onload = function(){
 
             if (json["status"] != "None") {
 
-                console.log(json);
                 for (let i = 0; i < json["data"].length; i++) {
                     var str = '<div onclick="getOneTeacher(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"] + '</span></div>'
                     TeacherList.innerHTML += str;
@@ -916,7 +915,6 @@ window.onload = function(){
         if (response.ok) {
             let json = await response.json();
 
-            console.log(json);
             if (json["status"] != "None") {
 
                 for (let i = 0; i < json["data"].length; i++) {
@@ -959,6 +957,8 @@ window.onload = function(){
 
     // Вывод расписания
 
+    const ScheduleList = document.getElementById("ScheduleTableList");
+
     const getOneSchedule = async function(Group_ID) {
         let data = { "id_group" : Group_ID };
         let url = new URL("http://127.0.0.1:5000/getTimetable");
@@ -970,18 +970,294 @@ window.onload = function(){
 
             console.log(json);
             
+            var ScheduleStr = ""
             if (json["status"] != "None") {
-                
+                let DayMassives = [[], [], [], [], [], []];
+                let DayMassivesPairNumbers = [[], [], [], [], [], []];
+                let NameOfDaysMassive = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+
+                for (let i = 0; i < json["data"].length; i++) {
+                    DayMassives[json["data"][i]["data"]["day_of_week_number"] - 1].push(i);
+                    DayMassivesPairNumbers[json["data"][i]["data"]["day_of_week_number"] - 1].push(json["data"][i]["data"]["pair_number"])
+                }
+
+                console.log(DayMassives[1]);
+                console.log(DayMassivesPairNumbers[1]);
+
+                ScheduleStr = `<table class="Schedule_RightInfo_Table" border="all">
+                    <tr class="Schedule_RightInfo_TableTopic">
+                        <td>День недели</td>
+                        <td colspan="3">${json["name"]}</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableSecondTopic">
+                        <td>-</td>
+                        <td>Дисциплина</td>
+                        <td>№ Каб.</td>
+                        <td>Преподаватель</td>
+                    </tr>`
+
+                for (let Day = 0; Day < 6; Day++) {
+                    if (DayMassives[Day].length > 0) {
+                        if (DayMassivesPairNumbers[Day].indexOf(1, 0) != -1) {
+                            ScheduleStr += `
+                            <tr class="Schedule_RightInfo_TableChetRow">
+                                <td rowspan="7">${NameOfDaysMassive[Day]}</td>
+                                <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["subject"]}</td>
+                                <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["data"]["room"]}</td>
+                                <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["surname"][0] + '. ' + json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["name"][0] + '. ' + json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["patronymic"]}</td>
+                            </tr>`
+
+                            //DayMassives[DayMassivesPairNumbers[Day].indexOf(1, 0)]
+                        }
+                        else {
+                            ScheduleStr += `
+                            <tr class="Schedule_RightInfo_TableChetRow">
+                                <td rowspan="7">${NameOfDaysMassive[Day]}</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>`
+                        }
+    
+                        for (let i = 2; i < 8; i++) {
+                            if (DayMassivesPairNumbers[Day].indexOf(i, 0) != -1) {
+                                ScheduleStr += `<tr class="Schedule_RightInfo_TableChetRow">
+                                    <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["subject"]}</td>
+                                    <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["data"]["room"]}</td>
+                                    <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["surname"][0] + '. ' + json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["name"][0] + '. ' + json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["patronymic"]}</td>
+                                </tr>`
+                            }
+                            else {
+                                ScheduleStr += `<tr class="Schedule_RightInfo_TableChetRow">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>`
+                            }
+                        }
+                    }
+
+                    else {
+                        ScheduleStr += `
+                        <tr class="Schedule_RightInfo_TableChetRow">
+                            <td rowspan="7">${NameOfDaysMassive[Day]}</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>`
+
+                        for (let i = 0; i < 6; i++) {
+                            ScheduleStr += `<tr class="Schedule_RightInfo_TableChetRow">
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>`
+                        }
+                    }
+                }
+
+                var TuesdayStr =  `<!--Вторник-->
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="7">Вторник</td>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>`
+
+                var Wednesday = `<!--Среда-->
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td rowspan="7">Среда</td>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>`
+
+                var Thursday = `<!--Четверг-->
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="7">Четверг</td>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>`
+
+                var Friday = `<!--Пятница-->
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td rowspan="7">Пятница</td>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>`
+
+                var Saturday = `<!--Суббота-->
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td rowspan="7">Суббота</td>
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                    <tr class="Schedule_RightInfo_TableNeChetRow">
+                        <td>Информатика</td>
+                        <td>44</td>
+                        <td>И.И.Иванов</td>
+                    </tr>
+                </table>`
+
+                ScheduleList.innerHTML += ScheduleStr
             }
             else {
-                console.log("Об этом студенте нет информации", json);
+                console.log("В этой группе нет расписания", json);
             }
         } else {
             alert("Ошибка HTTP: " + response.status);
         }
     }
 
-    getOneSchedule(1);
+    getOneSchedule(11);
 
 
     // Редактирование расписания
