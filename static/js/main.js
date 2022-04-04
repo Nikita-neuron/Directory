@@ -312,7 +312,7 @@ window.onload = function(){
             if (json["status"] != "None") {
 
                 for (let i = 0; i < json["data"].length; i++) {
-                    var str = '<div onclick="getOneStudent(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"][0] + '</span></div>';
+                    var str = '<div onclick="getOneStudent(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"] + '</span></div>';
                     StudentList.innerHTML += str;
                 }
 
@@ -531,8 +531,8 @@ window.onload = function(){
     const AddOneTeacher = async function() {
         let formData = new FormData();
         formData.append("FIO", AddEditTeacher1.innerHTML);
-        formData.append("position", AddEditTeacher3.innerHTML);
-        formData.append("gender", AddEditTeacher2.innerHTML);
+        formData.append("position", AddEditTeacher2.innerHTML);
+        formData.append("gender", AddEditTeacher3.innerHTML);
         formData.append("date_of_birth", AddEditTeacher4.innerHTML);
         formData.append("email", AddEditTeacher5.innerHTML);
         formData.append("info", AddEditTeacher6.innerHTML);
@@ -615,7 +615,7 @@ window.onload = function(){
 
                 console.log(json);
                 for (let i = 0; i < json["data"].length; i++) {
-                    var str = '<div onclick="getOneTeacher(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"][0] + '</span></div>'
+                    var str = '<div onclick="getOneTeacher(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"] + '</span></div>'
                     TeacherList.innerHTML += str;
                 }
 

@@ -493,6 +493,7 @@
                         GroupInfo4.innerHTML = json["data"]["subdivision"];
                         GroupInfo5.innerHTML = json["data"]["id_headman"];
 
+                        GroupStudentList.innerHTML = "";
                         for (let i = 0; i < json["group"].length; i++) {
                             var str = '<div class="Groups_Right_MainInfo_DownBlock_LeftCell_ListCell">' + (i + 1).toString() + '. ' + json["group"][i]["surname"][0] + '. ' + json["group"][i]["name"][0] + '. ' + json["group"][i]["patronymic"] + '</div>';
                             GroupStudentList.innerHTML += str;
