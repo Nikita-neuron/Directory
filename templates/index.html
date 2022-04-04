@@ -319,7 +319,9 @@
                 let url = new URL("http://127.0.0.1:5000/getStudent");
                 for (let k in data) { url.searchParams.append(k, data[k]); }
             
+                setOnLoadScreen();
                 let response = await fetch(url);
+                setOffLoadScreen();
                 if (response.ok) {
                     let json = await response.json();
 
@@ -482,7 +484,9 @@
                 let url = new URL("http://127.0.0.1:5000/getGroup");
                 for (let k in data) { url.searchParams.append(k, data[k]); }
             
+                setOnLoadScreen();
                 let response = await fetch(url);
+                setOffLoadScreen();
                 if (response.ok) {
                     let json = await response.json();
                     
@@ -851,7 +855,9 @@
                 let url = new URL("http://127.0.0.1:5000/getTeacher");
                 for (let k in data) { url.searchParams.append(k, data[k]); }
             
+                setOnLoadScreen();
                 let response = await fetch(url);
+                setOffLoadScreen();
                 if (response.ok) {
                     let json = await response.json();
                     
@@ -1038,7 +1044,9 @@
                 let url = new URL("http://127.0.0.1:5000/getSubject");
                 for (let k in data) { url.searchParams.append(k, data[k]); }
             
+                setOnLoadScreen();
                 let response = await fetch(url);
+                setOffLoadScreen();
                 if (response.ok) {
                     let json = await response.json();
 
@@ -1359,6 +1367,27 @@
             </div>
         </div>
 
+
+        <div class="loadScreen" id="loadScreen">
+            <div class="loadScreen_outerDiv">
+                <img src="../static/sysImgs/load.png">
+                <div>
+                    loading...
+                </div>
+            </div>
+        </div>
+
+        <script>
+            loadScreen = document.getElementById("loadScreen");
+
+            function setOnLoadScreen() {
+                loadScreen.style.display = "flex";
+            }
+
+            function setOffLoadScreen() {
+                loadScreen.style.display = "none";
+            }
+        </script>
 
     </div>
 

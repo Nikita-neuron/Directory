@@ -1,5 +1,17 @@
 window.onload = function(){
 
+    //Окно загрузки
+
+    loadScreen = document.getElementById("loadScreen");
+
+    function setOnLoadScreen() {
+        loadScreen.style.display = "flex";
+    }
+
+    function setOffLoadScreen() {
+        loadScreen.style.display = "none";
+    }
+
     //Верхнее меню
 
     //Инициализация двух массивов. Один с кнопками, другой с окнами
@@ -313,7 +325,9 @@ window.onload = function(){
     const getAllStudents = async function() {
         let url = new URL("http://127.0.0.1:5000/getAllStudents");
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
 
@@ -374,7 +388,9 @@ window.onload = function(){
 
         let file = StudentFileInput.files[0];
         if (!file) {
+            setOnLoadScreen();
             let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            setOffLoadScreen();
             file = new File([blobImage], 'image.png', blobImage)
             formData.append('image', file);
         }
@@ -400,10 +416,12 @@ window.onload = function(){
     
     const updateStudentData = async function(formData) {
         let url = new URL("http://127.0.0.1:5000/updateStud");
+        setOnLoadScreen();
         let response = await fetch(url, {
             method: 'POST',
             body: formData
         });
+        setOffLoadScreen();
         if (response.ok) {
             window.location.reload();
         } else {
@@ -432,7 +450,9 @@ window.onload = function(){
 
         let file = StudentFileInput.files[0];
         if (!file) {
+            setOnLoadScreen();
             let blobImage = await fetch(StudentPhotoField.src).then(r => r.blob());
+            setOffLoadScreen();
             file = new File([blobImage], 'image.png', blobImage)
             formData.append('image', file);
         }
@@ -467,7 +487,9 @@ window.onload = function(){
         let url = new URL("http://127.0.0.1:5000/deleteStudent");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
             window.location.reload();
@@ -512,10 +534,12 @@ window.onload = function(){
 
     const addTeacherData = async function(formData) {
         let url = new URL("http://127.0.0.1:5000/addTeacher");
+        setOnLoadScreen();
         let response = await fetch(url, {
             method: 'POST',
             body: formData
         });
+        setOffLoadScreen();
         if (response.ok) {
             window.location.reload();
         } else {
@@ -525,10 +549,12 @@ window.onload = function(){
 
     const updateTeacherData = async function(formData) {
         let url = new URL("http://127.0.0.1:5000/updateTeacher");
+        setOnLoadScreen();
         let response = await fetch(url, {
             method: 'POST',
             body: formData
         });
+        setOffLoadScreen();
         if (response.ok) {
             window.location.reload();
         } else {
@@ -547,7 +573,9 @@ window.onload = function(){
 
         let file = AddEditTeacherPhoto.files[0];
         if (!file) {
+            setOnLoadScreen();
             let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            setOffLoadScreen();
             file = new File([blobImage], 'image.png', blobImage)
             formData.append('image', file);
         }
@@ -584,7 +612,9 @@ window.onload = function(){
 
         let file = AddEditTeacherPhoto.files[0];
         if (!file) {
+            setOnLoadScreen();
             let blobImage = await fetch(TeacherPhotoField.src).then(r => r.blob());
+            setOffLoadScreen();
             file = new File([blobImage], 'image.png', blobImage)
             formData.append('image', file);
         }
@@ -615,7 +645,9 @@ window.onload = function(){
     const getAllTeachers = async function() {
         let url = new URL("http://127.0.0.1:5000/getAllTeachers");
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
 
@@ -646,7 +678,9 @@ window.onload = function(){
         let url = new URL("http://127.0.0.1:5000/deleteTeacher");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOnLoadScreen();
         if (response.ok) {
             let json = await response.json();
             window.location.reload();
@@ -694,6 +728,7 @@ window.onload = function(){
 
         let url = new URL("http://127.0.0.1:5000/addGroup");
     
+        setOnLoadScreen();
         let response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -701,6 +736,7 @@ window.onload = function(){
         },
         body: JSON.stringify(group)
         });
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
             console.log(json);
@@ -733,6 +769,7 @@ window.onload = function(){
 
         let url = new URL("http://127.0.0.1:5000/updateGroup");
     
+        setOnLoadScreen();
         let response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -740,6 +777,7 @@ window.onload = function(){
         },
         body: JSON.stringify(group)
         });
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
             console.log(json);
@@ -770,7 +808,9 @@ window.onload = function(){
     const getAllGroups = async function() {
         let url = new URL("http://127.0.0.1:5000/getAllGroups");
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
 
@@ -804,7 +844,9 @@ window.onload = function(){
         let url = new URL("http://127.0.0.1:5000/deleteGroup");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
             window.location.reload();
@@ -844,6 +886,7 @@ window.onload = function(){
 
         let url = new URL("http://127.0.0.1:5000/addSubject");
     
+        setOnLoadScreen();
         let response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -851,6 +894,7 @@ window.onload = function(){
         },
         body: JSON.stringify(subject)
         });
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
             console.log(json);
@@ -882,6 +926,7 @@ window.onload = function(){
 
         let url = new URL("http://127.0.0.1:5000/updateSubject");
     
+        setOnLoadScreen();
         let response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -889,6 +934,7 @@ window.onload = function(){
         },
         body: JSON.stringify(subject)
         });
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
             console.log(json);
@@ -919,7 +965,9 @@ window.onload = function(){
     const getAllSubjects = async function() {
         let url = new URL("http://127.0.0.1:5000/getAllSubjects");
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
 
@@ -950,7 +998,9 @@ window.onload = function(){
         let url = new URL("http://127.0.0.1:5000/deleteSubject");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
             window.location.reload();
@@ -972,7 +1022,9 @@ window.onload = function(){
         let url = new URL("http://127.0.0.1:5000/getTimetable");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
 
@@ -1075,7 +1127,9 @@ window.onload = function(){
     const ScheduleGetAllGroups = async function(Group_Level) {
         let url = new URL("http://127.0.0.1:5000/getAllGroups");
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
 
@@ -1118,7 +1172,9 @@ window.onload = function(){
     const EditSchedulegetAllSubjects = async function() {
         let url = new URL("http://127.0.0.1:5000/getAllSubjects");
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
     
@@ -1136,7 +1192,9 @@ window.onload = function(){
     const EditSchedulegetAllTeachers = async function() {
         let url = new URL("http://127.0.0.1:5000/getAllTeachers");
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
     
@@ -1156,7 +1214,9 @@ window.onload = function(){
         let data = { "id_group" : idGroup };
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
+        setOnLoadScreen();
         let response = await fetch(url);
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
     
@@ -1176,6 +1236,7 @@ window.onload = function(){
     
     const sendGroupTimetable = async function (data) {
         let url = new URL("http://127.0.0.1:5000/addGroupTimetable");
+        setOnLoadScreen();
         let response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -1183,6 +1244,7 @@ window.onload = function(){
             },
             body: JSON.stringify(data)
         });
+        setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
             ScheduleEditWindow.style.display = "none"
