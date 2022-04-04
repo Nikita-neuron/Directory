@@ -115,6 +115,16 @@ def updateStud():
     if request.files: image = request.files["image"].read()
     bd.update_student(int(data["id_student"]), fio[0], fio[1], fio[2], data["gender"],
                       data["email"], group_id, image, data["date_of_birth"], data["info"])
+
+    if data["headman"] == "Да" or data["headman"] == "ДА":
+        students = bd.get_all_students()
+        for student in students:
+            if student["name"] == fio[1] and student["surname"] == fio[0] and student["patronymic"] == fio[2]:
+                id_student = student["id"]
+                group = bd.get_group_by_id(student["id_group"])
+                bd.update_group(group["id"], group["name"], id_student, group["level_education"],
+                                group["cipher"], group["subdivision"])
+                break
     return {
         "status": "OK"
     }
@@ -188,7 +198,7 @@ def getStud():
         group = student["id_group"]
         group = bd.get_group_by_id(group)
         if group is None:
-            student["headman"] = "NO"
+            student["headman"] = "Нет"
             return {
                 "status": "OK",
                 "data": student,
@@ -196,9 +206,9 @@ def getStud():
             }
         id_headman = group["id_headman"]
         if id_headman == int(data["student_id"]):
-            student["headman"] = "YES"
+            student["headman"] = "Да"
         else:
-            student["headman"] = "NO"
+            student["headman"] = "Нет"
         return {
             "status": "OK",
             "data": student,
@@ -245,8 +255,7 @@ def addGroup():
     id_student = 0
     if len(headman) == 3:
         for student in students:
-            if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student[
-                "patronymic"]:
+            if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
                 id_student = student["id"]
                 break
     bd.add_group(data["name"], id_student, data["level_education"], data["cipher"], data["subdivision"])
@@ -290,6 +299,11 @@ def getGroup():
             "group": students_group
         }
     else:
+        student = bd.get_student_by_id(group["id_headman"])
+        if student is None:
+            group["headman"] = "Нет"
+        else:
+            group["headman"] = student["surname"] + " " + student["name"] + " " + student["patronymic"],
         return {
             "status": "OK",
             "data": group,
