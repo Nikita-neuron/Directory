@@ -160,15 +160,15 @@ class DataBase(metaclass=Singleton):
         tables = ["attendance"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_student = %s"""
-            student_tuple = (str(student_id))
+            student_tuple = [str(student_id)]
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM students WHERE id = %s"""
-        student_tuple = (str(student_id))
+        student_tuple = [str(student_id)]
         self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM groups WHERE id_headman = %s"""
-        student_tuple = (str(student_id))
+        student_tuple = [str(student_id)]
         self.insert_query(insert_query, student_tuple)
 
     # ======= TEACHERS ======
@@ -248,11 +248,11 @@ class DataBase(metaclass=Singleton):
         tables = ["subjects_groups", "subjects_groups"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_teacher = %s"""
-            student_tuple = (str(teacher_id))
+            student_tuple = [str(teacher_id)]
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM teachers WHERE id = %s"""
-        student_tuple = (str(teacher_id))
+        student_tuple = [str(teacher_id)]
         self.insert_query(insert_query, student_tuple)
 
     # ====== SUBJECTS ======
@@ -341,11 +341,11 @@ class DataBase(metaclass=Singleton):
         tables = ["subjects_groups", "subjects_groups", "attendance"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_subject = %s"""
-            student_tuple = (str(id_subject))
+            student_tuple = [str(id_subject)]
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM subjects WHERE id = %s"""
-        student_tuple = (str(id_subject))
+        student_tuple = [str(id_subject)]
         self.insert_query(insert_query, student_tuple)
 
     # ===== DAYS ====
@@ -394,11 +394,11 @@ class DataBase(metaclass=Singleton):
         tables = ["attendance"]
         for table in tables:
             insert_query = """DELETE FROM """ + table + """ WHERE id_day = %s"""
-            student_tuple = (day_id)
+            student_tuple = [str(day_id)]
             self.insert_query(insert_query, student_tuple)
 
         insert_query = """DELETE FROM days WHERE id = %s"""
-        student_tuple = (day_id)
+        student_tuple = [str(day_id)]
         self.insert_query(insert_query, student_tuple)
 
     # ====== GROUPS =====
@@ -506,7 +506,7 @@ class DataBase(metaclass=Singleton):
 
     def delete_timetable_by_group_id(self, id_group):
         insert_query = """DELETE FROM subjects_groups WHERE id_group = %s"""
-        student_tuple = (str(id_group))
+        student_tuple = [str(id_group)]
         self.insert_query(insert_query, student_tuple)
 
     def delete_group(self, group_id):
