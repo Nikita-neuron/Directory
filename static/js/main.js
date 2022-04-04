@@ -567,8 +567,8 @@ window.onload = function(){
 
         let formData = new FormData();
         formData.append("FIO", AddEditTeacher1.innerHTML);
-        formData.append("position", AddEditTeacher3.innerHTML);
-        formData.append("gender", AddEditTeacher2.innerHTML);
+        formData.append("position", AddEditTeacher2.innerHTML);
+        formData.append("gender", AddEditTeacher3.innerHTML);
         formData.append("date_of_birth", AddEditTeacher4.innerHTML);
         formData.append("email", AddEditTeacher5.innerHTML);
         formData.append("info", AddEditTeacher6.innerHTML);
