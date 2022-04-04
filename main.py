@@ -365,7 +365,7 @@ def getSub():
                 "patronymic": teacher["patronymic"]
             })
             groups.append(group["name"])
-        if teachers is None or groups is None:
+        if teachers is None or len(teachers) == 0 or groups is None or len(groups) == 0:
             return{
                 "status": "OK",
                 "data": subject
