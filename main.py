@@ -245,7 +245,8 @@ def addGroup():
     id_student = 0
     if len(headman) == 3:
         for student in students:
-            if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
+            if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student[
+                "patronymic"]:
                 id_student = student["id"]
                 break
     bd.add_group(data["name"], id_student, data["level_education"], data["cipher"], data["subdivision"])
@@ -358,11 +359,17 @@ def getSub():
         for schedule in schedules_a:
             teacher = bd.get_teacher_by_id(schedule["id_teacher"])
             group = bd.get_group_by_id(schedule["id_group"])
-            teachers.append({
-                "name": teacher["name"],
-                "surname": teacher["surname"],
-                "patronymic": teacher["patronymic"]
-            })
+            if teacher is None or group is None:
+                return{
+                    "status": "OK",
+                    "data": subject
+                }
+            else:
+                teachers.append({
+                    "name": teacher["name"],
+                    "surname": teacher["surname"],
+                    "patronymic": teacher["patronymic"]
+                })
             groups.append(group["name"])
         return {
             "status": "OK",
@@ -453,6 +460,10 @@ def getTimetable():
             "status": "OK",
             "data": timetable
         }
+
+
+# @app.route("/timetableByLevelEducation", methods=["GET"])
+# def levelTimetable():
 
 
 @app.route("/addGroupTimetable", methods=["POST"])
