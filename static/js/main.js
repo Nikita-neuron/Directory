@@ -312,7 +312,7 @@ window.onload = function(){
             if (json["status"] != "None") {
 
                 for (let i = 0; i < json["data"].length; i++) {
-                    var str = '<div onclick="getOneStudent(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"][0] + '</span></div>';
+                    var str = '<div onclick="getOneStudent(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"] + '</span></div>';
                     StudentList.innerHTML += str;
                 }
 
@@ -615,7 +615,7 @@ window.onload = function(){
 
                 console.log(json);
                 for (let i = 0; i < json["data"].length; i++) {
-                    var str = '<div onclick="getOneTeacher(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"][0] + '</span></div>'
+                    var str = '<div onclick="getOneTeacher(' + json["data"][i]["id"] + ')" class="LeftListBlock_PersonCell"><img src="../static/sysImgs/info.png" class="LeftListBlock_PersonCell_InfoImg"><span>' + (i+1).toString() + '. ' + json["data"][i]["surname"][0] + '. ' + json["data"][i]["name"][0] + '. ' + json["data"][i]["patronymic"] + '</span></div>'
                     TeacherList.innerHTML += str;
                 }
 
