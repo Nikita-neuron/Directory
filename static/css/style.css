@@ -20,46 +20,13 @@
 }
 
 .MainOuterBloсk {
-    border: 2px solid black;
     margin: 20px;
 
     display: flex;
     flex-direction: column;
 }
 
-.UpperMenu {
-    border: 1px solid black;
-    margin: 5px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.MenuElement {
-    color: white;
-    background-color: rgb(34, 34, 34);
-
-    width: 140px;
-    height: 50px;
-
-    margin-left: 1px;
-    margin-right: 1px;
-
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.MenuElement:hover {
-    background-color: #47BE82;
-    cursor: pointer;
-}
-
-
 .MainInnerBlock {
-    border: 1px solid black;
     margin: 5px;
 
     min-width: 90%;
@@ -72,7 +39,6 @@
 }
 
 .LeftListBlock {
-    border: 1px solid black;
     margin: 5px;
 
     width: 20%;
@@ -82,12 +48,10 @@
 }
 
 .LeftListBlock_OuterElement {
-    border: 1px solid black;
     margin: 2px;
 }
 
 .RightInfoBlock {
-    border: 1px solid black;
     margin: 5px;
 
     background-color: #2D5440;
@@ -99,7 +63,6 @@
 }
 
 .RightInfoBlock_MainInfo {
-    border: 1px solid black;
     margin-right: 2px;
 
     width: 65%;
@@ -110,8 +73,7 @@
 }
 
 .RightInfoBlock_MainInfo_Cell {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     min-width: 95%;
     max-width: 100%;
@@ -137,8 +99,7 @@
 }
 
 .RightInfoBlock_MainInfo_Btns {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     margin: 2px;
 
     display: flex;
@@ -159,7 +120,6 @@
 }
 
 .RightInfoBlock_Photo {
-    border: 1px solid black;
     margin-left: 2px;
 
     width: 35%;
@@ -170,7 +130,6 @@
 }
 
 .RightInfoBlock_Photo_Text {
-    border: 1px solid black;
     margin: 4px;
 
     min-width: 95%;
@@ -187,8 +146,7 @@
 }
 
 .RightInfoBlock_Photo_Photo {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     background-color: #353d39;
     margin: 4px;
 
@@ -202,8 +160,7 @@
 }
 
 .RightInfoBlock_Photo_Btns {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     width: 80%;
     height: 10%;
@@ -229,7 +186,6 @@
 
 /*Класс самого внешнего блока*/
 .MainOuterBloсk {
-    border: 2px solid black;
     margin: 20px;
 
     height: 50vw;
@@ -240,10 +196,7 @@
 
 /*Классы верхнего меню*/
 .UpperMenu {
-    border: 1px solid black;
     margin: 5px;
-
-    height: 60px;
 
     display: flex;
     flex-direction: row;
@@ -251,13 +204,13 @@
 }
 
 .LeftMenuElement {
-    border-top-left-radius: 10px; 
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 0.6vw; 
+    border-bottom-left-radius: 0.6vw;
 }
 
 .RightMenuElement {
-    border-top-right-radius: 10px; 
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 0.6vw; 
+    border-bottom-right-radius: 0.6vw;
 }
 
 .RightMenuElement:hover {
@@ -272,7 +225,7 @@
     background-color: #2D2F31;
 
     width: 10%;
-    height: 100%;
+    height: 4vw;
 
     margin-left: 1px;
     margin-right: 1px;
@@ -292,7 +245,7 @@
     background-color: #23A86D;
 
     width: 10%;
-    height: 100%;
+    height: 4vw;
 
     margin-left: 1px;
     margin-right: 1px;
@@ -315,7 +268,6 @@
 
 
 .MainMainInnerBlock {
-    border: 1px solid black;
     margin: 5px;
 
     min-width: 90%;
@@ -328,7 +280,6 @@
 }
 
 .MainMainInnerBlock_MainDiv {
-    border: 1px solid black;
     background-color: #1A7E52;
 
     margin: 5px;
@@ -344,8 +295,7 @@
 }
 
 .MainMainInnerBlock_MainDiv_Cell {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     background-color: #3F4649;
 
     line-height: 1.1vw;
@@ -358,14 +308,14 @@
 .MainMainInnerBlock_MainDiv_Cell::-webkit-scrollbar {
     width: 20px;
     background-color: #3F4649;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .MainMainInnerBlock_MainDiv_Cell::-webkit-scrollbar-thumb {
     background-color: #353738;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .MainMainInnerBlock_MainDiv_Cell::-webkit-scrollbar-thumb:hover {
@@ -404,7 +354,6 @@
 
 /*Классы окна студента/преподавателя*/
 .StudentMainInnerBlock {
-    border: 1px solid black;
     margin: 5px;
 
     min-width: 90%;
@@ -417,7 +366,6 @@
 }
 
 .LeftListBlock {
-    border: 1px solid black;
     margin: 5px;
 
     width: 20%;
@@ -429,7 +377,6 @@
 }
 
 .LeftListBlock_AddPersonBTN {
-    border: 1px solid black;
 
     width: 95%; 
     height: 10%; 
@@ -452,7 +399,6 @@
 }
 
 .LeftListBlock_PersonsList {
-    border: 1px solid black;
 
     width: 95%;
 
@@ -476,7 +422,6 @@
 }
 
 .LeftListBlock_PersonCell {
-    border: 1px solid black;
 
     background-color: #2D2F31;
 
@@ -509,7 +454,6 @@
 }
 
 .LeftListBlock_PersonSearch {
-    border: 1px solid black;
 
     background-color:#1A7E52;
 
@@ -542,7 +486,6 @@
 }
 
 .RightInfoBlock {
-    border: 1px solid black;
     margin: 5px;
 
     background-color: #1A7E52;
@@ -554,7 +497,6 @@
 }
 
 .RightInfoBlock_MainInfo {
-    border: 1px solid black;
     margin-right: 2px;
 
     width: 65%;
@@ -566,8 +508,7 @@
 }
 
 .RightInfoBlock_MainInfo_Cell {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     min-width: 95%;
     max-width: 95%;
@@ -579,14 +520,14 @@
 .RightInfoBlock_MainInfo_Cell::-webkit-scrollbar {
     width: 20px;
     background-color: #3F4649;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .RightInfoBlock_MainInfo_Cell::-webkit-scrollbar-thumb {
     background-color: #353738;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .RightInfoBlock_MainInfo_Cell::-webkit-scrollbar-thumb:hover {
@@ -598,7 +539,6 @@
 }
 
 .RightInfoBlock_MainInfo_TableTopic {
-    border: 1px solid black;
 
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -611,7 +551,6 @@
 }
 
 .RightInfoBlock_MainInfo_TableText {
-    border: 1px solid black;
 
     color: #B6D149;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -619,8 +558,7 @@
 }
 
 .RightInfoBlock_MainInfo_Btns {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     margin: 2px;
 
     display: flex;
@@ -643,7 +581,6 @@
 }
 
 .RightInfoBlock_Photo {
-    border: 1px solid black;
     margin-left: 2px;
 
     width: 35%;
@@ -655,7 +592,6 @@
 }
 
 .RightInfoBlock_Photo_Text {
-    border: 1px solid black;
 
     margin-top: 8px;
     margin-bottom: 8px;
@@ -674,8 +610,7 @@
 }
 
 .RightInfoBlock_Photo_Photo {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     background-color: #99C26A;
 
     margin-top: 8px;
@@ -707,8 +642,7 @@
 }
 
 .RightInfoBlock_Photo_Btns {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     margin-top: 8px;
     margin-bottom: 8px;
@@ -748,7 +682,7 @@
 
 .PersonEditInfo_Window_EditWindow {
     background-color: #1A7E52;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     height: 90%;
     width: 50%;
@@ -762,7 +696,7 @@
 }
 
 .PersonEditInfo_Window_EditWindow_Cell {
-    border-radius: 10px;
+    border-radius: 0.6vw;
     background-color: #3F4649;
     
     width: 100%;
@@ -774,14 +708,14 @@
 .PersonEditInfo_Window_EditWindow_Cell::-webkit-scrollbar {
     width: 20px;
     background-color: #3F4649;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .PersonEditInfo_Window_EditWindow_Cell::-webkit-scrollbar-thumb {
     background-color: #353738;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .PersonEditInfo_Window_EditWindow_Cell::-webkit-scrollbar-thumb:hover {
@@ -839,7 +773,7 @@
 .PersonEditInfo_Window_EditWindow_SaveBTN {
     background-color: #23A86D;
 
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     width: 50%;
     height: 75%;
@@ -872,7 +806,6 @@
 
 /*Классы окна групп/предметов*/
 .GroupsMainInnerBlock {
-    border: 1px solid black;
     margin: 5px;
 
     min-width: 90%;
@@ -885,7 +818,6 @@
 }
 
 .Groups_Left_SearchAndEdit {
-    border: 1px solid black;
 
     margin: 5px;
 
@@ -900,8 +832,7 @@
 }
 
 .Groups_Left_SearchAndEdit_Btns {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     background-color: #FCB43F;
 
@@ -933,7 +864,6 @@
 
 
 .Groups_Middle_GroupList {
-    border: 1px solid black;
 
     margin: 5px;
 
@@ -947,7 +877,6 @@
 }
 
 .Groups_Middle_GroupList_List {
-    border: 1px solid black;
 
     width: 95%;
     height: 100%;
@@ -972,7 +901,6 @@
 }
 
 .Groups_Middle_GroupList_Cell {
-    border: 1px solid black;
 
     background-color: #2D2F31;
 
@@ -1012,7 +940,6 @@
 
 
 .Groups_Right_MainInfo {
-    border: 1px solid black;
 
     background-color: #1A7E52;
 
@@ -1029,8 +956,7 @@
 }
 
 .Groups_Right_MainInfo_UpperBlock {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     background-color: #3F4649;
 
@@ -1045,14 +971,14 @@
 .Groups_Right_MainInfo_UpperBlock::-webkit-scrollbar {
     width: 20px;
     background-color: #3F4649;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .Groups_Right_MainInfo_UpperBlock::-webkit-scrollbar-thumb {
     background-color: #353738;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .Groups_Right_MainInfo_UpperBlock::-webkit-scrollbar-thumb:hover {
@@ -1060,7 +986,6 @@
 }
 
 .Groups_Right_MainInfo_DownBlock {
-    border: 1px solid black;
     width: 90%;
     height: 88%;
 
@@ -1070,7 +995,6 @@
 }
 
 .Groups_Right_MainInfo_DownBlock_RightCell {
-    border: 1px solid black;
 
     width: 49%;
     height: 100%;
@@ -1081,16 +1005,14 @@
 }
 
 .Groups_Right_MainInfo_DownBlock_RightCell_Up {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     background-color: #3F4649;
     height: 85%;
 }
 
 .Groups_Right_MainInfo_DownBlock_RightCell_Down {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     background-color: #3F4649;
     height: 13%;
@@ -1101,8 +1023,7 @@
 }
 
 .Groups_Right_MainInfo_DownBlock_RightCell_Down_EditScheduleBTN {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     font-size: 1.1vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -1122,8 +1043,7 @@
 }
 
 .Groups_Right_MainInfo_DownBlock_LeftCell {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     background-color: #3F4649;
 
@@ -1139,7 +1059,6 @@
 }
 
 .Groups_Right_MainInfo_DownBlock_LeftCell_Topic {
-    border: 1px solid black;
 
     height: 8%;
     width: 95%;
@@ -1157,7 +1076,6 @@
 }
 
 .Groups_Right_MainInfo_DownBlock_LeftCell_List {
-    border: 1px solid black;
 
     height: 88%;
     width: 95%;
@@ -1182,7 +1100,6 @@
 }
 
 .Groups_Right_MainInfo_DownBlock_LeftCell_ListCell {
-    border: 1px solid black;
 
     padding: 10px;
     margin-top: 2px;
@@ -1201,14 +1118,14 @@
 .Groups_Right_MainInfo_Cell::-webkit-scrollbar {
     width: 20px;
     background-color: #3F4649;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .Groups_Right_MainInfo_Cell::-webkit-scrollbar-thumb {
     background-color: #353738;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
 }
 
 .Groups_Right_MainInfo_Cell::-webkit-scrollbar-thumb:hover {
@@ -1216,8 +1133,7 @@
 }
 
 .Groups_Right_MainInfo_BottomCell {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     background-color: #3F4649;
 
@@ -1232,7 +1148,6 @@
 }
 
 .Groups_Right_MainInfo_BTNs {
-    border: 1px solid black;
 
     background-color: #22A76C;
 
@@ -1274,7 +1189,6 @@
 
 
 .TeacherMainInnerBlock {
-    border: 1px solid black;
     margin: 5px;
 
     min-width: 90%;
@@ -1297,7 +1211,6 @@
 
 
 .SubjectMainInnerBlock {
-    border: 1px solid black;
     margin: 5px;
 
     min-width: 90%;
@@ -1322,7 +1235,6 @@
 
 /*Классы окна расписания*/
 .ScheduleMainInnerBlock {
-    border: 1px solid black;
     margin: 5px;
 
     min-width: 90%;
@@ -1335,7 +1247,6 @@
 }
 
 .Schedule_LeftMenu {
-    border: 1px solid black;
 
     margin: 5px;
 
@@ -1350,7 +1261,6 @@
 }
 
 .Schedule_LeftMenu_Choice {
-    border: 1px solid black;
 
     background-color: #1A7E52;
 
@@ -1366,8 +1276,7 @@
 }
 
 .Schedule_LeftMenu_Choice_Cell {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 
     background-color: #23A86D;
 
@@ -1414,7 +1323,6 @@
 }
 
 .Schedule_RightInfo {
-    border: 1px solid black;
 
     background-color: #22A86C;
 
@@ -1565,7 +1473,7 @@
 .edit-box {
     width: 50%;
     height: 90%;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     padding: 5px 10px;
 
     background-color: rgb(26, 126, 82);
@@ -1580,7 +1488,7 @@
     background: rgb(63, 70, 73);
     border: none;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1600,7 +1508,7 @@
     height: calc(85% - 15px);
     padding: 5px;
     background: rgb(63, 70, 73);
-    border-radius: 10px;
+    border-radius: 0.6vw;
 }
 
 .choose-day {
@@ -1622,7 +1530,7 @@
     background-color: rgb(35, 168, 109);
     color: rgb(2, 60, 31);
     font-size: 1.3vw;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     padding: 5px 20px;
     margin-top: 5px;
     cursor: pointer;
@@ -1661,7 +1569,7 @@
     background: rgb(45, 50, 52);
     margin-bottom: 5px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 0.6vw;
 }
 
 .timetable-pair input, .timetable-pair select {
@@ -1684,7 +1592,7 @@
     border: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.1vw;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     margin: 5px;
     padding: 10px;
     cursor: pointer;
@@ -1703,7 +1611,7 @@
     border: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.1vw;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     margin: 5px;
     padding: 10px;
     cursor: pointer;
@@ -1713,7 +1621,7 @@
     height: 15%;
     background: rgb(63, 70, 73);
     margin-top: 10px;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1725,7 +1633,7 @@
     border: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.6vw;
-    border-radius: 10px;
+    border-radius: 0.6vw;
     margin: 10px;
     padding: 5px 20px;
     cursor: pointer;
