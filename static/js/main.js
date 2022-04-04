@@ -113,16 +113,24 @@ window.onload = function(){
 
     radioElements[0].children[0].style.display = "flex";
 
+    var ScheduleMode = 1;
+
     radioElements[0].onclick = function() {
         changeRadio(0);
+        ScheduleMode = 1;
+        ScheduleGetAllGroups("Бакалавриат");
     }
 
     radioElements[1].onclick = function() {
         changeRadio(1);
+        ScheduleMode = 2;
+        ScheduleGetAllGroups("Магистратура");
     }
 
     radioElements[2].onclick = function() {
         changeRadio(2);
+        ScheduleMode = 3;
+        ScheduleGetAllGroups("Аспирантура");
     }
 
 
@@ -1006,8 +1014,6 @@ window.onload = function(){
                                 <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["data"]["room"]}</td>
                                 <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["surname"][0] + '. ' + json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["name"][0] + '. ' + json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["patronymic"]}</td>
                             </tr>`
-
-                            //DayMassives[DayMassivesPairNumbers[Day].indexOf(1, 0)]
                         }
                         else {
                             ScheduleStr += `
@@ -1056,197 +1062,6 @@ window.onload = function(){
                     }
                 }
 
-                var TuesdayStr =  `<!--Вторник-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td rowspan="7">Вторник</td>
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>`
-
-                var Wednesday = `<!--Среда-->
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td rowspan="7">Среда</td>
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>`
-
-                var Thursday = `<!--Четверг-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td rowspan="7">Четверг</td>
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>`
-
-                var Friday = `<!--Пятница-->
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td rowspan="7">Пятница</td>
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>`
-
-                var Saturday = `<!--Суббота-->
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td rowspan="7">Суббота</td>
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                    <tr class="Schedule_RightInfo_TableNeChetRow">
-                        <td>Информатика</td>
-                        <td>44</td>
-                        <td>И.И.Иванов</td>
-                    </tr>
-                </table>`
-
                 ScheduleList.innerHTML += ScheduleStr
             }
             else {
@@ -1257,7 +1072,34 @@ window.onload = function(){
         }
     }
 
-    getOneSchedule(11);
+    const ScheduleGetAllGroups = async function(Group_Level) {
+        let url = new URL("http://127.0.0.1:5000/getAllGroups");
+    
+        let response = await fetch(url);
+        if (response.ok) {
+            let json = await response.json();
+
+            if (json["status"] != "None") {
+
+                ScheduleList.innerHTML = "";
+
+                for (let i = 0; i < json["data"].length; i++) {
+                    if (Group_Level.toLowerCase() == json["data"][i]["level_education"].toLowerCase()) {
+                        getOneSchedule(json["data"][i]["id"]);
+                    }
+                }
+
+                console.log(json["data"]);
+
+            }
+            else {
+                console.log("База данных групп пуста", json);
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+    ScheduleGetAllGroups("Бакалавриат");
 
 
     // Редактирование расписания
