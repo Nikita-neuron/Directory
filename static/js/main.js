@@ -344,6 +344,7 @@ window.onload = function(){
             }
         } else {
             alert("Ошибка HTTP: " + response.status);
+            console.log("test");
         }
     }
     getAllStudents();
@@ -1035,6 +1036,7 @@ window.onload = function(){
                 let DayMassives = [[], [], [], [], [], []];
                 let DayMassivesPairNumbers = [[], [], [], [], [], []];
                 let NameOfDaysMassive = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+                let ClassMassive = ["Schedule_RightInfo_TableChetRow", "Schedule_RightInfo_TableNeChetRow", "Schedule_RightInfo_TableChetRow", "Schedule_RightInfo_TableNeChetRow", "Schedule_RightInfo_TableChetRow", "Schedule_RightInfo_TableNeChetRow"];
 
                 for (let i = 0; i < json["data"].length; i++) {
                     DayMassives[json["data"][i]["data"]["day_of_week_number"] - 1].push(i);
@@ -1060,7 +1062,7 @@ window.onload = function(){
                     if (DayMassives[Day].length > 0) {
                         if (DayMassivesPairNumbers[Day].indexOf(1, 0) != -1) {
                             ScheduleStr += `
-                            <tr class="Schedule_RightInfo_TableChetRow">
+                            <tr class="${ClassMassive[Day]}">
                                 <td rowspan="7">${NameOfDaysMassive[Day]}</td>
                                 <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["subject"]}</td>
                                 <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(1, 0)]]["data"]["room"]}</td>
@@ -1069,7 +1071,7 @@ window.onload = function(){
                         }
                         else {
                             ScheduleStr += `
-                            <tr class="Schedule_RightInfo_TableChetRow">
+                            <tr class="${ClassMassive[Day]}">
                                 <td rowspan="7">${NameOfDaysMassive[Day]}</td>
                                 <td>-</td>
                                 <td>-</td>
@@ -1079,14 +1081,14 @@ window.onload = function(){
     
                         for (let i = 2; i < 8; i++) {
                             if (DayMassivesPairNumbers[Day].indexOf(i, 0) != -1) {
-                                ScheduleStr += `<tr class="Schedule_RightInfo_TableChetRow">
+                                ScheduleStr += `<tr class="${ClassMassive[Day]}">
                                     <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["subject"]}</td>
                                     <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["data"]["room"]}</td>
                                     <td>${json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["surname"][0] + '. ' + json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["name"][0] + '. ' + json["data"][DayMassives[Day][DayMassivesPairNumbers[Day].indexOf(i, 0)]]["patronymic"]}</td>
                                 </tr>`
                             }
                             else {
-                                ScheduleStr += `<tr class="Schedule_RightInfo_TableChetRow">
+                                ScheduleStr += `<tr class="${ClassMassive[Day]}">
                                     <td>-</td>
                                     <td>-</td>
                                     <td>-</td>
@@ -1097,7 +1099,7 @@ window.onload = function(){
 
                     else {
                         ScheduleStr += `
-                        <tr class="Schedule_RightInfo_TableChetRow">
+                        <tr class="${ClassMassive[Day]}">
                             <td rowspan="7">${NameOfDaysMassive[Day]}</td>
                             <td>-</td>
                             <td>-</td>
@@ -1105,7 +1107,7 @@ window.onload = function(){
                         </tr>`
 
                         for (let i = 0; i < 6; i++) {
-                            ScheduleStr += `<tr class="Schedule_RightInfo_TableChetRow">
+                            ScheduleStr += `<tr class="${ClassMassive[Day]}">
                                 <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
