@@ -13,13 +13,56 @@ window.onload = function(){
     }
 
     //Функция вставки чистого текста
-    tdList = document.querySelectorAll("td[contenteditable]")
+    const tdList = document.querySelectorAll("td[contenteditable]")
+
+    console.log(Array.from(tdList[2].classList).includes("MaxChar50", 0))
 
     for (let i = 0; i < tdList.length; i++) {
         tdList[i].addEventListener("paste", function(e) {
             e.preventDefault();
             var text = e.clipboardData.getData("text/plain");
-            tdList[i].innerText = text;
+            if (Array.from(tdList[i].classList).includes("MaxChar50", 0)) {
+                tdList[i].innerText = CheckFieldSymbolLimit(text, 50);
+            }
+            if (Array.from(tdList[i].classList).includes("MaxChar100", 0)) {
+                tdList[i].innerText = CheckFieldSymbolLimit(text, 100);
+            }
+            if (Array.from(tdList[i].classList).includes("MaxChar150", 0)) {
+                tdList[i].innerText = CheckFieldSymbolLimit(text, 150);
+            }
+            if (Array.from(tdList[i].classList).includes("MaxChar500", 0)) {
+                tdList[i].innerText = CheckFieldSymbolLimit(text, 500);
+            }
+        });
+    }
+
+    function CheckFieldSymbolLimit(text, end) {
+        if (text.length > end) {
+            text = text.slice(0, end)
+        }
+
+        return text;
+    }
+
+    //Функция ограничения символов
+    for (let i = 0; i < tdList.length; i++) {
+        tdList[i].addEventListener("input", function() {
+            if (Array.from(tdList[i].classList).includes("MaxChar50", 0)) {
+                var str = tdList[i].innerText;
+                tdList[i].innerText = CheckFieldSymbolLimit(str, 50);;
+            }
+            if (Array.from(tdList[i].classList).includes("MaxChar100", 0)) {
+                var str = tdList[i].innerText;
+                tdList[i].innerText = CheckFieldSymbolLimit(str, 100);;
+            }
+            if (Array.from(tdList[i].classList).includes("MaxChar150", 0)) {
+                var str = tdList[i].innerText;
+                tdList[i].innerText = CheckFieldSymbolLimit(str, 150);;
+            }
+            if (Array.from(tdList[i].classList).includes("MaxChar500", 0)) {
+                var str = tdList[i].innerText;
+                tdList[i].innerText = CheckFieldSymbolLimit(str, 500);;
+            }
         });
     }
     
