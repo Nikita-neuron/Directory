@@ -249,19 +249,35 @@ def updateGroup():
 @app.route("/addGroup", methods=["POST"])
 def addGroup():
     data = request.json
-    headman = data["headman"]
-    headman = headman.split()
-    students = bd.get_all_students()
-    id_student = 0
-    if len(headman) == 3:
-        for student in students:
-            if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
-                id_student = student["id"]
+    groups = bd.get_all_groups()
+    name = False
+    if groups is None or len(groups) == 0:
+        name = True
+    else:
+        for group in groups:
+            if group["name"] == data["name"]:
+                name = False
                 break
-    bd.add_group(data["name"], id_student, data["level_education"], data["cipher"], data["subdivision"])
-    return {
-        "status": "OK"
-    }
+            else:
+                name = True
+    if name:
+        headman = data["headman"]
+        headman = headman.split()
+        students = bd.get_all_students()
+        id_student = 0
+        if len(headman) == 3:
+            for student in students:
+                if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
+                    id_student = student["id"]
+                    break
+        bd.add_group(data["name"], id_student, data["level_education"], data["cipher"], data["subdivision"])
+        return {
+            "status": "OK"
+        }
+    else:
+        return{
+            "status": "None"
+        }
 
 
 @app.route("/getAllGroups")
