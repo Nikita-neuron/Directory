@@ -460,14 +460,6 @@ window.onload = function(){
 
     SaveEditStudentId = document.getElementById("SaveEditStudentId");
     let StudentPhotoField = document.getElementById("StudentPhotoField");
-
-    // const getDefaultUserImage = async function() {
-    //     let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
-    //     let file = new File([blobImage], 'image.png', blobImage)
-    //     let formData = new FormData();
-    //     formData.append('image', file);
-    //     sendUserImage(formData);
-    // }
     
     const updateStudentData = async function(formData) {
         let url = new URL("http://127.0.0.1:5000/updateStud");

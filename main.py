@@ -11,16 +11,6 @@ def main():
     return render_template("index.html")
 
 
-@app.route("/editWindow")
-def editWindow():
-    return render_template("editWindow.html")
-
-
-@app.route("/imageUpload")
-def imageUpload():
-    return render_template("imageUpload.html")
-
-
 teachers_arr = []
 group_arr = []
 img = 0
@@ -267,7 +257,8 @@ def addGroup():
         id_student = 0
         if len(headman) == 3:
             for student in students:
-                if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student["patronymic"]:
+                if headman[0] == student["surname"] and headman[1] == student["name"] and headman[2] == student[
+                    "patronymic"]:
                     id_student = student["id"]
                     break
         bd.add_group(data["name"], id_student, data["level_education"], data["cipher"], data["subdivision"])
@@ -275,7 +266,7 @@ def addGroup():
             "status": "OK"
         }
     else:
-        return{
+        return {
             "status": "None"
         }
 
@@ -402,7 +393,8 @@ def getSub():
             if group is not None:
                 group_name = group["name"]
             for teacher in teachers:
-                if teacher["name"] == teacher_name and teacher["surname"] == teacher_surname and teacher["patronymic"] == teacher_patronymic:
+                if teacher["name"] == teacher_name and teacher["surname"] == teacher_surname and teacher[
+                    "patronymic"] == teacher_patronymic:
                     name = False
                     break
                 else:
@@ -512,10 +504,6 @@ def getTimetable():
         }
 
 
-# @app.route("/timetableByLevelEducation", methods=["GET"])
-# def levelTimetable():
-
-
 @app.route("/addGroupTimetable", methods=["POST"])
 def addTimetable():
     data = request.json
@@ -562,5 +550,5 @@ def save(id_student):
 
 if __name__ == "__main__":
     bd = DataBase()
-    app.run(debug=True)
+    app.run(debug=False)
     bd.close()
