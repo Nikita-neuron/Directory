@@ -385,6 +385,8 @@ def getSub():
     else:
         teachers = []
         groups = []
+        name = True
+        name_group = True
         schedules_a = bd.get_subject_timetable_by_id(int(data["id_subject"]))
         for schedule in schedules_a:
             teacher_name = ""
@@ -399,12 +401,26 @@ def getSub():
                 teacher_patronymic = teacher["patronymic"]
             if group is not None:
                 group_name = group["name"]
-            teachers.append({
-                "name": teacher_name,
-                "surname": teacher_surname,
-                "patronymic": teacher_patronymic
-            })
-            groups.append(group_name)
+            for teacher in teachers:
+                if teacher["name"] == teacher_name and teacher["surname"] == teacher_surname and teacher["patronymic"] == teacher_patronymic:
+                    name = False
+                    break
+                else:
+                    name = True
+            if name:
+                teachers.append({
+                    "name": teacher_name,
+                    "surname": teacher_surname,
+                    "patronymic": teacher_patronymic
+                })
+            for groups_name in groups:
+                if groups_name == group_name:
+                    name_group = False
+                    break
+                else:
+                    name_group = True
+            if name_group:
+                groups.append(group_name)
         return {
             "status": "OK",
             "data": subject,
