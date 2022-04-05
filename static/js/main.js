@@ -12,6 +12,11 @@ window.onload = function(){
         loadScreen.style.display = "none";
     }
 
+    //Функция вставки чистого текста
+
+    document.querySelectorAll("td[contenteditable]")[0].addEventListener("click", () => alert("test"))
+    
+
     //Верхнее меню
 
     //Инициализация двух массивов. Один с кнопками, другой с окнами
