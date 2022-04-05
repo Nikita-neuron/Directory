@@ -13,10 +13,16 @@ window.onload = function(){
     }
 
     //Функция вставки чистого текста
+    tdList = document.querySelectorAll("td[contenteditable]")
 
-    document.querySelectorAll("td[contenteditable]")[0].addEventListener("click", () => alert("test"))
+    for (let i = 0; i < tdList.length; i++) {
+        tdList[i].addEventListener("paste", function(e) {
+            e.preventDefault();
+            var text = e.clipboardData.getData("text/plain");
+            tdList[i].innerText = text;
+        });
+    }
     
-
     //Верхнее меню
 
     //Инициализация двух массивов. Один с кнопками, другой с окнами
@@ -105,7 +111,7 @@ window.onload = function(){
 
     ScheduleSearchField.oninput = function() {
         for (let i = 0; i < ScheduleTableList.children.length; i++) {
-            if (ScheduleTableList.children[i].children[0].children[0].children[0].innerText.toLowerCase().includes(this.value.toLowerCase()) == false) {
+            if (ScheduleTableList.children[i].children[0].children[0].children[1].innerText.toLowerCase().includes(this.value.toLowerCase()) == false) {
                 ScheduleTableList.children[i].style.display = "none";
             }
             else {
@@ -1033,8 +1039,6 @@ window.onload = function(){
         setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
-
-            console.log(json);
             
             var ScheduleStr = ""
             if (json["status"] != "None") {
@@ -1047,9 +1051,6 @@ window.onload = function(){
                     DayMassives[json["data"][i]["data"]["day_of_week_number"] - 1].push(i);
                     DayMassivesPairNumbers[json["data"][i]["data"]["day_of_week_number"] - 1].push(json["data"][i]["data"]["pair_number"])
                 }
-
-                console.log(DayMassives[1]);
-                console.log(DayMassivesPairNumbers[1]);
 
                 ScheduleStr = `<table class="Schedule_RightInfo_Table" border="all">
                     <tr class="Schedule_RightInfo_TableTopic">
@@ -1149,8 +1150,6 @@ window.onload = function(){
                         getOneSchedule(json["data"][i]["id"]);
                     }
                 }
-
-                console.log(json["data"]);
 
             }
             else {
