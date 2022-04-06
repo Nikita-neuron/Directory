@@ -1,6 +1,6 @@
 import psycopg2
 
-# from config import HOST, USER, PASSWORD, DB_NAME
+from config import HOST, USER, PASSWORD, DB_NAME
 
 
 class Singleton(type):
@@ -15,16 +15,6 @@ class Singleton(type):
 class DataBase(metaclass=Singleton):
     def __init__(self):
         try:
-            import os
-            is_prod = os.environ.get('IS_HEROKU', None)
-
-            if is_prod:
-                HOST = os.environ.get("DB_HOST")
-                USER = os.environ.get("DB_USER")
-                PASSWORD = os.environ.get("DB_PASSWORD")
-                DB_NAME = os.environ.get("DB_NAME")
-            else:
-                from config import HOST, USER, PASSWORD, DB_NAME
             self.connection = psycopg2.connect(
                 host=HOST,
                 user=USER,

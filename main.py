@@ -14,7 +14,6 @@ def main():
 teachers_arr = []
 group_arr = []
 img = 0
-bd = DataBase()
 
 
 # ========= TEACHERS =========
