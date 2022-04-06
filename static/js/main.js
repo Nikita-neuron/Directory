@@ -15,8 +15,6 @@ window.onload = function(){
     //Функция вставки чистого текста
     const tdList = document.querySelectorAll("td[contenteditable]")
 
-    console.log(Array.from(tdList[2].classList).includes("MaxChar50", 0))
-
     for (let i = 0; i < tdList.length; i++) {
         tdList[i].addEventListener("paste", function(e) {
             e.preventDefault();
@@ -377,7 +375,7 @@ window.onload = function(){
     StudentList = document.getElementById("StudentList");
 
     const getAllStudents = async function() {
-        let url = new URL("http://127.0.0.1:5000/getAllStudents");
+        let url = new URL(window.location.href + "getAllStudents");
     
         setOnLoadScreen();
         let response = await fetch(url);
@@ -398,7 +396,6 @@ window.onload = function(){
             }
         } else {
             alert("Ошибка HTTP: " + response.status);
-            console.log("test");
         }
     }
     getAllStudents();
@@ -407,7 +404,7 @@ window.onload = function(){
     //Добавление нового студента
 
     const addStudentData = async function(formData) {
-        let url = new URL("http://127.0.0.1:5000/addStudent");
+        let url = new URL(window.location.href + "addStudent");
         let response = await fetch(url, {
             method: 'POST',
             body: formData
@@ -444,7 +441,7 @@ window.onload = function(){
         let file = StudentFileInput.files[0];
         if (!file) {
             setOnLoadScreen();
-            let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            let blobImage = await fetch(window.location.href + "static/sysImgs/user.png").then(r => r.blob());
             setOffLoadScreen();
             file = new File([blobImage], 'image.png', blobImage)
             formData.append('image', file);
@@ -462,7 +459,7 @@ window.onload = function(){
     let StudentPhotoField = document.getElementById("StudentPhotoField");
     
     const updateStudentData = async function(formData) {
-        let url = new URL("http://127.0.0.1:5000/updateStud");
+        let url = new URL(window.location.href + "updateStud");
         setOnLoadScreen();
         let response = await fetch(url, {
             method: 'POST',
@@ -531,7 +528,7 @@ window.onload = function(){
 
     const delOneStudent = async function() {
         let data = { "student_id" : Number(SaveEditStudentId.innerHTML) };
-        let url = new URL("http://127.0.0.1:5000/deleteStudent");
+        let url = new URL(window.location.href + "deleteStudent");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
         setOnLoadScreen();
@@ -580,7 +577,7 @@ window.onload = function(){
     const AddEditTeacherBTN = document.getElementById("AddEditTeacherBTN");
 
     const addTeacherData = async function(formData) {
-        let url = new URL("http://127.0.0.1:5000/addTeacher");
+        let url = new URL(window.location.href + "addTeacher");
         setOnLoadScreen();
         let response = await fetch(url, {
             method: 'POST',
@@ -595,7 +592,7 @@ window.onload = function(){
     }
 
     const updateTeacherData = async function(formData) {
-        let url = new URL("http://127.0.0.1:5000/updateTeacher");
+        let url = new URL(window.location.href + "updateTeacher");
         setOnLoadScreen();
         let response = await fetch(url, {
             method: 'POST',
@@ -621,7 +618,7 @@ window.onload = function(){
         let file = AddEditTeacherPhoto.files[0];
         if (!file) {
             setOnLoadScreen();
-            let blobImage = await fetch("http://127.0.0.1:5000/static/sysImgs/user.png").then(r => r.blob());
+            let blobImage = await fetch(window.location.href + "static/sysImgs/user.png").then(r => r.blob());
             setOffLoadScreen();
             file = new File([blobImage], 'image.png', blobImage)
             formData.append('image', file);
@@ -690,7 +687,7 @@ window.onload = function(){
     TeacherList = document.getElementById("TeacherList");
 
     const getAllTeachers = async function() {
-        let url = new URL("http://127.0.0.1:5000/getAllTeachers");
+        let url = new URL(window.location.href + "getAllTeachers");
     
         setOnLoadScreen();
         let response = await fetch(url);
@@ -722,7 +719,7 @@ window.onload = function(){
 
     const delOneTeacher = async function() {
         let data = { "id_teacher" : Number(SaveEditTeacherId.innerHTML) };
-        let url = new URL("http://127.0.0.1:5000/deleteTeacher");
+        let url = new URL(window.location.href + "deleteTeacher");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
         setOnLoadScreen();
@@ -773,7 +770,7 @@ window.onload = function(){
             headman: AddEditGroup5.innerHTML,
         };
 
-        let url = new URL("http://127.0.0.1:5000/addGroup");
+        let url = new URL(window.location.href + "addGroup");
     
         setOnLoadScreen();
         let response = await fetch(url, {
@@ -786,7 +783,6 @@ window.onload = function(){
         setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
-            console.log(json);
             window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
@@ -814,7 +810,7 @@ window.onload = function(){
             headman: AddEditGroup5.innerHTML,
         };
 
-        let url = new URL("http://127.0.0.1:5000/updateGroup");
+        let url = new URL(window.location.href + "updateGroup");
     
         setOnLoadScreen();
         let response = await fetch(url, {
@@ -827,7 +823,6 @@ window.onload = function(){
         setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
-            console.log(json);
             window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
@@ -853,7 +848,7 @@ window.onload = function(){
     GroupList = document.getElementById("GroupList");
 
     const getAllGroups = async function() {
-        let url = new URL("http://127.0.0.1:5000/getAllGroups");
+        let url = new URL(window.location.href + "getAllGroups");
     
         setOnLoadScreen();
         let response = await fetch(url);
@@ -888,7 +883,7 @@ window.onload = function(){
 
     const delOneGroup = async function() {
         let data = { "id_group" : SaveEditGroupId.innerHTML };
-        let url = new URL("http://127.0.0.1:5000/deleteGroup");
+        let url = new URL(window.location.href + "deleteGroup");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
         setOnLoadScreen();
@@ -931,7 +926,7 @@ window.onload = function(){
             info: AddEditSubject6.innerHTML
         };
 
-        let url = new URL("http://127.0.0.1:5000/addSubject");
+        let url = new URL(window.location.href + "addSubject");
     
         setOnLoadScreen();
         let response = await fetch(url, {
@@ -944,7 +939,6 @@ window.onload = function(){
         setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
-            console.log(json);
             window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
@@ -971,7 +965,7 @@ window.onload = function(){
             info: AddEditSubject6.innerHTML
         };
 
-        let url = new URL("http://127.0.0.1:5000/updateSubject");
+        let url = new URL(window.location.href + "updateSubject");
     
         setOnLoadScreen();
         let response = await fetch(url, {
@@ -984,7 +978,6 @@ window.onload = function(){
         setOffLoadScreen();
         if (response.ok) {
             let json = await response.json();
-            console.log(json);
             window.location.reload();
         } else {
             alert("Ошибка HTTP: " + response.status);
@@ -1010,7 +1003,7 @@ window.onload = function(){
     SubjectList = document.getElementById("SubjectList");
 
     const getAllSubjects = async function() {
-        let url = new URL("http://127.0.0.1:5000/getAllSubjects");
+        let url = new URL(window.location.href + "getAllSubjects");
     
         setOnLoadScreen();
         let response = await fetch(url);
@@ -1042,7 +1035,7 @@ window.onload = function(){
 
     const delOneSubject = async function() {
         let data = { "id_subject" : SaveEditSubjectId.innerHTML };
-        let url = new URL("http://127.0.0.1:5000/deleteSubject");
+        let url = new URL(window.location.href + "deleteSubject");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
         setOnLoadScreen();
@@ -1066,7 +1059,7 @@ window.onload = function(){
 
     const getOneSchedule = async function(Group_ID) {
         let data = { "id_group" : Group_ID };
-        let url = new URL("http://127.0.0.1:5000/getTimetable");
+        let url = new URL(window.location.href + "getTimetable");
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
         setOnLoadScreen();
@@ -1168,7 +1161,7 @@ window.onload = function(){
     }
 
     const ScheduleGetAllGroups = async function(Group_Level) {
-        let url = new URL("http://127.0.0.1:5000/getAllGroups");
+        let url = new URL(window.location.href + "getAllGroups");
     
         setOnLoadScreen();
         let response = await fetch(url);
@@ -1211,7 +1204,7 @@ window.onload = function(){
     let teachers = [];
     
     const EditSchedulegetAllSubjects = async function() {
-        let url = new URL("http://127.0.0.1:5000/getAllSubjects");
+        let url = new URL(window.location.href + "getAllSubjects");
     
         setOnLoadScreen();
         let response = await fetch(url);
@@ -1231,7 +1224,7 @@ window.onload = function(){
     }
     
     const EditSchedulegetAllTeachers = async function() {
-        let url = new URL("http://127.0.0.1:5000/getAllTeachers");
+        let url = new URL(window.location.href + "getAllTeachers");
     
         setOnLoadScreen();
         let response = await fetch(url);
@@ -1251,7 +1244,7 @@ window.onload = function(){
     }
     
     const getGroupTimetable = async function() {
-        let url = new URL("http://127.0.0.1:5000/getGroupTimetable");
+        let url = new URL(window.location.href + "getGroupTimetable");
         let data = { "id_group" : idGroup };
         for (let k in data) { url.searchParams.append(k, data[k]); }
     
@@ -1276,7 +1269,7 @@ window.onload = function(){
     }
     
     const sendGroupTimetable = async function (data) {
-        let url = new URL("http://127.0.0.1:5000/addGroupTimetable");
+        let url = new URL(window.location.href + "addGroupTimetable");
         setOnLoadScreen();
         let response = await fetch(url, {
             method: 'POST',

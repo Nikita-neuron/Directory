@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel=stylesheet href="../static/css/style.css">
-    <script src="../static/js/main.js"></script>
-    <title>Document</title>
+    <link rel=stylesheet href="/static/css/style.css">
+    <script src="/static/js/main.js"></script>
+    <link rel="shortcut icon" href="/static/sysImgs/favicon.ico" type="image/x-icon">
+    <title>Справочник</title>
 </head>
 <!--Основное тело-->
 <body class="BodyBack">
@@ -208,7 +209,7 @@
                         </div>
 
                         <div class="RightInfoBlock_MainInfo_Btns", style="width: 15%; background-color: #A54933;" id="DeleteStudentBTN">
-                            <img src="../static/sysImgs\delete.png", style="width: 2vw; height: 2vw;">
+                            <img src="/static/sysImgs/delete.png", style="width: 2vw; height: 2vw;">
                         </div>
 
                     </div>
@@ -226,7 +227,7 @@
                     <!--Фото-->
                     <div class="RightInfoBlock_Photo_PhotoWrapper">
                         <div class="RightInfoBlock_Photo_Photo">
-                            <img src="../static/sysImgs\user.png" class="RightInfoBlock_Photo_Photo_Icon" id="StudentPhotoField">
+                            <img src="/static/sysImgs/user.png" class="RightInfoBlock_Photo_Photo_Icon" id="StudentPhotoField">
                         </div>
                     </div>
 
@@ -239,7 +240,7 @@
             <div class="PersonEditInfo_Window_EditWindow">
                 <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
                     <div class="PersonEditInfo_Window_EditWindow_Cell" style="display: flex; justify-content: end; width: auto; padding: 5px;">
-                        <img src="../static/sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="StudentEditWindowExitBTN">
+                        <img src="/static/sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="StudentEditWindowExitBTN">
                     </div>
                 </div>
 
@@ -311,15 +312,13 @@
             const getOneStudent = async function(Student_ID) {
                 SaveEditStudentId.innerHTML = Student_ID;
                 let data = { "student_id" : Student_ID };
-                let url = new URL("http://127.0.0.1:5000/getStudent");
+                let url = new URL(window.location.href + "getStudent");
                 for (let k in data) { url.searchParams.append(k, data[k]); }
             
                 setOnLoadScreen();
                 let response = await fetch(url);
                 if (response.ok) {
                     let json = await response.json();
-
-                    console.log(json);
                     
                     if (json["status"] != "None") {
                         StudentInfo1.innerHTML = json["data"]["surname"] + " " + json["data"]["name"] + " " + json["data"]["patronymic"];
@@ -341,7 +340,7 @@
             }
 
             const getStudentImage = async function(Student_ID) {
-                StudentPhotoField.src = `http://127.0.0.1:5000/studentImage/${Student_ID}`;
+                StudentPhotoField.src = `${window.location.href}studentImage/${Student_ID}`;
             }
         </script>
 
@@ -374,7 +373,7 @@
                 </div>
 
                 <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;" id="DeleteGroupBTN">
-                    <img src="../static/sysImgs\delete.png", style="width: 2vw; height: 2vw;">
+                    <img src="/static/sysImgs/delete.png", style="width: 2vw; height: 2vw;">
                 </div>
 
             </div>
@@ -476,7 +475,7 @@
             const getOneGroup = async function(Group_ID) {
                 SaveEditGroupId.innerHTML = Group_ID;
                 let data = { "id_group" : Group_ID };
-                let url = new URL("http://127.0.0.1:5000/getGroup");
+                let url = new URL(window.location.href + "getGroup");
                 for (let k in data) { url.searchParams.append(k, data[k]); }
             
                 setOnLoadScreen();
@@ -512,7 +511,7 @@
             <div class="PersonEditInfo_Window_EditWindow">
                 <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
                     <div class="PersonEditInfo_Window_EditWindow_Cell" style="display: flex; justify-content: end; width: auto; padding: 5px;">
-                        <img src="../static/sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="GroupEditWindowExitBTN">
+                        <img src="/static/sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="GroupEditWindowExitBTN">
                     </div>
                 </div>
 
@@ -559,7 +558,7 @@
             <div class="edit-box">
                 <div class="edit-menu">
                     <button class="close-btn" id="CloseEditSchedule">
-                        <img src="static/sysImgs/delete.png" alt="delete">
+                        <img src="/static/sysImgs/delete.png" alt="delete">
                     </button>
                 </div>
                 <div class="main-box">
@@ -749,7 +748,7 @@
                         </div>
 
                         <div class="RightInfoBlock_MainInfo_Btns", style="width: 15%; background-color: #A54933;" id="DeleteTeacherBTN">
-                            <img src="../static/sysImgs\delete.png", style="width: 2vw; height: 2vw;">
+                            <img src="/static/sysImgs/delete.png", style="width: 2vw; height: 2vw;">
                         </div>
 
                     </div>
@@ -767,7 +766,7 @@
                     <!--Фото-->
                     <div class="RightInfoBlock_Photo_PhotoWrapper">
                         <div class="RightInfoBlock_Photo_Photo">
-                            <img src="../static/sysImgs\user.png" class="RightInfoBlock_Photo_Photo_Icon" id="TeacherPhotoField">
+                            <img src="/static/sysImgs/user.png" class="RightInfoBlock_Photo_Photo_Icon" id="TeacherPhotoField">
                         </div>
                     </div>
 
@@ -780,7 +779,7 @@
             <div class="PersonEditInfo_Window_EditWindow">
                 <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
                     <div class="PersonEditInfo_Window_EditWindow_Cell" style="display: flex; justify-content: end; width: auto; padding: 5px;">
-                        <img src="../static/sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="TeacherEditWindowExitBTN">
+                        <img src="/static/sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="TeacherEditWindowExitBTN">
                     </div>
                 </div>
 
@@ -847,7 +846,7 @@
             const getOneTeacher = async function(Teacher_ID) {
                 SaveEditTeacherId.innerHTML = Teacher_ID;
                 let data = { "id_teacher" : Teacher_ID };
-                let url = new URL("http://127.0.0.1:5000/getTeacher");
+                let url = new URL(window.location.href + "getTeacher");
                 for (let k in data) { url.searchParams.append(k, data[k]); }
             
                 setOnLoadScreen();
@@ -873,7 +872,7 @@
                 }
             }
             const getTeacherImage = async function(Teacher_ID) {
-                teacherPhoto.src = `http://127.0.0.1:5000/teacherImage/${Teacher_ID}`;
+                teacherPhoto.src = `${window.location.href}teacherImage/${Teacher_ID}`;
             }
         </script>
 
@@ -901,7 +900,7 @@
                 </div>
 
                 <div class="Groups_Left_SearchAndEdit_Btns" style="background-color: #A54933;" id="DeleteSubjectBTN">
-                    <img src="../static/sysImgs\delete.png", style="width: 2vw; height: 2vw;">
+                    <img src="/static/sysImgs/delete.png", style="width: 2vw; height: 2vw;">
                 </div>
 
             </div>
@@ -985,7 +984,7 @@
             <div class="PersonEditInfo_Window_EditWindow">
                 <div class="PersonEditInfo_Window_EditWindow_UpperDiv">
                     <div class="PersonEditInfo_Window_EditWindow_Cell" style="display: flex; justify-content: end; width: auto; padding: 5px;">
-                        <img src="../static/sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="SubjectEditWindowExitBTN">
+                        <img src="/static/sysImgs/delete.png" class="PersonEditInfo_Window_EditWindow_UpperDiv_Img" id="SubjectEditWindowExitBTN">
                     </div>
                 </div>
 
@@ -1036,7 +1035,7 @@
             const getOneSubject = async function(Subject_ID) {
                 SaveEditSubjectId.innerHTML = Subject_ID;
                 let data = { "id_subject" : Subject_ID };
-                let url = new URL("http://127.0.0.1:5000/getSubject");
+                let url = new URL(window.location.href + "getSubject");
                 for (let k in data) { url.searchParams.append(k, data[k]); }
             
                 setOnLoadScreen();
@@ -1044,8 +1043,6 @@
                 setOffLoadScreen();
                 if (response.ok) {
                     let json = await response.json();
-
-                    console.log("Предмет",json);
                     
                     if (json["status"] != "None") {
                         SubjectInfo1.innerHTML = json["data"]["name"]
@@ -1367,7 +1364,7 @@
 
         <div class="loadScreen" id="loadScreen">
             <div class="loadScreen_outerDiv">
-                <img src="../static/sysImgs/load.png" class="loadScreen_outerDiv_Img">
+                <img src="/static/sysImgs/load.png" class="loadScreen_outerDiv_Img">
                 <div>
                     loading...
                 </div>
